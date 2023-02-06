@@ -1,6 +1,11 @@
 #include "pixel.h"
 #include <cmath>
 using namespace std;
+#include <Imagine/Graphics.h>
+using namespace Imagine;
+
+
+/* ******************************* */
 
 double pixel::getX(){
     return x;
@@ -9,57 +14,24 @@ double pixel::getY(){
     return y;
 }
 
+Color pixel::getColor(){
+    return col;
+}
+double pixel::getConfidence(){
+    return c;
+}
+double pixel::getData(){
+    return d;
+}
+double pixel::getPriority(){
+    return c*d
+}
+bool pixel::getV(){
+    return v;
+}
+
+
 void pixel::set(double x1, double y1){
     x=x1;
     y=y1;
-}
-
-pixel pixel::operator+(pixel b) {
-    pixel c;
-    c.x = x + b.x;
-    c.y = y + b.y;
-	return c;
-}
-
-pixel pixel::operator-(pixel b) {
-    pixel c;
-    c.x = x - b.x;
-    c.y = y - b.y;
-	return c;
-}
-
-pixel pixel::operator*(double lambda) {
-    pixel c;
-    c.x = x * lambda;
-    c.y = y * lambda;
-	return c;
-}
-
-pixel pixel::operator/(double lambda) {
-    pixel c;
-    c.x = x / lambda;
-    c.y = y / lambda;
-	return c;
-}
-
-double pixel::operator*(pixel b) {
-    return x * b.x + y * b.y;
-}
-
-double pixel::norm() {
-    return sqrt( x * x + y * y );
-}
-
-pixel pixel::rotate(double angle) {
-	angle *= M_PI / 180;
-    pixel c;
-	double co = cos(angle);
-	double si = sin(angle);
-    c.x = co * x + si * y;
-    c.y = - si * x + co * y;
-	return c;
-}
-
-pixel operator*(double lambda, pixel p){
-    return p*lambda;
 }

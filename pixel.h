@@ -1,25 +1,24 @@
 #pragma once
+#include <Imagine/Graphics.h>
+using namespace Imagine;
 
 class pixel {
-    double x,y;
+    double x,y;     // position
+    Color col;      // Color
+    double c,d;     // Confidence and Data term
+    bool v;         // 0 if not visited yet, 1 else
 
 public:
     double getX();
     double getY();
-    void set(double x1, double y1);
+    Color getColor();
+    double getConfidence();
+    double getData();
+    double getPriority();
+    bool getV();
 
-    pixel operator+( pixel b); // Sum
-    pixel operator-(pixel b); // Difference
-    pixel operator*(double lambda); // Multiplication pixel*scalar
-    pixel operator/(double lambda); // Division pixel/scalar
-    const pixel& operator=(const pixel& S);
-
-    double operator*(pixel b); // Scalar product
-    double norm(); // Norm
-
-    pixel rotate(double angle); // Rotation (angle in degrees)
+    void setPixel(double x1, double y1, Color col1, double c1, double d1, bool v1);
+    void setBlanck(double x1, double y1);    // To initialize the pixels in the target zone
 };
-
-pixel operator*(double lambda, pixel p); //Define scalar*pixel
 
 
