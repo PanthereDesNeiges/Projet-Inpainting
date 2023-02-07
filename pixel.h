@@ -11,7 +11,7 @@ public:
     pixel operator+( pixel b); // Sum
     pixel operator-(pixel b); // Difference
     pixel operator*(double lambda); // Multiplication pixel*scalar
-    pixel operator/(double lambda); // Multiplication pixel*scalar
+    pixel operator/(double lambda); // Division pixel/scalar
     const pixel& operator=(const pixel& S);
 
     double operator*(pixel b); // Scalar product

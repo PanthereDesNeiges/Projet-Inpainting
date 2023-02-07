@@ -60,3 +60,6 @@ pixel pixel::rotate(double angle) {
 	return c;
 }
 
+pixel operator*(double lambda, pixel p){
+    return p*lambda;
+}
