@@ -1,6 +1,6 @@
 // Imagine++ project
 // Project:  Projet S2
-// Student(s): Sixtine  Nodet
+// Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine  Nodet
 
 #include <Imagine/Graphics.h>
 using namespace Imagine;
