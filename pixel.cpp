@@ -31,6 +31,7 @@ bool pixel::getV(){
 }
 
 
+
 void pixel::setPixel(Color col1, double c1, double d1, bool v1){
     col=col1;
     c=c1;
