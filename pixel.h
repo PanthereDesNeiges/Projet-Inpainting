@@ -3,22 +3,23 @@
 using namespace Imagine;
 
 class pixel {
-    double x,y;     // position
+    int x,y;     // position
     Color col;      // Color
     double c,d;     // Confidence and Data term
     bool v;         // 0 if not visited yet, 1 else
+    //coucou
 
 public:
-    double getX();
-    double getY();
+    int getX();
+    int getY();
     Color getColor();
     double getConfidence();
     double getData();
     double getPriority();
     bool getV();
 
-    void setPixel(double x1, double y1, Color col1, double c1, double d1, bool v1);
-    void setBlanck(double x1, double y1);    // To initialize the pixels in the target zone
+    void setPixel(int x1, int y1, Color col1, double c1, double d1, bool v1);
+    void setBlanck(int x1, int y1);    // To initialize the pixels in the target zone
 };
 
 
