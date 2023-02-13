@@ -7,10 +7,10 @@ using namespace Imagine;
 
 /* ******************************* */
 
-double pixel::getX(){
+int pixel::getX(){
     return x;
 }
-double pixel::getY(){
+int pixel::getY(){
     return y;
 }
 
