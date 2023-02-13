@@ -31,7 +31,7 @@ bool pixel::getV(){
 }
 
 
-void pixel::setPixel(double x1, double y1, Color col1, double c1, double d1, bool v1){
+void pixel::setPixel(int x1, int y1, Color col1, double c1, double d1, bool v1){
     x=x1;
     y=y1;
     col=col1;
@@ -39,7 +39,7 @@ void pixel::setPixel(double x1, double y1, Color col1, double c1, double d1, boo
     d=d1;
     v=v1;
 }
-void pixel::setBlanck(double x1, double y1){
+void pixel::setBlanck(int x1, int y1){
     x=x1;
     y=y1;
 }
