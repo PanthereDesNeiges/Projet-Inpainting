@@ -7,12 +7,12 @@ using namespace Imagine;
 
 /* ******************************* */
 
-int pixel::getX(){
-    return x;
-}
-int pixel::getY(){
-    return y;
-}
+//int pixel::getX(){
+//    return x;
+//}
+//int pixel::getY(){
+//    return y;
+//}
 
 Color pixel::getColor(){
     return col;
@@ -31,15 +31,11 @@ bool pixel::getV(){
 }
 
 
-void pixel::setPixel(int x1, int y1, Color col1, double c1, double d1, bool v1){
-    x=x1;
-    y=y1;
+void pixel::setPixel(Color col1, double c1, double d1, bool v1){
     col=col1;
     c=c1;
     d=d1;
     v=v1;
 }
-void pixel::setBlanck(int x1, int y1){
-    x=x1;
-    y=y1;
+void pixel::setBlanck(){
 }
