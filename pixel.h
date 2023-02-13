@@ -7,7 +7,6 @@ class pixel {
     Color col;      // Color
     double c,d;     // Confidence and Data term
     bool v;         // 0 if not visited yet, 1 else
-    //coucou
 
 public:
     //int getX();
