@@ -7,7 +7,7 @@ using namespace Imagine;
 #include "pixel.h"
 
 
-const int width = 512, height = 512;
+const int width = 512, height = 512; //coucou2
 
 
 int main() {
