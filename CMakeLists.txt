@@ -4,5 +4,5 @@ list(APPEND CMAKE_FRAMEWORK_PATH /Library/Frameworks) #Mac, why not auto?
 
 find_package(Imagine REQUIRED)
 
-add_executable(Projet main.cpp image.cpp image.h pixel.cpp pixel.h frontiere.h frontiere.cpp)
+add_executable(Projet main.cpp image.cpp image.h pixel.cpp pixel.h frontiere.h frontiere.cpp matching.h matching.cpp)
 ImagineUseModules(Projet Graphics)
