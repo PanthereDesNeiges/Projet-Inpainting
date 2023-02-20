@@ -46,3 +46,7 @@ void pixel::initPixel(Color col1, double c1, double d1, bool v1){
 
 void pixel::setBlanck(){
 }
+
+bool pixel::operator==( pixel p){
+    return( col == p.getColor() and c== p.getConfidence() and d == p.getData() and v == getV());
+}
