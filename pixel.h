@@ -3,7 +3,7 @@
 using namespace Imagine;
 
 class pixel {
-    //int x,y;     // position
+    //int x,y;      // position
     Color col;      // Color
     double c,d;     // Confidence and Data term
     bool v;         // 0 if not visited yet, 1 else
@@ -17,7 +17,7 @@ public:
     double getPriority();
     bool getV();
 
-    void setPixel(Color col1, double c1, double d1, bool v1);
+    void initPixel(Color col1, double c1, double d1, bool v1);
     void setBlanck();    // To initialize the pixels in the target zone
 };
 
