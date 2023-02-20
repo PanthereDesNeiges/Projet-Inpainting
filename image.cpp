@@ -66,3 +66,13 @@ void image::CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya){
         }
     }
 }
+
+void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie B de façon à en faire la "carte des pixel rempli" (w et h sont les tailles de b)
+    assert(h==hb and w==wb); // Tableau B de mauvaise taille
+    for(int i=0; i<w; i++){
+        for(int j=0; j<h; j++){
+            B[i+w*j]=data[i+w*j].getV();
+        }
+    }
+
+}

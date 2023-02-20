@@ -17,7 +17,7 @@ public:
     pixel getPixel(int x, int y);
     void setPixel(int x, int y, pixel p);
     void CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya);  //d comme départ, a comme arrivée
-
+    void getFilledMap(bool B[], int wb, int hb);
 
 };
 
