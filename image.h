@@ -12,7 +12,11 @@ public:
     ~image(); // Destructeur
     int getW();
     int getH();
-    pixel getData(int x, int y);
+    pixel getPixel(int x, int y);
     void setPixel(int x, int y, pixel p);
+    void CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya);  //d comme départ, a comme arrivée
+
+
 };
 
+int translatation(int x, int y, int xd, int yd, int xa, int ya);
