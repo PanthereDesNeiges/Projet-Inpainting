@@ -32,6 +32,11 @@ bool pixel::getV(){
 
 
 
+void pixel::setV(int v1){
+    // v1 = 0 ou 1
+    v = v1;
+}
+
 void pixel::initPixel(Color col1, double c1, double d1, bool v1){
     col=col1;
     c=c1;

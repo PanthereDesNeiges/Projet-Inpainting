@@ -3,6 +3,8 @@
 using namespace Imagine;
 #include "pixel.h"
 
+
+
 class image {
     int w,h;
     pixel *data; // pointeur vers le tableau de pixels
