@@ -1,24 +1,17 @@
 #pragma once
 #include <Imagine/Graphics.h>
 using namespace Imagine;
+#include "pixel.h"
 
-class pixel {
-    //int x,y;     // position
-    Color col;      // Color
-    double c,d;     // Confidence and Data term
-    bool v;         // 0 if not visited yet, 1 else
+class image {
+    int w,h;
+    pixel data[w*h];
 
 public:
-    //int getX();
-    //int getY();
-    Color getColor();
-    double getConfidence();
-    double getData();
-    double getPriority();
-    bool getV();
-
-    void setPixel(Color col1, double c1, double d1, bool v1);
-    void setBlanck();    // To initialize the pixels in the target zone
+    int getW();
+    int getH();
+    pixel getData(int x, int y);
+    void setPixel(int x, int y, pixel p);
 };
 
 
