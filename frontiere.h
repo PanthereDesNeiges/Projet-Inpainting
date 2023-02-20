@@ -5,8 +5,7 @@ using namespace Imagine;
 #include "image.h"
 
 class frontiere {
-    pixel *f;
-    int l;
+    std::list<pixel> f;
 public:
     void add_frontiere();
     void initialize_frontiere();
