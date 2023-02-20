@@ -4,18 +4,18 @@ using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
-void add_frontiere(){
+void frontiere::add_frontiere(){
 
 }
 
-void initialize_frontiere(){
+void frontiere::initialize_frontiere(){
 
 }
 
-void pop_frontiere(){
+void frontiere::pop_frontiere(){
 
 }
 
-pixel max_priority(){
+pixel frontiere::max_priority(){
 
 }

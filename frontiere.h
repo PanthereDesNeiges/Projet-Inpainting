@@ -6,6 +6,7 @@ using namespace Imagine;
 
 class frontiere {
     pixel *f;
+    int l;
 public:
     void add_frontiere();
     void initialize_frontiere();
