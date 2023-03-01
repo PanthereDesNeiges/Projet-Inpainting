@@ -17,8 +17,11 @@ public:
     double getPriority();
     bool getV();
 
+    void setV(int v1);
     void initPixel(Color col1, double c1, double d1, bool v1);
     void setBlanck();    // To initialize the pixels in the target zone
+
+    bool operator==(pixel p);
 };
 
 
