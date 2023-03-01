@@ -4,6 +4,8 @@ using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
+#include <list>
+
 void frontiere::add_frontiere(){
 
 }
