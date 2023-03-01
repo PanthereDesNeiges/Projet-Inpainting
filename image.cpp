@@ -74,5 +74,4 @@ void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie
             B[i+w*j]=data[i+w*j].getV();
         }
     }
-
 }
