@@ -12,8 +12,16 @@ void frontiere::initialize_frontiere(std::vector<pixel> v){
 
 }
 
-void frontiere::pop_frontiere(){
+void frontiere::pop_frontiere(std::vector<pixel> v){
+    std::list<pixel>::iterator it;
+    for (it=f.begin();it!=f.end();++it){
+        for (int i=0;i<v.size();i++){
+            if ((*it).getX()==v[i].getX() && (*it).getY()==v[i].getY()){
+                it=f.erase(it);
+            }
+        }
 
+    }
 }
 
 pixel frontiere::max_priority(){
