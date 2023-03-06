@@ -35,3 +35,17 @@ pixel frontiere::max_priority(){
     }
     return (max);
 }
+
+void frontiere::change_confidence_and_data(image I){
+    std::list<pixel>::iterator it;
+    int x;
+    int y;
+    for (it=f.begin();it!=f.end();++it){
+        x=(*it).getX();
+        y=(*it).getY();
+        double c=I.getPixel(x,y).getConfidence();
+        double d=I.getPixel(x,y).getData();
+        (*it).setConfidence(c);
+        (*it).setData(d);
+    }
+}
