@@ -39,6 +39,14 @@ void pixel::setData(double dat){
     d=dat;
 }
 
+void pixel::setX(int val){
+    x=val;
+}
+
+void pixel::setY(int val){
+    y=val;
+}
+
 void pixel::setV(int v1){
     // v1 = 0 ou 1
     v = v1;

@@ -19,6 +19,8 @@ public:
     void setConfidence(double conf);
     void setData(double data);
 
+    void setX(int val);
+    void setY(int val);
     void setV(int v1);
     void initPixel(Color col1, double c1, double d1, bool v1);
     void setBlanck();    // To initialize the pixels in the target zone
