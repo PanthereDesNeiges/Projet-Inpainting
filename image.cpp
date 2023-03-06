@@ -114,7 +114,7 @@ bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Trans
         data[k].setY(k/w);
         data[k].setConfidence(0);
         data[k].setData(0);
-        data[k].setColor(WHITE);
+        data[k].setColor(I(data[k].getX(),data[k].getY()));
         data[k].setV(false);
     }
     return true;
