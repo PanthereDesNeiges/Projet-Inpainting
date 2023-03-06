@@ -24,6 +24,7 @@ public:
     void setBlanck();    // To initialize the pixels in the target zone
 
     bool operator==(pixel p);
+    const pixel& operator=(const pixel& p);
 };
 
 

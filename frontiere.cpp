@@ -27,7 +27,6 @@ void frontiere::add_frontiere(std::vector<pixel> v){
                             if (v[k].getV()==0){
                                 it=f.insert(it,v[k]);
                             }
-
                         }
                     }
                 }
