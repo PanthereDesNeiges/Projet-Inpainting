@@ -79,10 +79,13 @@ void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie
     }
 }
 
+
+/*
 void image::display(int coeff){
     /* normalement ça devrait afficher l'image multiplié par le coeff
      *
      * */
+/*
     Imagine::Image< AlphaColor, 2 > I = Imagine::Image< AlphaColor, 2 >::Image(width, height);
     for(int i=0; i< width; i++){
         for(int j=0; j<height; j++){
@@ -92,7 +95,10 @@ void image::display(int coeff){
     openWindow(width*coeff, height*coeff);
     display(I, fact = coef);
 
-}bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
+}
+*/
+
+bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
     Imagine::Image<byte> I;
     if(! load(I, argc>1? argv[1]: imageLink)) {
         std::cout << "Echec de lecture d'image" << std::endl;
@@ -104,4 +110,4 @@ void image::display(int coeff){
     data = new pixel[w*h];
 
 
-}
+}
