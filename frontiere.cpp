@@ -4,7 +4,7 @@ using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
-void frontiere::add_frontiere(vector<){
+void frontiere::add_frontiere(std::vector<pixel> v){
 
 }
 
