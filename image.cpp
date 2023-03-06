@@ -98,8 +98,9 @@ void image::display(int coeff){
 }
 */
 
+
 bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
-    Imagine::Image<byte> I;
+    Imagine::Image<AlphaColor> I;
     if(! load(I, argc>1? argv[1]: imageLink)) {
         std::cout << "Echec de lecture d'image" << std::endl;
         return 0;
@@ -108,6 +109,13 @@ bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Trans
     h=I.height();
     delete [] data;
     data = new pixel[w*h];
-
-
+    for (int k=0;k<w*h;k++){
+        data[k].setX(k%w);
+        data[k].setY(k/w);
+        data[k].setConfidence(0);
+        data[k].setData(0);
+        data[k].setColor(WHITE);
+        data[k].setV(false);
+    }
+    return true;
 }

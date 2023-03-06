@@ -13,7 +13,6 @@ const int width = 512, height = 512;
 int main() {
 	openWindow(width,height);
 
-
 	endGraphics();
 	return 0;
 }

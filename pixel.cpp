@@ -30,6 +30,9 @@ bool pixel::getV(){
     return v;
 }
 
+void pixel::setColor(AlphaColor color){
+    col=color;
+}
 
 void pixel::setConfidence(double conf){
     c=conf;

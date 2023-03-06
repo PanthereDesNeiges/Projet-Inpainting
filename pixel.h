@@ -18,7 +18,7 @@ public:
     bool getV();
     void setConfidence(double conf);
     void setData(double data);
-
+    void setColor(AlphaColor color);
     void setX(int val);
     void setY(int val);
     void setV(int v1);
