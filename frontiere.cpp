@@ -14,13 +14,14 @@ void frontiere::initialize_frontiere(std::vector<pixel> v){
 
 void frontiere::pop_frontiere(std::vector<pixel> v){
     std::list<pixel>::iterator it;
+    int x1 = v[0].getX();
+    int y1 = v[0].getY();
+    int x2 = v[-1].getX();
+    int y2 = v[-1].getY();
     for (it=f.begin();it!=f.end();++it){
-        for (int i=0;i<v.size();i++){
-            if ((*it).getX()==v[i].getX() && (*it).getY()==v[i].getY()){
-                it=f.erase(it);
-            }
+        if ((*it).getX()<x2 && (*it).getX()>x1 && (*it).getY()>y1 && (*it).getY()<y2){
+            it=f.erase(it);
         }
-
     }
 }
 
