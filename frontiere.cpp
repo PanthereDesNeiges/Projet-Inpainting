@@ -18,7 +18,7 @@ void frontiere::pop_frontiere(){
 
 pixel frontiere::max_priority(){
     std::list<pixel>::iterator it;
-    pixel max;
+    pixel max=*f.begin();
     for (it=f.begin();it!=f.end();++it){
         if ((*it).getPriority()>max.getPriority()){
             max=*it;
