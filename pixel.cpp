@@ -31,6 +31,13 @@ bool pixel::getV(){
 }
 
 
+void pixel::setConfidence(double conf){
+    c=conf;
+}
+
+void pixel::setData(double dat){
+    d=dat;
+}
 
 void pixel::setV(int v1){
     // v1 = 0 ou 1
