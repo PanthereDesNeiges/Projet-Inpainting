@@ -3,6 +3,7 @@
 #include <cmath>
 using namespace std;
 #include <Imagine/Graphics.h>
+#include <Imagine/Images.h>
 using namespace Imagine;
 #include <Imagine/Images.h>
 using namespace Imagine;
@@ -43,15 +44,15 @@ void image::setPixel(int x, int y, pixel p) {
 
 void image::CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya){
     /*
-        attention :
-    faut que ça reste dans l'image (checker coord du pixel d'arrivée)
-    et que le pixel ait pas déjà été colorié
-    prendre en compte quand le rectangle est trop grand
-    update confidence, data term et v du pixel collé à chaque fois
-
-        En argument :
-    (xd,yd) et (xa,ya) correspondent aux coordonées du coin haut gauche du rectangle qui va être copié-collé
-    la zone de départ est un rectangle de largeur et hauteur wd et hd.
+    *    attention :
+    *faut que ça reste dans l'image (checker coord du pixel d'arrivée)
+    *et que le pixel ait pas déjà été colorié
+    *prendre en compte quand le rectangle est trop grand
+    *update confidence, data term et v du pixel collé à chaque fois
+    *
+    *    En argument :
+    *(xd,yd) et (xa,ya) correspondent aux coordonées du coin haut gauche du rectangle qui va être copié-collé
+    *la zone de départ est un rectangle de largeur et hauteur wd et hd.
     */
 
     int x,y ;
@@ -78,7 +79,20 @@ void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie
     }
 }
 
-bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
+void image::display(int coeff){
+    /* normalement ça devrait afficher l'image multiplié par le coeff
+     *
+     * */
+    Imagine::Image< AlphaColor, 2 > I = Imagine::Image< AlphaColor, 2 >::Image(width, height);
+    for(int i=0; i< width; i++){
+        for(int j=0; j<height; j++){
+            I[x][y] = getPixel(x,y).getColor();
+        }
+    }
+    openWindow(width*coeff, height*coeff);
+    display(I, fact = coef);
+
+}bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
     Imagine::Image<byte> I;
     if(! load(I, argc>1? argv[1]: imageLink)) {
         std::cout << "Echec de lecture d'image" << std::endl;
@@ -88,4 +102,6 @@ bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Trans
     h=I.height();
     delete [] data;
     data = new pixel[w*h];
-}
+
+
+}
