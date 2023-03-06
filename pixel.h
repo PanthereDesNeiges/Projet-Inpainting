@@ -9,6 +9,8 @@ class pixel {
     bool v;         // 0 if not visited yet, 1 else
 
 public:
+    pixel();
+    pixel(int X,int Y);
     int getX();
     int getY();
     Color getColor();

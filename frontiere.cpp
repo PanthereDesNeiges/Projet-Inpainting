@@ -4,8 +4,35 @@ using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
-void frontiere::add_frontiere(int x1, int y1, int x2, int y2){
-
+void frontiere::add_frontiere(std::vector<pixel> v){
+    std::list<pixel>::iterator it;
+    int n=v.size();
+    for (it=f.begin();it!=f.end();++it){
+        if (it==f.begin()){
+        }
+        else {
+            for (int i=0;i<n;i++){
+                if ((*it)==v[i]){
+                    if (v[i+1].getV()==0){
+                        for(int j=1;j<n;j++){
+                            int k=(i+j)%n;
+                            if (v[k].getV()==0){
+                                it=f.insert(it,v[k]);
+                            }
+                        }
+                    }
+                    else {
+                        for(int j=1;j<n;j++){
+                            int k=(i-j)%n;
+                            if (v[k].getV()==0){
+                                it=f.insert(it,v[k]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 void frontiere::initialize_frontiere(std::vector<pixel> v){
