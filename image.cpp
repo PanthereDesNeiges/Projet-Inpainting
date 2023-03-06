@@ -4,6 +4,8 @@
 using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
+#include <Imagine/Images.h>
+using namespace Imagine;
 
 
 /* ******************************* */
@@ -74,4 +76,16 @@ void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie
             B[i+w*j]=data[i+w*j].getV();
         }
     }
+}
+
+bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
+    Imagine::Image<byte> I;
+    if(! load(I, argc>1? argv[1]: imageLink)) {
+        std::cout << "Echec de lecture d'image" << std::endl;
+        return 0;
+    }
+    w=I.width();
+    h=I.height();
+    delete [] data;
+    data = new pixel[w*h];
 }
