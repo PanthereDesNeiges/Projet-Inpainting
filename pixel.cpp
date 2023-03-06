@@ -57,3 +57,8 @@ void pixel::setBlanck(){
 bool pixel::operator==( pixel p){
     return( col == p.getColor() and c== p.getConfidence() and d == p.getData() and v == getV());
 }
+
+const pixel& pixel::operator=(const pixel& p){
+    x=p.x, y=p.y, col=p.col, c=p.c, d=p.d, v=p.v;
+    return p;
+}
