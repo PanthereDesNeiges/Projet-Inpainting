@@ -7,6 +7,7 @@ using namespace Imagine;
 void frontiere::add_frontiere(std::vector<pixel> v){
     std::list<pixel>::iterator it;
     int n=v.size();
+    int k=0;
     for (it=f.begin();it!=f.end();++it){
         if (it==f.begin()){
         }
@@ -15,7 +16,7 @@ void frontiere::add_frontiere(std::vector<pixel> v){
                 if ((*it)==v[i]){
                     if (v[i+1].getV()==0){
                         for(int j=1;j<n;j++){
-                            int k=(i+j)%n;
+                            k=(i+j)%n;
                             if (v[k].getV()==0){
                                 it=f.insert(it,v[k]);
                             }
@@ -23,7 +24,7 @@ void frontiere::add_frontiere(std::vector<pixel> v){
                     }
                     else {
                         for(int j=1;j<n;j++){
-                            int k=(i-j)%n;
+                            k=(i-j)%n;
                             if (v[k].getV()==0){
                                 it=f.insert(it,v[k]);
                             }

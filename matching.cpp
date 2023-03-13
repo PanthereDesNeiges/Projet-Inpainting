@@ -1,7 +1,7 @@
 #include "pixel.h"
 #include "image.h"
 #include "matching.h"
-#include <queue >
+#include <queue>
 /* OBJECTIF : Coder une fonction qui trouve des exemples dans Phi (figure 2) du pattern déjà présent dans Psy_p
  *
  * pb : Que faire s'il n'y a aucun matching ? Plusieurs matching ?

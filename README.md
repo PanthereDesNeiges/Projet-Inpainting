@@ -2,6 +2,7 @@
 N'oubliez pas de suivre ces règles
 
 ## Les règles du Github :
+- Vérifier que ça build avant de commit
 - mettre un nom de commit évocateur et ajouter une description détaillée de ce qui a été ajouté/modifié et de ce qui marche ou pas
 
 
