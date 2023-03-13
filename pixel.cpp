@@ -6,6 +6,9 @@ using namespace Imagine;
 
 
 /* ******************************* */
+pixel::pixel(){
+}
+
 pixel::pixel(int X,int Y){
     x=X;
     y=Y;
