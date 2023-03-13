@@ -23,6 +23,7 @@ public:
     bool getImage(std::string link, int argc, char* argv[]);
     Imagine::Image< AlphaColor, 2 > getImagineImage();
     void display(int coeff);
+    void changeConfidence(pixel p, int n);
 };
 
 int translatation(int x, int y, int xd, int yd, int xa, int ya);
