@@ -13,6 +13,8 @@ void matching1(int& Qx, int& Qy, image I, int Px, int Py, int n){
      *            Les coordonnées de Q seront passés à Qx et Qy. P a pour coordonné Px et Py. On travaille sur l'image I.
      *            Dans le cas où aucun matching n'est trouvé, la fonction renvoira une erreur.
      *
+     *      ATTENTION A DECALER QUAND ON COPIE (la fonction copie prend le pixel en haut à gauche, la mienne donne le pixel du centre
+     *
      *
      */
     int h=I.getH(), w=I.getW();
