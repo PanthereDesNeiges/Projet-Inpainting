@@ -119,3 +119,4 @@ bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Trans
     }
     return true;
 }
+
