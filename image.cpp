@@ -79,24 +79,22 @@ void image::getFilledMap(bool B[],int wb,int hb){ // Prends une image et modifie
     }
 }
 
-
-/*
-void image::display(int coeff){
-    /* normalement ça devrait afficher l'image multiplié par le coeff
-     *
-     * */
-/*
-    Imagine::Image< AlphaColor, 2 > I = Imagine::Image< AlphaColor, 2 >::Image(width, height);
-    for(int i=0; i< width; i++){
-        for(int j=0; j<height; j++){
-            I[x][y] = getPixel(x,y).getColor();
+Imagine::Image< AlphaColor, 2 > image::getImagineImage(){
+    Imagine::Image< AlphaColor, 2 > I(getW(),getH());
+    for(int i=0; i< getW(); i++){
+        for(int j=0; j<getH(); j++){
+            I[i][j] = getPixel(i,j).getColor();
         }
     }
-    openWindow(width*coeff, height*coeff);
-    display(I, fact = coef);
-
+    return I;
 }
-*/
+
+void image::display(int coeff){
+    // normalement ça devrait afficher l'image multiplié par le coeff
+    Imagine::Image< AlphaColor, 2 > I =getImagineImage();
+    openWindow(getW()*coeff, getH()*coeff);
+    Imagine::display(I,0,0,false,coeff);
+}
 
 
 bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I

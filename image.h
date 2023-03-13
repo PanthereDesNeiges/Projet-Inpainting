@@ -1,6 +1,8 @@
 #pragma once
 #include <Imagine/Graphics.h>
 using namespace Imagine;
+#include <Imagine/Images.h>
+using namespace Imagine;
 #include "pixel.h"
 
 
@@ -19,6 +21,7 @@ public:
     void CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya);  //d comme départ, a comme arrivée
     void getFilledMap(bool B[], int wb, int hb);
     bool getImage(std::string link, int argc, char* argv[]);
+    Imagine::Image< AlphaColor, 2 > getImagineImage();
     void display(int coeff);
 };
 
