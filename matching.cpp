@@ -73,3 +73,5 @@ void matching1(int& Qx, int& Qy, image I, int Px, int Py, int n){
     Qx=-1, Qy=-1; // Aucun pixel trouvé
     std::cout<<"No matching found for pixel ("<<Px<<","<<Py<<")"<<std::endl;
 }
+
+

@@ -118,3 +118,15 @@ bool image::getImage(std::string imageLink, int argc, char* argv[]){    // Trans
     return true;
 }
 
+void image::changeConfidence(pixel p, int n){
+    int x=p.getX();
+    int y=p.getY();
+    double c=p.getConfidence();
+    for (int i=0;i<2*n+1;i++){
+        for (int j=0;j<2*n+1;j++){
+            if (!data[(x-n+i)+(y-n+j)*h].getV()){
+                data[(x-n+i)+(y-n+j)*h].setConfidence(c);
+            }
+        }
+    }
+}
