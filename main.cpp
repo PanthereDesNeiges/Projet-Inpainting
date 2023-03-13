@@ -9,9 +9,8 @@ using namespace Imagine;
 
 const int width = 512, height = 512;
 
-
-int main() {
-	openWindow(width,height);
+void f(){
+    openWindow(width,height);
 
     std::cout<<"Cliquez pour sélectionner les points de la frontière, clic droit pour finir";
     std::vector<pixel> v;
@@ -24,6 +23,9 @@ int main() {
             drawLine(x,y,v.back().getX(),v.back().getY(),RED);
     }
     drawLine(v.front().getX(),v.front().getY(),v.back().getX(),v.back().getY(),RED);
-	endGraphics();
+    endGraphics();
+
+}
+int main() {
 	return 0;
 }
