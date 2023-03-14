@@ -12,5 +12,6 @@ public:
     void pop_frontiere();
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le petit carré
     pixel max_priority();
-    void change_confidence_and_data(image I);   //prend en argument l'image
+    void changeData(image I);   //prend en argument l'image
+    void compute_and_change_confidence(image I,int n);
 };
