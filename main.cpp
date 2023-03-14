@@ -5,13 +5,13 @@
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 #include "pixel.h"
+#include "image.h"
 
 
 const int width = 512, height = 512;
 
 void f(){
     openWindow(width,height);
-
     std::cout<<"Cliquez pour sélectionner les points de la frontière, clic droit pour finir";
     std::vector<pixel> v;
     int x,y,m=0;
@@ -26,6 +26,14 @@ void f(){
     endGraphics();
 
 }
-int main() {
+void testErwann(int argc, char* argv[]){
+    image I1(100,200);  //Image I1
+    I1.getImage(srcPath("japanese.png"),argc,argv);
+    Window W1=openWindow(I1.getW(),I1.getH());
+    click();
+    endGraphics();
+}
+int main(int argc, char* argv[]) {
+    testErwann(argc,argv);
 	return 0;
 }
