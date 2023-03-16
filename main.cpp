@@ -6,6 +6,7 @@
 #include <Imagine/Images.h>
 using namespace Imagine;
 #include "pixel.h"
+#include "image.h"
 
 
 const int width = 512, height = 512;
@@ -54,7 +55,19 @@ int f(){
     endGraphics();
     return 0 ;
 }
+<<<<<<< HEAD
 int main() {
     f();    //test (a supprimer à votre convenance)
+=======
+void testErwann(int argc, char* argv[]){
+    image I1(100,200);  //Image I1
+    I1.getImage(srcPath("japanese.png"),argc,argv);
+    Window W1=openWindow(I1.getW(),I1.getH());
+    click();
+    endGraphics();
+}
+int main(int argc, char* argv[]) {
+    testErwann(argc,argv);
+>>>>>>> 0a50fbfca2f49de98abdc112d1e3e1c1dea5a89a
 	return 0;
 }
