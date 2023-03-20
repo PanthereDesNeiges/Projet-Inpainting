@@ -14,7 +14,7 @@ using namespace Imagine;
  * Faire une copie : I.copy();
 */
 
-void getFilledMap(Imagine::Image<pixel> I, bool B[],int wb,int hb);
+void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B);
 void affiche(Imagine::Image<pixel> I, int coeff);
 bool getImage(Imagine::Image<pixel> I,std::string imageLink, int argc, char* argv[]);
 void changeConfidence(Imagine::Image<pixel> I, pixel p, int n);

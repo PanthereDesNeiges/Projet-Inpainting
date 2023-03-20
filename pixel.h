@@ -1,7 +1,6 @@
 #pragma once
 #include <Imagine/Graphics.h>
 using namespace Imagine;
-AlphaColor col;
 class pixel {
     int x,y;        // position
     Color col;      // Color

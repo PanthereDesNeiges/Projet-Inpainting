@@ -63,7 +63,7 @@ pixel frontiere::max_priority(){
     }
     return (max);
 }
-
+/*  CHANGER LE image EN Imagine::Image<pixel>
 void frontiere::changeData(image I){
     std::list<pixel>::iterator it;
     int x;
@@ -102,3 +102,4 @@ void frontiere::compute_and_change_confidence(image I,int n){
         (*it).setConfidence(c);
     }
 }
+*/
