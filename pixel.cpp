@@ -81,3 +81,18 @@ const pixel& pixel::operator=(const pixel& p){
     x=p.x, y=p.y, col=p.col, c=p.c, d=p.d, v=p.v;
     return p;
 }
+
+double norme(pixel p){
+    int x=p.getX();
+    int y=p.getY();
+    return(sqrt(x*x + y*y));
+}
+
+void normal_unitaire(pixel a, pixel b){
+    pixel p;
+    p.setX(b.getY()-a.getY());
+    p.setY(a.getX()-b.getX());
+    double n=norme(p);
+    p.setX(double(p.getX()/n));
+    p.setY(double(p.getY()/n));
+}

@@ -31,4 +31,5 @@ public:
     const pixel& operator=(const pixel& p);
 };
 
-
+double norme(pixel p);
+void normal_unitaire(pixel a, pixel b);
