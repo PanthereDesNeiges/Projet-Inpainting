@@ -1,12 +1,12 @@
 #pragma once
 #include <Imagine/Graphics.h>
 using namespace Imagine;
-
+AlphaColor col;
 class pixel {
     int x,y;        // position
     Color col;      // Color
     double c,d;     // Confidence and Data term
-    bool v;         // 0 if not visited yet, 1 else
+    bool v;         // 0 if not filled yet, 1 else
 
 public:
     pixel();
