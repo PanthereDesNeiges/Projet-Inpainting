@@ -22,6 +22,14 @@ int pixel::getY(){
     return y;
 }
 
+int pixel::getNX(){
+    return nx;
+}
+
+int pixel::getNY(){
+    return ny;
+}
+
 Color pixel::getColor(){
     return col;
 }
@@ -56,6 +64,14 @@ void pixel::setX(int val){
 
 void pixel::setY(int val){
     y=val;
+}
+
+void pixel::setNX(int val){
+    nx=val;
+}
+
+void pixel::setNY(int val){
+    ny=val;
 }
 
 void pixel::setV(int v1){
