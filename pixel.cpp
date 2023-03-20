@@ -22,6 +22,14 @@ int pixel::getY(){
     return y;
 }
 
+int pixel::getNX(){
+    return nx;
+}
+
+int pixel::getNY(){
+    return ny;
+}
+
 Color pixel::getColor(){
     return col;
 }
@@ -58,6 +66,14 @@ void pixel::setY(int val){
     y=val;
 }
 
+void pixel::setNX(int val){
+    nx=val;
+}
+
+void pixel::setNY(int val){
+    ny=val;
+}
+
 void pixel::setV(int v1){
     // v1 = 0 ou 1
     v = v1;
@@ -80,4 +96,19 @@ bool pixel::operator==( pixel p){
 const pixel& pixel::operator=(const pixel& p){
     x=p.x, y=p.y, col=p.col, c=p.c, d=p.d, v=p.v;
     return p;
+}
+
+double norme(pixel p){
+    int x=p.getX();
+    int y=p.getY();
+    return(sqrt(x*x + y*y));
+}
+
+void normal_unitaire(pixel a, pixel b){
+    pixel p;
+    p.setX(b.getY()-a.getY());
+    p.setY(a.getX()-b.getX());
+    double n=norme(p);
+    p.setX(double(p.getX()/n));
+    p.setY(double(p.getY()/n));
 }

@@ -7,12 +7,15 @@ class pixel {
     Color col;      // Color
     double c,d;     // Confidence and Data term
     bool v;         // 0 if not filled yet, 1 else
+    int nx,ny;      // vecteur normal unitaire (quand dans la frontiere)
 
 public:
     pixel();
     pixel(int X,int Y);
     int getX();
     int getY();
+    int getNX();
+    int getNY();
     Color getColor();
     double getConfidence();
     double getData();
@@ -23,6 +26,8 @@ public:
     void setColor(AlphaColor color);
     void setX(int val);
     void setY(int val);
+    void setNX(int val);
+    void setNY(int val);
     void setV(int v1);
     void initPixel(Color col1, double c1, double d1, bool v1);
     void setBlanck();    // To initialize the pixels in the target zone
@@ -31,4 +36,5 @@ public:
     const pixel& operator=(const pixel& p);
 };
 
-
+double norme(pixel p);
+void normal_unitaire(pixel a, pixel b);
