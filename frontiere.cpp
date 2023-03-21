@@ -64,7 +64,7 @@ pixel frontiere::max_priority(){
     return (max);
 }
 
-void frontiere::changeData(image I){
+void frontiere::changeData(Imagine::Image<pixel> I){
     std::list<pixel>::iterator it;
     int x;
     int y;
@@ -72,17 +72,17 @@ void frontiere::changeData(image I){
     for (it=f.begin();it!=f.end();++it){
         x=(*it).getX();
         y=(*it).getY();
-        d=I.getPixel(x,y).getData();
+        d=I(x,y).getData();
         (*it).setData(d);
     }
 }
 
-double compute_confidence(image I, int n, int x, int y){
+double compute_confidence(Imagine::Image<pixel> I, int n, int x, int y){
     double S=0;
     for (int i=0;i<2*n+1;i++){
         for (int j=0;j<2*n+1;j++){
-            if (I.getPixel(x-n+i,y-n+j).getV()){
-                S+=I.getPixel(x-n+i,y-n+j).getConfidence();
+            if (I(x-n+i,y-n+j).getV()){
+                S+=I(x-n+i,y-n+j).getConfidence();
             }
         }
     }
@@ -90,7 +90,7 @@ double compute_confidence(image I, int n, int x, int y){
     return (S);
 }
 
-void frontiere::compute_and_change_confidence(image I,int n){
+void frontiere::compute_and_change_confidence(Imagine::Image<pixel> I, int n){
     std::list<pixel>::iterator it;
     int x;
     int y;
