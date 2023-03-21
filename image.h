@@ -16,7 +16,7 @@ using namespace Imagine;
 
 void getFilledMap(Imagine::Image<pixel> I, bool B[],int wb,int hb);
 void affiche(Imagine::Image<pixel> I, int coeff);
-bool getImage(Imagine::Image<pixel> I,std::string imageLink, int argc, char* argv[]);
+bool getImage(Imagine::Image<pixel> &I, std::string imageLink, int argc, char* argv[]);
 void changeConfidence(Imagine::Image<pixel> I, pixel p, int n);
 // A CODER
 int translatation(int x, int y, int xd, int yd, int xa, int ya);

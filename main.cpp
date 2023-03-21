@@ -1,6 +1,6 @@
 // Imagine++ project
 // Project:  Projet S2
-// Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine  Nodet
+// Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine Nodet
 
 #include <Imagine/Graphics.h>
 #include <Imagine/Images.h>
@@ -11,7 +11,7 @@ using namespace Imagine;
 
 const int width = 512, height = 512;
 
-int f(){
+int testPhilo(){
 
     // CHARGER ET AFFICHER L'IMAGE
 
@@ -44,11 +44,6 @@ int f(){
     drawLine(v.front().getX(),v.front().getY(),v.back().getX(),v.back().getY(),RED);
 
     //
-
-
-
-
-
 
 
 

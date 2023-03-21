@@ -25,7 +25,7 @@ void affiche(Imagine::Image<pixel> I, int coeff){
     Imagine::display(I0,0,0,false,coeff);
 }
 
-bool getImage(Imagine::Image<pixel> I,std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
+bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
     Imagine::Image<AlphaColor> I0;  // Image tampon pour récupérer le PNG
     if(! load(I0, argc>1? argv[1]: imageLink)) {
         std::cout << "Echec de lecture d'image" << std::endl;

@@ -37,4 +37,5 @@ public:
 };
 
 double norme(pixel p);
-void normal_unitaire(pixel a, pixel b);
+void normal_unitaire(pixel a, pixel b); // Ne retourne rien => faire plutôt normal_unitaire(int &nx, int &ny, pixel a, pixel b)
+                                        // De plus à cause de la division entière le vecteur ne sera pas vraiment unitaire
