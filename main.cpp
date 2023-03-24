@@ -55,10 +55,8 @@ int f(){
     endGraphics();
     return 0 ;
 }
-<<<<<<< HEAD
-int main() {
-    f();    //test (a supprimer à votre convenance)
-=======
+
+
 void testErwann(int argc, char* argv[]){
     image I1(100,200);  //Image I1
     I1.getImage(srcPath("japanese.png"),argc,argv);
@@ -66,8 +64,8 @@ void testErwann(int argc, char* argv[]){
     click();
     endGraphics();
 }
+
 int main(int argc, char* argv[]) {
     testErwann(argc,argv);
->>>>>>> 0a50fbfca2f49de98abdc112d1e3e1c1dea5a89a
 	return 0;
 }

@@ -2,6 +2,8 @@
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
+const int alpha=255;
+
 class pixel {
     int x,y;        // position
     Color col;      // Color
@@ -37,4 +39,4 @@ public:
 };
 
 double norme(pixel p);
-void normal_unitaire(pixel a, pixel b);
+pixel normal_unitaire(int x1,int y1, int x2, int y2);
