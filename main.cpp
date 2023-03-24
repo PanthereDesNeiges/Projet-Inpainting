@@ -1,6 +1,6 @@
 // Imagine++ project
 // Project:  Projet S2
-// Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine  Nodet
+// Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine Nodet
 
 #include <Imagine/Graphics.h>
 #include <Imagine/Images.h>
@@ -11,7 +11,7 @@ using namespace Imagine;
 
 const int width = 512, height = 512;
 
-int f(){
+int testPhilo(){
 
     // CHARGER ET AFFICHER L'IMAGE
 
@@ -47,20 +47,14 @@ int f(){
 
 
 
-
-
-
-
-
     endGraphics();
     return 0 ;
 }
 
-
 void testErwann(int argc, char* argv[]){
-    image I1(100,200);  //Image I1
-    I1.getImage(srcPath("japanese.png"),argc,argv);
-    Window W1=openWindow(I1.getW(),I1.getH());
+    Imagine::Image<pixel> I1(100,200);  //Image I1
+    getImage(I1,srcPath("japanese.png"),argc,argv);
+    Window W1=openWindow(I1.width(),I1.height());
     click();
     endGraphics();
 }

@@ -7,7 +7,7 @@
  * pb : Que faire s'il n'y a aucun matching ? Plusieurs matching ?
  */
 
-void matching1(int& Qx, int& Qy, image I, int Px, int Py, int n){
+void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n){
     /* Principe : La fonction cherche les coordonnées d'un pixel Q dont le carré Psy_Q (carré de coté 2n+1 centré en Q) "match"
      *            avec Psy_P. Le choix du pixel Q dans le cas où il y a plusieurs matching sera arbitraire).
      *            Les coordonnées de Q seront passés à Qx et Qy. P a pour coordonné Px et Py. On travaille sur l'image I.
@@ -17,10 +17,10 @@ void matching1(int& Qx, int& Qy, image I, int Px, int Py, int n){
      *
      *
      */
-    int h=I.getH(), w=I.getW();
+    int h=I.height(), w=I.width();
     bool flag;
     bool filled[h*w];
-    I.getFilledMap(filled, w, h);
+    getFilledMap(I,filled, w, h);
 
     std::queue<int> ListQx;              //On va stocker les pixels candidats à Q (pixel q tel que Psy_q est "plein".
     std::queue<int> ListQy;              //Le choix d'une file est arbitraire (une pile aurait été équivalente)
@@ -57,7 +57,7 @@ void matching1(int& Qx, int& Qy, image I, int Px, int Py, int n){
         ListQy.pop();
         for(int k=-n;k<=n;k++){
             for(int l=-n;l<=n;l++){     // On regarde les pixels avoisinant
-                if (filled[Px+k + (Py+l)*w] and I.getPixel(x+k,y+l).getColor() != I.getPixel(Px+k,Py+l).getColor()){  //Si un des pixels avoisinant ne match pas (la première condition vérifie qu'on vérifie seulement dans Phi)
+                if (filled[Px+k + (Py+l)*w] and I(x+k,y+l).getColor() != I(Px+k,Py+l).getColor()){  //Si un des pixels avoisinant ne match pas (la première condition vérifie qu'on vérifie seulement dans Phi)
                     flag=false;
                     break;
                 }

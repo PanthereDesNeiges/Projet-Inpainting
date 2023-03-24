@@ -2,13 +2,17 @@
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
+
 const int alpha=255;
+
+
+//AlphaColor col;
 
 class pixel {
     int x,y;        // position
     Color col;      // Color
     double c,d;     // Confidence and Data term
-    bool v;         // 0 if not visited yet, 1 else
+    bool v;         // 0 if not filled yet, 1 else
     int nx,ny;      // vecteur normal unitaire (quand dans la frontiere)
 
 public:
@@ -39,4 +43,9 @@ public:
 };
 
 double norme(pixel p);
+
 pixel normal_unitaire(int x1,int y1, int x2, int y2);
+
+void normal_unitaire(pixel a, pixel b); // Ne retourne rien => faire plutôt normal_unitaire(int &nx, int &ny, pixel a, pixel b)
+                                        // De plus à cause de la division entière le vecteur ne sera pas vraiment unitaire
+

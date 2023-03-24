@@ -5,25 +5,18 @@ using namespace Imagine;
 using namespace Imagine;
 #include "pixel.h"
 
+// On utilise le type Imagine::Image<AlphaColor>
+/* Methode de la classe
+ * I.weight()
+ * I.height()
+ * Pour accéder à un pixel : I(x,y)
+ * Pour modifier un pixel : I(x,y)=p;
+ * Faire une copie : I.copy();
+*/
 
-
-class image{
-    int w,h;
-    pixel *data; // pointeur vers le tableau de pixels
-
-public:
-    image(int width, int height); // Constructeur
-    ~image(); // Destructeur
-    int getW();
-    int getH();
-    pixel getPixel(int x, int y);
-    void setPixel(int x, int y, pixel p);
-    void CopyPaste(int xd, int yd, int wd, int hd, int xa, int ya);  //d comme départ, a comme arrivée
-    void getFilledMap(bool B[], int wb, int hb);
-    bool getImage(std::string link, int argc, char* argv[]);
-    Imagine::Image< AlphaColor, 2 > getImagineImage();
-    void display(int coeff);
-    void changeConfidence(pixel p, int n);
-};
-
+void getFilledMap(Imagine::Image<pixel> I, bool B[],int wb,int hb);
+void affiche(Imagine::Image<pixel> I, int coeff);
+bool getImage(Imagine::Image<pixel> &I, std::string imageLink, int argc, char* argv[]);
+void changeConfidence(Imagine::Image<pixel> I, pixel p, int n);
+// A CODER
 int translatation(int x, int y, int xd, int yd, int xa, int ya);
