@@ -4,7 +4,85 @@ using namespace std;
 #include <Imagine/Graphics.h>
 using namespace Imagine;
 
-void frontiere::add_frontiere(std::vector<pixel> v){
+bool visited_voisins(pixel p,Imagine::Image<pixel> I){
+    int w=I.width();
+    int h=I.height();
+    int x=p.getX();
+    int y=p.getY();
+    if (x!=0 && y!=0 && y!=h-1){
+        if (!I(x+1,y).getV()){
+            return (false);
+        }
+        else if (!I(x+1,y+1).getV()){
+            return (false);
+        }
+        else if (!I(x+1,y-1).getV()){
+            return (false);
+        }
+        else if (!I(x,y+1).getV()){
+            return (false);
+        }
+        else if (!I(x,y-1).getV()){
+            return (false);
+        }
+    }
+    else if (x!=w-1 && y!=0 && y!=h-1){
+        if (!I(x-1,y+1).getV()){
+            return (false);
+        }
+        else if (!I(x-1,y).getV()){
+            return (false);
+        }
+        else if (!I(x-1,y-1).getV()){
+            return (false);
+        }
+    }
+    else if (y==0){
+        if (!I(x,y+1).getV()){
+            return (false);
+        }
+        if (x!=0){
+            if (!I(x-1,y+1).getV()){
+                return (false);
+            }
+            else if (!I(x-1,y).getV()){
+                return (false);
+            }
+        }
+        if (x!=h-1){
+            if (!I(x+1,y+1).getV()){
+                return (false);
+            }
+            else if (!I(x+1,y).getV()){
+                return (false);
+            }
+        }
+    }
+    else if (y==h-1){
+        if (!I(x,y-1).getV()){
+            return (false);
+        }
+        if (x!=0){
+            if (!I(x-1,y-1).getV()){
+                return (false);
+            }
+            else if (!I(x-1,y).getV()){
+                return (false);
+            }
+        }
+        if (x!=h-1){
+            if (!I(x+1,y-1).getV()){
+                return (false);
+            }
+            else if (!I(x+1,y).getV()){
+                return (false);
+            }
+        }
+    }
+    return (true);
+}
+
+void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
     std::list<pixel>::iterator it;
     int n=v.size();
     int k=0;
@@ -14,10 +92,10 @@ void frontiere::add_frontiere(std::vector<pixel> v){
         else {
             for (int i=0;i<n;i++){
                 if ((*it)==v[i]){
-                    if (v[i+1].getV()==0){
+                    if (!visited_voisins(v[i+1],I)){
                         for(int j=1;j<n;j++){
                             k=(i+j)%n;
-                            if (v[k].getV()==0){
+                            if (!visited_voisins(v[k],I)){
                                 it=f.insert(it,v[k]);
                             }
                         }
@@ -25,7 +103,7 @@ void frontiere::add_frontiere(std::vector<pixel> v){
                     else {
                         for(int j=1;j<n;j++){
                             k=(i-j)%n;
-                            if (v[k].getV()==0){
+                            if (!visited_voisins(v[k],I)){
                                 it=f.insert(it,v[k]);
                             }
                         }

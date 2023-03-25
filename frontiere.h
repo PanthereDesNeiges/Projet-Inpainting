@@ -7,7 +7,7 @@ using namespace Imagine;
 class frontiere {
     std::list<pixel> f;
 public:
-    void add_frontiere(std::vector<pixel> v);
+    void add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I);
     void initialize_frontiere(std::vector<pixel> v);   // prend en argument la liste de points à partir de laquelle on fait la frontière
     void pop_frontiere();
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le petit carré
