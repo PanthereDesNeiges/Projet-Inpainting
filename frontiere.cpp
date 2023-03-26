@@ -115,7 +115,12 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
 }
 
 void frontiere::initialize_frontiere(std::vector<pixel> v){
-
+    int s=v.size();
+    std::list<pixel>::iterator it;
+    it=f.begin();
+    for (int i=0;i<s;i++){
+        it=f.insert(it,v[i]);
+    }
 }
 
 void frontiere::pop_frontiere(std::vector<pixel> v){
