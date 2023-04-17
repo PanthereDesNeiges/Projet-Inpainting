@@ -62,6 +62,25 @@ void testMatching1(int argc, char* argv[]){
     endGraphics();
 }
 
+void testMatching2(int argc, char* argv[]){
+    initRandom();
+    Imagine::Image<pixel> I1(100,200);  //Image I1
+    getImage(I1,srcPath("landscape.png"),argc,argv);
+    affiche(I1,1);
+    click();
+    pixel testpixel(rand()%(I1.width()-40)+20,rand()%(I1.height()-40)+20);
+    drawPoint(testpixel.getX(),testpixel.getY(),RED);
+    int sizeTamp=1;
+    drawRect(testpixel.getX()-sizeTamp,testpixel.getY()-sizeTamp,2*sizeTamp,2*sizeTamp,RED);
+    click();
+    Imagine::FVector<int,2> goodMatch(0,0);
+    matching1(goodMatch.x(),goodMatch.y(),I1,testpixel.getX(),testpixel.getY(),sizeTamp);
+    std::cout<<"x="<<goodMatch.x()<<", y="<<goodMatch.y()<<std::endl;
+    drawPoint(goodMatch.x(),goodMatch.y(),BLUE);
+    drawRect(goodMatch.x()-sizeTamp,goodMatch.y()-sizeTamp,2*sizeTamp,2*sizeTamp,BLUE);
+    endGraphics();
+}
+
 int main(int argc, char* argv[]) {
     testMatching1(argc,argv);
 	return 0;

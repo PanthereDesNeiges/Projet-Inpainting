@@ -71,4 +71,4 @@ void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n)
     std::cout<<"No matching found for pixel ("<<Px<<","<<Py<<")"<<std::endl;
 }
 
-
+void matching2(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n); //Cherche le meilleur matching du tampon en (Px,Py)
