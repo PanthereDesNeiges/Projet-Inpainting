@@ -66,6 +66,6 @@ void testMatching1(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]) {
-    testErwann(argc,argv);
+    testMatching1(argc,argv);
 	return 0;
 }
