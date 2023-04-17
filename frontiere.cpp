@@ -1,8 +1,6 @@
 #include "frontiere.h"
 #include <cmath>
 using namespace std;
-#include <Imagine/Graphics.h>
-using namespace Imagine;
 
 bool visited_voisins(pixel p,Imagine::Image<pixel> I){
     int w=I.width();

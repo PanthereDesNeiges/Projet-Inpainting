@@ -1,4 +1,3 @@
-#include "pixel.h"
 #include "image.h"
 #include <cmath>
 using namespace std;

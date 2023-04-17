@@ -2,9 +2,6 @@
 // Project:  Projet S2
 // Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine Nodet
 
-#include <Imagine/Images.h>
-using namespace Imagine;
-#include "pixel.h"
 #include "image.h"
 #include <iostream>
 #include "matching.h"

@@ -1,9 +1,7 @@
 #pragma once
-#include <Imagine/Graphics.h>
-using namespace Imagine;
+#include "pixel.h"
 #include <Imagine/Images.h>
 using namespace Imagine;
-#include "pixel.h"
 
 // On utilise le type Imagine::Image<AlphaColor>
 /* Methode de la classe
