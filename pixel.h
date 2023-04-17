@@ -1,6 +1,9 @@
 #pragma once
 #include <Imagine/Graphics.h>
 using namespace Imagine;
+
+const int alpha=255;
+
 class pixel {
     int x,y;        // position
     Color col;      // Color
@@ -36,4 +39,9 @@ public:
 };
 
 double norme(pixel p);
-void normal_unitaire(pixel a, pixel b);
+
+pixel normal_unitaire(int x1,int y1, int x2, int y2);
+
+void normal_unitaire(pixel a, pixel b); // Ne retourne rien => faire plutôt normal_unitaire(int &nx, int &ny, pixel a, pixel b)
+                                        // De plus à cause de la division entière le vecteur ne sera pas vraiment unitaire
+

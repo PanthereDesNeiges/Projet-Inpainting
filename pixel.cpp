@@ -104,11 +104,12 @@ double norme(pixel p){
     return(sqrt(x*x + y*y));
 }
 
-void normal_unitaire(pixel a, pixel b){
+pixel normal_unitaire(int x1, int y1, int x2, int y2){
     pixel p;
-    p.setX(b.getY()-a.getY());
-    p.setY(a.getX()-b.getX());
+    p.setX(y2-y1);
+    p.setY(x1-x2);
     double n=norme(p);
     p.setX(double(p.getX()/n));
     p.setY(double(p.getY()/n));
+    return (p);
 }
