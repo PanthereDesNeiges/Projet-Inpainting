@@ -71,4 +71,67 @@ void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n)
     std::cout<<"No matching found for pixel ("<<Px<<","<<Py<<")"<<std::endl;
 }
 
-void matching2(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n); //Cherche le meilleur matching du tampon en (Px,Py)
+int dist1tampon(int x, int y, int xc, int yc, int n, Imagine::Image<pixel> I, Imagine::Image<bool> filled){ //renvoie la distance induite par la norme 1 sur les tampons
+    int dist=0;
+    for (int k=-n;k<=n;k++){
+        for (int l=-n;l<=n;l++){
+            if(filled(xc+k,yc+k)){
+                dist+=abs(I[x+k,y+l].getColor().r()-I[xc+k,yc+l].getColor().r())+abs(I[x+k,y+l].getColor().g()-I[xc+k,yc+l].getColor().g())+abs(I[x+k,y+l].getColor().b()-I[xc+k,yc+l].getColor().b());
+            }
+        }
+    }
+    return dist;
+}
+
+int matching2(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n){ //Cherche le meilleur matching du tampon en (Px,Py)
+    int h=I.height(), w=I.width();
+    bool flag;                                //Sera utile pour casser la boucle dans le cas où un matching parfait est trouvé
+    Imagine::Image<bool> filled(w,h);         //Carte des pixels déjà remplis (bool=1)
+    getFilledMap(I, filled);
+    std::queue<int> ListQx;                   //On va stocker les pixels candidats à Q (pixel q tel que Psy_q est "plein".
+    std::queue<int> ListQy;                    //Le choix d'une file est arbitraire (une pile aurait été équivalente)
+    for (int i=n;i<w-n-1;i++){
+        for (int j=n; j<h-n-1;j++){      // Les sample potentiels sont ceux de coordonné (i,j). Au dela de ces valeurs, Psy_q n'est plus carré
+            flag=true;                   // Cherchons les q potentiel (ceux dont Psy_q est "plein")
+            for (int k=-n;k<=n;k++){
+                for (int l=-n;l<=n;l++){
+                    if(not filled(i+k,j+l)){
+                        flag=false;
+                        break;           //Sortie des boucles
+                    }
+                }
+                if (not flag)
+                    break;
+            }
+            if (flag){
+                ListQx.push(i);
+                ListQy.push(j);
+            }
+        }
+    }
+    //On a désormait la liste des pixels potentiels, il faut calculer leur distance pour trouver le meilleur matching
+    assert(not ListQx.empty()); // La liste ne doit pas être vide
+    int x,y,dist;
+    int minDist=dist1tampon(ListQx.front(),ListQy.front(),Px,Py,n, I, filled);
+    Qx=ListQx.front();
+    Qy=ListQy.front();
+    ListQx.pop();
+    ListQy.pop();
+    int InitSize=ListQx.size();
+    for(int m=0;m<InitSize;m++){ //Tant que la liste n'est pas vide
+        x=ListQx.front();
+        y=ListQy.front();
+        ListQx.pop();
+        ListQy.pop();
+        dist=dist1tampon(x,y,Px,Py,n,I,filled);
+        if (dist<minDist){
+            Qx=x;
+            Qy=y;
+            minDist=dist;
+            if(dist==0){    //cas matching optimal
+                return 0;
+            }
+        }
+    }
+    return minDist;
+}
