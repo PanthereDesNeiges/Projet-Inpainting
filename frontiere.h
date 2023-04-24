@@ -14,3 +14,6 @@ public:
 };
 
 //double compute_confidence(image I, int n, int x, int y)
+
+std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n);
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v);
