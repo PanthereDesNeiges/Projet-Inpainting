@@ -3,6 +3,7 @@
 using namespace std;
 
 bool visited_voisins(pixel p,Imagine::Image<pixel> I){
+    //retourne true si un des voisins est rempli, false sinon
     int w=I.width();
     int h=I.height();
     int x=p.getX();
@@ -84,13 +85,19 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
     std::list<pixel>::iterator it;
     int n=v.size();
     int k=0;
+    int c=0;
+    // on parcourt l'ensemble des elements de la frontiere
     for (it=f.begin();it!=f.end();++it){
         if (it==f.begin()){
         }
+        // on passe le premier element
         else {
             for (int i=0;i<n;i++){
-                if ((*it)==v[i]){
-                    if (!visited_voisins(v[i+1],I)){
+                // on parcourt la liste v qu'on veut ajouter
+                if ((*it)==v[i] && c==0){
+                    c=1;
+                    //lorsque l'on trouve le point commun entre la frontiere et la frontiere du tampon, on ajoute à cet endroit tous les elements de v
+                    if (!visited_voisins(v[(i+1)%n],I)){
                         for(int j=1;j<n;j++){
                             k=(i+j)%n;
                             if (!visited_voisins(v[k],I)){
