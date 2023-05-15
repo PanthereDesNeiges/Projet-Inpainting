@@ -5,6 +5,7 @@
 #include "image.h"
 #include <iostream>
 #include "matching.h"
+#include "frontiere.h"
 
 const int width = 512, height = 512;
 
@@ -38,7 +39,8 @@ std::vector<pixel> expand(std::vector<pixel> v){
     return v1;
 }
 
-int testPhilo(){
+int testPhilo(int argc, char* argv[]){
+    /*
     // CHARGER ET AFFICHER L'IMAGE
     Image<byte> I;
     const char* fic1 = srcPath("zebra.png");
@@ -48,7 +50,7 @@ int testPhilo(){
     }
     openWindow(I.width(),I.height());
     display(I);
-/*
+
     // SELECTIONNER LES POINTS DU CONTOUR DANS UN VECTEUR
 
     std::cout<<"Cliquez pour selectionner les points de la frontiere, clic droit pour finir (3 points au moins)\n";
@@ -72,6 +74,11 @@ int testPhilo(){
     std::vector<pixel> v1 = expand(v);
 
 */
+    Imagine::Image<pixel>I;
+    getImage(I,srcPath("apple.png"), argc, argv);
+    std::vector<pixel> v;
+    affiche(I,1);
+    initialize_frontiere(I,v);
 
     endGraphics();
     return 0 ;
@@ -81,7 +88,7 @@ int testPhilo(){
 void testMatching1(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("ImageSimple.png"),argc,argv);
+    getImage(I1,srcPath("apple.png"),argc,argv);
     affiche(I1,1);
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,I1.height()/2);
@@ -98,6 +105,6 @@ void testMatching1(int argc, char* argv[]){
 }
 
 int main(int argc, char* argv[]) {
-    testMatching1(argc,argv);
+    testPhilo(argc,argv);
 	return 0;
 }
