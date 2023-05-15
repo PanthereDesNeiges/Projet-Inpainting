@@ -2,16 +2,11 @@
 // Project:  Projet S2
 // Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine Nodet
 
-#include <Imagine/Graphics.h>
-#include <Imagine/Images.h>
-using namespace Imagine;
-#include "pixel.h"
 #include "image.h"
-
+#include <iostream>
+#include "matching.h"
 
 const int width = 512, height = 512;
-
-
 
 
 int f(int x, int y, pixel X1, pixel X2){
@@ -44,9 +39,7 @@ std::vector<pixel> expand(std::vector<pixel> v){
 }
 
 int testPhilo(){
-
     // CHARGER ET AFFICHER L'IMAGE
-
     Image<byte> I;
     const char* fic1 = srcPath("zebra.png");
     if(! load(I, fic1)) {
@@ -85,15 +78,26 @@ int testPhilo(){
 }
 
 
-void testErwann(int argc, char* argv[]){
+void testMatching1(int argc, char* argv[]){
+    initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("japanese.png"),argc,argv);
-    Window W1=openWindow(I1.width(),I1.height());
+    getImage(I1,srcPath("ImageSimple.png"),argc,argv);
+    affiche(I1,1);
     click();
+    pixel testpixel(rand()%(I1.width()-40)+20,I1.height()/2);
+    fillCircle(testpixel.getX(),testpixel.getY(),3,RED);
+    int sizeTamp=20;
+    drawRect(testpixel.getX()-sizeTamp,testpixel.getY()-sizeTamp,2*sizeTamp+1,2*sizeTamp+1,RED);
+    click();
+    Imagine::FVector<int,2> goodMatch(0,0);
+    matching1(goodMatch.x(),goodMatch.y(),I1,testpixel.getX(),testpixel.getY(),sizeTamp);
+    std::cout<<"x="<<goodMatch.x()<<", y="<<goodMatch.y()<<std::endl;
+    fillCircle(goodMatch.x(),goodMatch.y(),3,BLUE);
+    drawRect(goodMatch.x()-sizeTamp,goodMatch.y()-sizeTamp,2*sizeTamp+1,2*sizeTamp+1,BLUE);
     endGraphics();
 }
 
 int main(int argc, char* argv[]) {
-    testPhilo();
+    testMatching1(argc,argv);
 	return 0;
 }

@@ -1,14 +1,13 @@
-#include "pixel.h"
 #include "image.h"
 #include <cmath>
 using namespace std;
 
-void getFilledMap(Imagine::Image<pixel> I, bool B[],int wb,int hb){ // Prends une image et modifie B de façon à en faire la "carte des pixel rempli" (w et h sont les tailles de b)
+void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B){ // Prends une image et modifie B de façon à en faire la "carte des pixel rempli" (w et h sont les tailles de b)
     int h=I.height(), w=I.width();
-    assert(h==hb and w==wb); // Tableau B de mauvaise taille
+    assert(h==B.height() and w==B.width()); // Tableau B de mauvaise taille
     for(int i=0; i<w; i++){
         for(int j=0; j<h; j++){
-            B[i+w*j]=I(i,j).getV();
+            B(i,j)=I(i,j).getV();
         }
     }
 }
@@ -46,7 +45,7 @@ bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* ar
     return true;
 }
 
-void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){
+void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique la confiance du pixel p aux pixels alentours
     int x=p.getX();
     int y=p.getY();
     double c=p.getConfidence();

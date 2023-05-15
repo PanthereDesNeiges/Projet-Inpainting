@@ -1,10 +1,9 @@
 #include "frontiere.h"
 #include <cmath>
 using namespace std;
-#include <Imagine/Graphics.h>
-using namespace Imagine;
 
 bool visited_voisins(pixel p,Imagine::Image<pixel> I){
+    //retourne true si un des voisins est rempli, false sinon
     int w=I.width();
     int h=I.height();
     int x=p.getX();
@@ -86,13 +85,19 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
     std::list<pixel>::iterator it;
     int n=v.size();
     int k=0;
+    int c=0;
+    // on parcourt l'ensemble des elements de la frontiere
     for (it=f.begin();it!=f.end();++it){
         if (it==f.begin()){
         }
+        // on passe le premier element
         else {
             for (int i=0;i<n;i++){
-                if ((*it)==v[i]){
-                    if (!visited_voisins(v[i+1],I)){
+                // on parcourt la liste v qu'on veut ajouter
+                if ((*it)==v[i] && c==0){
+                    c=1;
+                    //lorsque l'on trouve le point commun entre la frontiere et la frontiere du tampon, on ajoute à cet endroit tous les elements de v
+                    if (!visited_voisins(v[(i+1)%n],I)){
                         for(int j=1;j<n;j++){
                             k=(i+j)%n;
                             if (!visited_voisins(v[k],I)){
@@ -147,55 +152,6 @@ pixel frontiere::max_priority(){
     return (max);
 }
 
-
-void frontiere::changeData(Imagine::Image<pixel> I){
-    std::list<pixel>::iterator it;
-    pixel p;
-    double d;
-    int n=f.size();
-    int *memoire=new int[2*n];
-    int i=0;
-    for (it=f.begin();it!=f.end();++it){
-        memoire[i]=(*it).getX();
-        memoire[i+1]=(*it).getY();
-        i+=2;
-    }
-    i=0;
-    for (it=f.begin();it!=f.end();++it){
-        p=normal_unitaire(memoire[(i-6)%(2*n)],memoire[(i-5)%(2*n)],memoire[(i+6)%(2*n)],memoire[(i+7)%(2*n)]);
-        (*it).setNX(p.getX());
-        (*it).setNY(p.getY());
-        i+=2;
-    }
-}
-
-double compute_confidence(Imagine::Image<pixel> I, int n, int x, int y){
-    double S=0;
-    for (int i=0;i<2*n+1;i++){
-        for (int j=0;j<2*n+1;j++){
-            if (I(x-n+i,y-n+j).getV()){
-                S+=I(x-n+i,y-n+j).getConfidence();
-            }
-        }
-    }
-    S=double(S/((2*n+1)*(2*n+1)));
-    return (S);
-}
-
-void frontiere::compute_and_change_confidence(Imagine::Image<pixel> I, int n){
-    std::list<pixel>::iterator it;
-    int x;
-    int y;
-    double c;
-    for (it=f.begin();it!=f.end();++it){
-        x=(*it).getX();
-        y=(*it).getY();
-        c=compute_confidence(I,n,x,y);
-        (*it).setConfidence(c);
-    }
-}
-
-
 void gradient_frontiere(vector<double> v,Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
     int w = I1.width();
     int h = I1.height();
@@ -246,4 +202,43 @@ double Data(vector<double> gradient,vector<double> normal){
     }
     D=double(D/alpha);
     return (D);
+}
+
+std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n){
+    std::vector<pixel> v;
+    v.clear();
+    for (int i=0;i<2*n+1;i++){
+        v.push_back(I1(x-n,y-n+i));
+    }
+    for (int i=1;i<2*n+1;i++){
+        v.push_back(I1(x-n+i,y+n));
+    }
+    for (int i=1;i<2*n+1;i++){
+        v.push_back(I1(x+n,y+n-i));
+    }
+    for (int i=1;i<2*n;i++){
+        v.push_back(I1(x+n-i,y-n));
+    }
+    return (v);
+}
+
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v){
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    getMouse(x1,y1);
+    getMouse(x2,y2);
+    for (int i=0;i<abs(x1-x2)+1;i++){
+        v.push_back(I1(min(x1,x2)+i,min(y1,y2)));
+    }
+    for (int i=1;i<abs(y1-y2)+1;i++){
+        v.push_back(I1(max(x1,x2),min(y1,y2)+i));
+    }
+    for (int i=1;i<abs(x1-x2)+1;i++){
+        v.push_back(I1(max(x1,x2)-i,max(y1,y2)));
+    }
+    for (int i=1;i<abs(y1-y2);i++){
+        v.push_back(I1(min(x1,x2),max(y1,y2)-i));
+    }
 }
