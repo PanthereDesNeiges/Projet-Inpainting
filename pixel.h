@@ -6,7 +6,9 @@ const int alpha=255;
 
 class pixel {
     int x,y;        // position
+public:
     Color col;      // Color
+private:
     double c,d;     // Confidence and Data term
     bool v;         // 0 if not filled yet, 1 else
     int nx,ny;      // vecteur normal unitaire (quand dans la frontiere)
@@ -30,7 +32,7 @@ public:
     void setY(int val);
     void setNX(int val);
     void setNY(int val);
-    void setV(int v1);
+    void setV(bool v1);
     void initPixel(Color col1, double c1, double d1, bool v1);
     void setBlanck();    // To initialize the pixels in the target zone
 

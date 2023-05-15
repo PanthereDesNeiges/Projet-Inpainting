@@ -73,10 +73,18 @@ void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n)
 
 int dist1tampon(int x, int y, int xc, int yc, int n, Imagine::Image<pixel> I, Imagine::Image<bool> filled){ //renvoie la distance induite par la norme 1 sur les tampons
     int dist=0;
+
+    //std::cout<<"xc="<<xc<<", yc="<<yc<<", x="<<x<<", y"<<y<<std::endl;
+
     for (int k=-n;k<=n;k++){
         for (int l=-n;l<=n;l++){
-            if(filled(xc+k,yc+k)){
-                dist+=abs(I[x+k,y+l].getColor().r()-I[xc+k,yc+l].getColor().r())+abs(I[x+k,y+l].getColor().g()-I[xc+k,yc+l].getColor().g())+abs(I[x+k,y+l].getColor().b()-I[xc+k,yc+l].getColor().b());
+            if(filled(xc+k,yc+l)){
+
+                //drawPoint(xc+k,yc+l,BLUE);
+                //drawPoint(x+k,y+l,ORANGE);
+                //std::cout<<I(x+k,y+l).getColor()<<", "<<I(xc+k,yc+l).getColor()<<std::endl;
+
+                dist+=abs(int(I(x+k,y+l).getColor().r())-int(I(xc+k,yc+l).getColor().r()))+abs(int(I(x+k,y+l).getColor().g())-int(I(xc+k,yc+l).getColor().g()))+abs(int(I(x+k,y+l).getColor().b())-int(I(xc+k,yc+l).getColor().b()));
             }
         }
     }
@@ -123,12 +131,19 @@ int matching2(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n){
         y=ListQy.front();
         ListQx.pop();
         ListQy.pop();
+
+        //std::cout<<"r()="<<int(I(x,y).getColor().g())<<", [red]="<<I(x,y).getColor().g()<<", color="<<I(x,y).getColor()<<std::endl;
+
         dist=dist1tampon(x,y,Px,Py,n,I,filled);
-        if (dist<minDist){
+
+        //std::cout<<dist<<std::endl;
+
+        if (dist<=minDist){
             Qx=x;
             Qy=y;
             minDist=dist;
             if(dist==0){    //cas matching optimal
+                std::cout<<"Perfect match!"<<std::endl;
                 return 0;
             }
         }

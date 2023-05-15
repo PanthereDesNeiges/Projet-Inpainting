@@ -70,7 +70,7 @@ void pixel::setNY(int val){
     ny=val;
 }
 
-void pixel::setV(int v1){
+void pixel::setV(bool v1){
     // v1 = 0 ou 1
     v = v1;
 }

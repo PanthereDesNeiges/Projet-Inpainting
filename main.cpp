@@ -70,18 +70,38 @@ void testMatching2(int argc, char* argv[]){
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,rand()%(I1.height()-40)+20);
     drawPoint(testpixel.getX(),testpixel.getY(),RED);
-    int sizeTamp=1;
+    int sizeTamp=7;
+
+
+    for(int i=testpixel.getX()-2*sizeTamp;i<=testpixel.getX()+2*sizeTamp;i++){
+        for(int j=testpixel.getY();j<=testpixel.getY()+2*sizeTamp;j++){
+            I1(i,j).setV(0);
+            drawPoint(i,j,WHITE);
+        }
+    }
+
     drawRect(testpixel.getX()-sizeTamp,testpixel.getY()-sizeTamp,2*sizeTamp,2*sizeTamp,RED);
     click();
     Imagine::FVector<int,2> goodMatch(0,0);
-    matching1(goodMatch.x(),goodMatch.y(),I1,testpixel.getX(),testpixel.getY(),sizeTamp);
+    matching2(goodMatch.x(),goodMatch.y(),I1,testpixel.getX(),testpixel.getY(),sizeTamp);
     std::cout<<"x="<<goodMatch.x()<<", y="<<goodMatch.y()<<std::endl;
     drawPoint(goodMatch.x(),goodMatch.y(),BLUE);
     drawRect(goodMatch.x()-sizeTamp,goodMatch.y()-sizeTamp,2*sizeTamp,2*sizeTamp,BLUE);
+
+    /*
+    std::cout<<(I1[testpixel.getX(),testpixel.getY()].getColor().r(), I1[testpixel.getX(),testpixel.getY()].getColor().g(),I1[testpixel.getX(),testpixel.getY()].getColor().b())<<std::endl;
+    I1(testpixel.getX()-5,testpixel.getY()-5);
+    std::cout<<int(I1[testpixel.getX()-5,testpixel.getY()-5].getColor().r())<<std::endl;
+    const Color testcol(int(I1[testpixel.getX()-5,testpixel.getY()-5].getColor().r()), int(I1[testpixel.getX()-5,testpixel.getY()-5].getColor().g()),int(I1[testpixel.getX()-5,testpixel.getY()-5].getColor().b())) ;
+    const Color uwu(200,100,50);
+    std::cout<<testcol<<std::endl;
+    fillRect(testpixel.getX()-20,testpixel.getY()-20,10,10,uwu);
+    */
+
     endGraphics();
 }
 
 int main(int argc, char* argv[]) {
-    testMatching1(argc,argv);
+    testMatching2(argc,argv);
 	return 0;
 }
