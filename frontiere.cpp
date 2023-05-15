@@ -107,7 +107,10 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
                     }
                     else {
                         for(int j=1;j<n;j++){
-                            k=(i-j)%n;
+                            k=int(i-j) % n;
+                            if (k<0){
+                                k=n+k;
+                            }
                             if (!visited_voisins(v[k],I)){
                                 it=f.insert(it,v[k]);
                             }
@@ -130,13 +133,17 @@ void frontiere::initialize_frontiere(std::vector<pixel> v){
 
 void frontiere::pop_frontiere(std::vector<pixel> v){
     std::list<pixel>::iterator it;
+    int s=v.size()-1;
     int x1 = v[0].getX();
     int y1 = v[0].getY();
-    int x2 = v[-1].getX();
-    int y2 = v[-1].getY();
-    for (it=f.begin();it!=f.end();++it){
+    int x2 = v[s].getX();
+    int y2 = v[s].getY();
+    for (it=f.begin();it!=f.end();){
         if ((*it).getX()<x2 && (*it).getX()>x1 && (*it).getY()>y1 && (*it).getY()<y2){
             it=f.erase(it);
+        }
+        else {
+            ++it;
         }
     }
 }
@@ -211,24 +218,35 @@ std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n
         v.push_back(I1(x-n,y-n+i));
     }
     for (int i=1;i<2*n+1;i++){
-        v.push_back(I1(x-n+i,y+n));
-    }
-    for (int i=1;i<2*n+1;i++){
         v.push_back(I1(x+n,y+n-i));
     }
     for (int i=1;i<2*n;i++){
         v.push_back(I1(x+n-i,y-n));
     }
+    for (int i=1;i<2*n+1;i++){
+        v.push_back(I1(x-n+i,y+n));
+    }
     return (v);
 }
 
-void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v){
+std::list<pixel>::iterator frontiere::begin(){
+    return (f.begin());
+}
+
+std::list<pixel>::iterator frontiere::end(){
+    return (f.end());
+}
+
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v){
     int x1;
     int y1;
     int x2;
     int y2;
     getMouse(x1,y1);
+    fillRect(x1,y1,1,1,BLACK);
     getMouse(x2,y2);
+    fillRect(x2,y2,1,1,BLACK);
+
     for (int i=0;i<abs(x1-x2)+1;i++){
         v.push_back(I1(min(x1,x2)+i,min(y1,y2)));
     }
