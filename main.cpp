@@ -142,20 +142,73 @@ void testMatching2(int argc, char* argv[]){
 
     endGraphics();
 }
+int min(int x,int y){
+    if (x<y)
+        return x;
+    return y;
+}
+
+int max(int x, int y){
+    if (x>y)
+        return x;
+    return y;
+}
+bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){ // A définir
+
+}
 
 void PseudoMain(int argc,char* argv[]){
-    int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image
+
+    //ETAPE 1 : Initialisation des variables, de l'image et de la frontière
+
+    int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
     getImage(I1,srcPath("landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
     Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
-    // selectZone(win1,I1,zoom)                         //Fonction permettant à l'utilisateur de sélectionner les parties de l'image
-                                                        //qu'il souhaite supprimer. L'image I1 sera modifiée (passage des pixels effacés
-                                                        //en blanc et en v=0) ainsi que l'affichage de la fenêntre (zone selectionnée
-                                                        //remplacer par du blanc
+    int x1=0,x2=0,y1=0,y2=0;
+    //(A ECRIRE : bool selectZone(win1,x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
+    //while (!selectZone(win1,x1,y1,x2,y2)){            //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
+    //}                                                 //Renvoie false si un click droit est pressé
+                                                        //NB : le code ci-dessus force l'utilisateur à sélectionner au moins une zone
+
+    std::vector<pixel> v(0);                            //Vecteur qui contiendra les pixels des zones selectionnés par l'utilisateur
+    initialize_frontiere(I1,v,x1,y1,x2,y2);             //Initialise la frontière à partir des coordonnées des points
+                                                        //(NB : la frontière étant consituée pixels étant remplit, seul les pixels STRICTEMENT
+                                                        //      dans le rectangle sont effacés)
+    noRefreshBegin();                                   //Permettra de gagner du temps de calcul
+    for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
+        for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+            drawPoint(i,j,WHITE);                       //Dessine le pixel en blanc sur l'affichage
+            I1(i,j).setColor(WHITE);                    //Remplace la couleur du pixel par blanc
+            I1(i,j).setV(0);                            //Met la confiance du pixel à 0
+        }
+    }
+    noRefreshEnd();                                     //Met à jour l'affichage
+    frontiere f;                                        //Frontière de l'image "pleine" avec les parties vides
+    f.initialize_frontiere(v);                          //Initialisation de f
+
+    while(selectZone(win1,x1,y1,x2,y2)){
+        v.clear();                                      //Vide le vecteur
+
+        initialize_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
+        noRefreshBegin();
+        for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
+            for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+                drawPoint(i,j,WHITE);
+                I1(i,j).setColor(WHITE);
+                I1(i,j).setV(0);
+            }
+        }
+        noRefreshEnd();                                     //Met à jour l'affichage
+
+        f.add_frontiere(v,I1);                              //Adapte f au nouveau contour
+    }
+
+    //L'image et la frontière sont à ce moment initialisé
 
 
 
-    //
+    //ETAPE 2 : Boucle de remplissage de l'image
 
 
 
