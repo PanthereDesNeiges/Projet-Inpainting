@@ -1,4 +1,5 @@
 #pragma once
+#include <Imagine/Graphics.h>
 #include "pixel.h"
 #include <Imagine/Images.h>
 using namespace Imagine;
@@ -13,7 +14,7 @@ using namespace Imagine;
 */
 
 void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B);
-void affiche(Imagine::Image<pixel> I, int coeff);
+Window affiche(Imagine::Image<pixel> I, int coeff);
 bool getImage(Imagine::Image<pixel> &I, std::string imageLink, int argc, char* argv[]);
 void changeConfidence(Imagine::Image<pixel> I, pixel p, int n);
 // A CODER

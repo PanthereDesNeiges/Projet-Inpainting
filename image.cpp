@@ -12,7 +12,7 @@ void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B){ // Prends un
     }
 }
 
-void affiche(Imagine::Image<pixel> I, int coeff){
+Window affiche(Imagine::Image<pixel> I, int coeff){
     int w=I.width(), h=I.height();
     Imagine::Image<Color> I0(w,h);
     for (int i=0;i<w;i++){
@@ -20,8 +20,9 @@ void affiche(Imagine::Image<pixel> I, int coeff){
             I0(i,j)=I(i,j).getColor();
         }
     }
-    openWindow(w*coeff, h*coeff);
+    Window win = openWindow(w*coeff, h*coeff);
     Imagine::display(I0,0,0,false,coeff);
+    return win;
 }
 
 bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
@@ -45,7 +46,7 @@ bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* ar
     return true;
 }
 
-void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique la confiance du pixel p aux pixels alentours
+void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique la confiance du pixel p aux pixels alentour
     int x=p.getX();
     int y=p.getY();
     double c=p.getConfidence();
