@@ -122,6 +122,47 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
     }
 }
 
+void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pixel> I){
+    std::list<pixel>::iterator it;
+    int n=v.size();
+    int k=0;
+    int c=0;
+    // on parcourt l'ensemble des elements de la frontiere
+    for (it=f.begin();it!=f.end();++it){
+        if (it==f.begin()){
+        }
+        // on passe le premier element
+        else {
+            for (int i=0;i<n;i++){
+                // on parcourt la liste v qu'on veut ajouter
+                if ((*it)==v[i] && c==0){
+                    c=1;
+                    //lorsque l'on trouve le point commun entre la frontiere et la frontiere du tampon, on ajoute à cet endroit tous les elements de v
+                    if (visited_voisins(v[(i+1)%n],I)){
+                        for(int j=1;j<n;j++){
+                            k=(i+j)%n;
+                            if (visited_voisins(v[k],I)){
+                                it=f.insert(it,v[k]);
+                            }
+                        }
+                    }
+                    else {
+                        for(int j=1;j<n;j++){
+                            k=int(i-j) % n;
+                            if (k<0){
+                                k=n+k;
+                            }
+                            if (visited_voisins(v[k],I)){
+                                it=f.insert(it,v[k]);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
 void frontiere::initialize_frontiere(std::vector<pixel> v){
     int s=v.size();
     std::list<pixel>::iterator it;
@@ -258,5 +299,11 @@ void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v){
     }
     for (int i=1;i<abs(y1-y2);i++){
         v.push_back(I1(min(x1,x2),max(y1,y2)-i));
+    }
+
+    for (int i=x1+1;i<x2;i++){
+        for (int j=y1+1;j<y2;j++){
+            I1(i,j).setV(0);
+        }
     }
 }
