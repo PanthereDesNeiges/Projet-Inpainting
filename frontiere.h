@@ -17,3 +17,4 @@ public:
 
 std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n);
 void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v);
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v, int x1, int y1, int x2, int y2);

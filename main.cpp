@@ -112,11 +112,11 @@ void testMatching2(int argc, char* argv[]){
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,rand()%(I1.height()-40)+20);
     drawPoint(testpixel.getX(),testpixel.getY(),RED);
-    int sizeTamp=7;
+    int sizeTamp=10;
 
 
     for(int i=testpixel.getX()-2*sizeTamp;i<=testpixel.getX()+2*sizeTamp;i++){
-        for(int j=testpixel.getY();j<=testpixel.getY()+2*sizeTamp;j++){
+        for(int j=testpixel.getY()+1;j<=testpixel.getY()+2*sizeTamp;j++){
             I1(i,j).setV(0);
             drawPoint(i,j,WHITE);
         }
@@ -141,6 +141,26 @@ void testMatching2(int argc, char* argv[]){
     */
 
     endGraphics();
+}
+
+void PseudoMain(int argc,char* argv[]){
+    int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image
+    Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
+    getImage(I1,srcPath("landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
+    // selectZone(win1,I1,zoom)                         //Fonction permettant à l'utilisateur de sélectionner les parties de l'image
+                                                        //qu'il souhaite supprimer. L'image I1 sera modifiée (passage des pixels effacés
+                                                        //en blanc et en v=0) ainsi que l'affichage de la fenêntre (zone selectionnée
+                                                        //remplacer par du blanc
+
+
+
+    //
+
+
+
+    int tailleTampon;
+
 }
 
 int main(int argc, char* argv[]) {

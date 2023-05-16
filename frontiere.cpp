@@ -222,13 +222,27 @@ std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n
     return (v);
 }
 
-void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v){
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v){      //Initialisation de la frontière à partir de deux clicks, les pixels de la frontière sont stockés dans v
     int x1;
     int y1;
     int x2;
     int y2;
     getMouse(x1,y1);
     getMouse(x2,y2);
+    for (int i=0;i<abs(x1-x2)+1;i++){
+        v.push_back(I1(min(x1,x2)+i,min(y1,y2)));
+    }
+    for (int i=1;i<abs(y1-y2)+1;i++){
+        v.push_back(I1(max(x1,x2),min(y1,y2)+i));
+    }
+    for (int i=1;i<abs(x1-x2)+1;i++){
+        v.push_back(I1(max(x1,x2)-i,max(y1,y2)));
+    }
+    for (int i=1;i<abs(y1-y2);i++){
+        v.push_back(I1(min(x1,x2),max(y1,y2)-i));
+    }
+}
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v, int x1, int y1, int x2, int y2){
     for (int i=0;i<abs(x1-x2)+1;i++){
         v.push_back(I1(min(x1,x2)+i,min(y1,y2)));
     }
