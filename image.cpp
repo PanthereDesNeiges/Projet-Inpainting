@@ -37,7 +37,7 @@ bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* ar
         for (int j=0;j<h;j++){      // Mise en place des paramètres de chaque pixel
             I(i,j).setX(i);
             I(i,j).setY(j);
-            I(i,j).setConfidence(0);
+            I(i,j).setConfidence(1);
             I(i,j).setData(0);
             I(i,j).setColor(I0(i,j));
             I(i,j).setV(true);

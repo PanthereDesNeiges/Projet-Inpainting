@@ -240,7 +240,9 @@ int max(int x, int y){
         return x;
     return y;
 }
-bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){ // A définir
+
+//FONCTION A DEFINIR (explication quant à leur objectif en commentaire de pseudoMain()
+bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){
 
 }
 
@@ -248,6 +250,10 @@ bool endCondition(frontiere f, Imagine::Image<pixel> I){
 
 }
 
+void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tailleTampon){
+
+}
+//
 void PseudoMain(int argc,char* argv[]){
 
     //ETAPE 1 : Initialisation des variables, de l'image et de la frontière
@@ -271,7 +277,8 @@ void PseudoMain(int argc,char* argv[]){
         for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
             drawPoint(i,j,WHITE);                       //Dessine le pixel en blanc sur l'affichage
             I1(i,j).setColor(WHITE);                    //Remplace la couleur du pixel par blanc
-            I1(i,j).setV(0);                            //Met la confiance du pixel à 0
+            I1(i,j).setV(0);                            //Met le pixel sur "non visité"
+            I1(i,j).setConfidence(0);                   //Met la confiance du pixel à 0
         }
     }
     noRefreshEnd();                                     //Met à jour l'affichage
@@ -292,20 +299,50 @@ void PseudoMain(int argc,char* argv[]){
         }
         noRefreshEnd();                                     //Met à jour l'affichage
 
-        f.add_frontiere(v,I1);                              //Adapte f au nouveau contour
+        f.add_frontiere_initialise(v,I1);                   //Adapte f au nouveau contour
     }
 
     //L'image et la frontière sont à ce moment initialisé
 
-
+    int tailleTampon=5;                                //valeur caractérisant la taille du tampon (modifiable)
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
     //La condition de fin est : 1- la frontière est vide 2; la frontière est réduite au bord de l'image
     //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapté le tampon
-    while(!endCondition(f,I1))
+    while(!endCondition(f,I1)) {                            //Fonction à définir selon les conditions plus haut
 
-    int tailleTampon;
+        //PARTIE CALCUL DE LA DATA ET CONFIANCE (de la frontière) (Wandrille je te laisse faire)
+
+        //NOTE POUR TOUT LE MONDE : Il me semble que pour le terme de confiance, celui-ci est effectivement update pour les element nouvellement
+        //                          copié par le tampon depuis le pixel source. Cependant, les pixels faisant parti de la frontière fois ensuite
+        //                          leur confiance recalculé par la formule donnée (qui fait une "moyenne des confiance environnante"). Il ne me
+        //                          semble pas que nous ayons écrit une méthode faisant cette Update à partir de la formule.
+
+        //A partir de là, la confiance et la data de chacun des termes de la frontière a été défini
+        pixel Pmax=f.max_priority();                        //P est le pixel de priorité maximale dans la frontière
+        int Qx=-1, Qy=-1;                                   //(Qx, Qy) sera le pixel source de notre algorythme
+        if ((tailleTampon<=Pmax.getX()) && (Pmax.getX()<(I1.width()-1)-tailleTampon) && (tailleTampon<=Pmax.getY()) && (Pmax.getY()<(I1.height()-1)-tailleTampon) ){
+            //EXPLICATION DE LA CONDITION CI-DESSUS : Le tampon, qui sera la zone qui sera recopiée autour de Pmax, doit nécessairement être
+            //                                        contenue dans l'image (sinon matching2 ne marche pas). Pour cela, on adapte la taille
+            //                                        du tampon. la condition ci-dessus est satisfaite ssi le tampon est dans l'image
+            //                                        (les pixels remplit par le tampons vont de Pmax à ses tailleTampon pixels environant (norme inf),
+            //                                         il faut donc que Pmax soit à tous moments à tailleTampon+1 (inclu) du bord (donc entre
+            //                                         index tailleTampon et index (indexMax-(tailleTampon+1))) (nb : l'index commence à 0)
+
+            matching2(Qx,Qy,I1,Pmax.getX(),Pmax.getY(),tailleTampon); //Recherche du meilleur pixel source (Qx,Qy) dans l'image
+            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront re
+            copyTampon(Pmax.getX(), Pmax.getY(), Qx, Qy, I1, tailleTampon); //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
+            affiche(I1,zoom);                                         //Affiche l'image modifié (nb : les pixels des zones "vides" ont été changé en blanc lors de leur sélection)
+            std::vector<pixel> v1=frontiere_tampon(I1,Pmax.getX(),Pmax.getY(),tailleTampon);        //Une "nouvelle frontière" est crée, celle entourant la zone nouvellement copiée (ce n'est en réalité qu'une liste de pixel potentiel à la frontière
+            f.pop_frontiere(v1);                                      //Suppression des éléments à l'intérieur du tampon
+            f.add_frontiere(v1,I1);                                   //Ajout de la nouvelle frontière
+            }
+        else {
+            //Je remplis ça plus tard :) mais l'idée est la même qu'au dessus, avec un tampon de taille adapté
+        }
+    }
+    endGraphics();
 
 }
 
