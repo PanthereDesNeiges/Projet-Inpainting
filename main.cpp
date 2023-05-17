@@ -2,7 +2,7 @@
 // Project:  Projet S2
 // Student(s): Philomène Boisnard, Erwann Estève, Wandrille Flamant, Sixtine Nodet
 
-#include "image.h"
+#include "frontiere.h"
 #include <iostream>
 #include "matching.h"
 #include "frontiere.h"
@@ -83,6 +83,93 @@ int testPhilo(int argc, char* argv[]){
     endGraphics();
     return 0 ;
 }
+
+
+/*
+void test_frontiere(int argc, char* argv[],frontiere f){
+    Imagine::Image<pixel> I1(100,200);  //Image I1
+    getImage(I1,srcPath("baby.png"),argc,argv);
+    affiche(I1,1);
+    std::vector<pixel> v;
+    initialize_frontiere(I1,v);
+    f.initialize_frontiere(v);
+    std::list<pixel>::iterator it;
+    for (it=f.begin();it!=f.end();++it){
+        drawPoint((*it).getX(),(*it).getY(),BLACK);
+    }
+    int x,y;
+    getMouse(x,y);
+
+    std::vector<pixel> v1=frontiere_tampon(I1,x,y,30);
+    int s=v1.size();
+    for (int i=0;i<s;i++){
+        drawPoint(v1[i].getX(),v1[i].getY(),RED);
+    }
+    f.pop_frontiere(v1);
+
+    f.add_frontiere_initialise(v1,I1);
+
+    for (it=f.begin();it!=f.end();++it){
+        drawPoint((*it).getX(),(*it).getY(),WHITE);
+    }
+
+    click();
+
+    for (int i=1;i<60;i++){
+        for (int j=1;j<60;j++){
+            I1(x-30+i,y-30+j).setV(1);
+        }
+    }
+    getMouse(x,y);
+
+    std::vector<pixel> v2=frontiere_tampon(I1,x,y,30);
+    int s2=v2.size();
+    for (int i=0;i<s;i++){
+        drawPoint(v2[i].getX(),v2[i].getY(),RED);
+    }
+    f.pop_frontiere(v2);
+
+    f.add_frontiere(v2,I1);
+
+    for (int i=1;i<60;i++){
+        for (int j=1;j<60;j++){
+            I1(x-30+i,y-30+j).setV(1);
+        }
+    }
+    getMouse(x,y);
+
+    std::vector<pixel> v3=frontiere_tampon(I1,x,y,30);
+    int s3=v3.size();
+    for (int i=0;i<s;i++){
+        drawPoint(v3[i].getX(),v3[i].getY(),RED);
+    }
+    f.pop_frontiere(v3);
+
+    f.add_frontiere(v3,I1);
+    for (it=f.begin();it!=f.end();++it){
+        drawPoint((*it).getX(),(*it).getY(),BLUE);
+    }
+    for (int i=1;i<60;i++){
+        for (int j=1;j<60;j++){
+            I1(x-30+i,y-30+j).setV(1);
+        }
+    }
+    getMouse(x,y);
+    std::vector<pixel> v4=frontiere_tampon(I1,x,y,30);
+    int s4=v4.size();
+    for (int i=0;i<s4;i++){
+        drawPoint(v4[i].getX(),v4[i].getY(),RED);
+    }
+    f.pop_frontiere(v4);
+
+    f.add_frontiere(v4,I1);
+    for (it=f.begin();it!=f.end();++it){
+        drawPoint((*it).getX(),(*it).getY(),WHITE);
+    }
+    click();
+
+}
+*/
 
 
 void testMatching1(int argc, char* argv[]){
