@@ -157,6 +157,10 @@ bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){ // A définir
 
 }
 
+bool endCondition(frontiere f, Imagine::Image<pixel> I){
+
+}
+
 void PseudoMain(int argc,char* argv[]){
 
     //ETAPE 1 : Initialisation des variables, de l'image et de la frontière
@@ -210,7 +214,9 @@ void PseudoMain(int argc,char* argv[]){
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
-
+    //La condition de fin est : 1- la frontière est vide 2; la frontière est réduite au bord de l'image
+    //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapté le tampon
+    while(!endCondition(f,I1))
 
     int tailleTampon;
 
