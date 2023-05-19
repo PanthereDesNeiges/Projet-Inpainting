@@ -1,0 +1,392 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage[T1]{fontenc}    
+\usepackage[utf8]{inputenc}   % Accents codés dans la font
+\usepackage[french]{babel}  % Les traductions françaises
+\usepackage{csquotes}
+\usepackage{stmaryrd}
+\usepackage{caption} 
+\usepackage{geometry}
+\usepackage{lmodern}
+\usepackage{textcomp} 
+\usepackage{mathrsfs}
+\usepackage{latexsym}
+\usepackage{amsfonts}
+\usepackage{theorem}
+\usepackage{graphicx}
+\usepackage{scrlayer-scrpage}
+\usepackage{xcolor}
+\usepackage{setspace}
+\usepackage{framed}
+\usepackage{hyperref} 
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{xurl}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{float}
+\usepackage{bbold}
+\usepackage{eurosym}
+\usepackage{algorithm} 
+\usepackage{algpseudocode} 
+\usepackage{multicol}
+\usepackage{verbatim}
+\usepackage{pdfpages}
+\usepackage[sorting=none]{biblatex}
+\bibliography{biblio.bib}
+
+\providecommand{\keywords}[1]
+{
+  \small	
+  \textbf{\textit{Keywords---}} #1
+}
+
+\makeatletter
+\newcommand{\pushright}[1]{\ifmeasuring@#1\else\omit\hfill$\displaystyle#1$\fi\ignorespaces}
+\newcommand{\pushleft}[1]{\ifmeasuring@#1\else\omit$\displaystyle#1$\hfill\fi\ignorespaces}
+\makeatother
+
+\usepackage{subcaption}
+\usepackage{graphicx}
+\usepackage[export]{adjustbox}
+\usepackage{wrapfig}
+\setlength{\footheight}{50pt}
+
+\geometry{
+ a4paper,
+ height = 257mm,
+ right=25.4mm,
+ left=25.4mm,
+ top=25.4mm,
+ head=25.4pt,
+ }
+
+\definecolor{gro}{gray}{2} % define color
+\addtokomafont{footsepline}{\color{gro}} % define footer horizontal line
+\ofoot{{\includegraphics[scale=.05]{logos/ponts.png} }} % footer (c=center)
+\ifoot{Trucage photographique par Inpainting}
+
+
+\begin{document}
+
+\begin{titlepage}
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\newcommand{\hRule}{\rule{\linewidth}{0.1mm}}
+\center
+%\textsc{\LARGE
+%Ecole Nationale des Ponts et Chaussées
+%} \\[1cm]
+\includegraphics[scale=0.16]{logos/ponts.png} \\[1cm]
+
+École des Ponts ParisTech\\
+2022 - 2023\\[0.5cm]
+
+\HRule \\[0.4cm]
+{ \huge \bfseries Rapport de Projet \\[0.15cm] }
+\HRule \\[1.5 cm]
+
+\textbf{Philomène BOISNARD} \\[0.2cm]
+\textbf{Erwann ESTEVE} \\[0.2cm]
+\textbf{Wandrille FLAMANT} \\[0.2cm]
+\textbf{Sixtine NODET} \\[0.2cm]
+Élèves ingénieurs\\[1.5cm]
+
+\textbf{Projet de Semestre 2} \\ [0.5cm]
+\textbf{\Large TRUCAGE PHOTOGRAPHIQUE PAR INPAINTING
+} \\[2.5cm]
+
+\textbf{Février - Juin 2023} \\[3cm]
+
+Encadrant : \\ 
+\textbf{Pascal MONASSE}\\[0.8cm]
+
+\end{titlepage}
+
+\begin{comment}
+\vspace{0.15\textheight}
+\begin{figure}[ht]
+   \begin{minipage}{\textwidth}
+     \includegraphics[width = \linewidth]{images/couverture.png}
+     \raggedleft \scriptsize \textit{Source : chronopost.fr}
+   \end{minipage}\hfill
+\end{figure}
+\end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\begin{abstract}
+    Abstract
+    
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\tableofcontents
+\setcounter{tocdepth}{2}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\newpage
+\section*{Introduction}
+\label{sec:intro}
+\addcontentsline{toc}{section}{\nameref{sec:intro}}
+
+\paragraph{Notre projet}
+
+se base principalement sur le papier de A.Criminisi \cite{criminisi2004region}.
+
+Dans un premier temps, notre travail s'est concentré sur la compréhension du document et de l'algorithme expliqué.
+
+\vspace{7pt}
+
+L'\textbf{inpainting} est le nom donné à la technique de reconstruction d'images détériorées ou de remplissage des parties manquantes d'une image\\[0.5cm]
+
+\textbf{L'objectif principal} de notre projet va être de construire un algorithme capable d'effectuer ce trucage par inpainting, idéalement dans une complexité spatiale et temporelle maîtrisée, puis d'en trouver les limites.
+
+
+
+% Commentaires de Monasse pour le rapport:
+%une dizaine de pages. Comme l'article qu'on a lu en gros
+%faut pas parler de la partie programmation (ou seulement en annexe)
+%il faut expliquer le fonctionnemet gloable de l'algorithme, le pseudo code
+%des notations mathématiques.
+%pas entrer dans les détails du code.
+
+%Sources bien citées
+
+%Chaque figure est numérotée + une légende claire qui permet de comprendre
+%la figure meme si on a pas lu le rapport
+%Chaque figure est citée.
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Présentation de l'algorithme}
+
+
+
+De la lecture du document \cite{criminisi2004region}, nous en avons déduit l'\textbf{algorithme 1} suivant en pseudo-code  qui permet de résoudre le problème du trucage par inpainting.
+
+\begin{algorithm}
+    \caption{Algorithme de remplissage de la zone target}\label{alg:cap}
+    \begin{algorithmic}
+        \Require Image, target zone $\Omega$
+        \State Initialiser les pixels hors de $\Omega$
+        \State Initialiser de la frontière $\partial \Omega$
+        \While{$\partial \Omega\neq\emptyset$}
+            \State Calculer les priorités $P(p)$, $\forall p \in \partial \Omega$
+            \State Trouver le pixel $ p \in \partial \Omega$ maximimsant $P(p)$
+            \State Trouver le patch $\Psi_{q}$ minimisant la distance avec $\Psi_{p}$
+            \State Copier $\Psi_{q}$ sur $\Psi_{p} \cap \Omega$
+            \State Calculer $C(p)$, $\forall p \in \Psi_{p} \cap \Omega $
+            \State Mettre à jour $\Omega$ et $\partial \Omega $
+        \EndWhile
+    \end{algorithmic}
+\end{algorithm}
+
+
+
+\vspace{0.3cm}
+
+Nous avons fragmenté le travail en plusieurs sous problèmes que nous avons ensuite répartit entre les différents membres du groupe.
+
+Les sous problèmes sont notamment ceux du traitement de la frontière de la \textit{target zone}, de la gestion des paramètres \texttt{confidence} et \texttt{data}, l'affichage des images, le matching d'un \textit{patch}, etc.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Les objets exploités}
+
+La \textit{target zone} $\Omega$, un patch $\Psi_p$, la frontière $\partial\Omega$. \\[0.3cm]
+
+Pour mieux comprendre les objects appartenant aux classes \texttt{Pixel}, \texttt{Image} et \texttt{Frontiere}, les choix d'implémentation 
+sont développés \hyperref[les-classes]{en Annexe}.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{L'initialisation}
+
+\subsubsection{Initialisation des pixels hors de la zone $\Omega$}
+
+Texte
+
+\subsubsection{Initialisation de la frontière $\partial\Omega$}
+
+Texte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Calcul des termes \textit{Priorité, Confiance} et \textit{Data}}
+
+\subsubsection{Calcul des priorités $P(p)$}
+
+Texte
+
+\subsubsection{Calcul de la Confiance (ou \textit{Confidence}) $C(p)$}
+
+Texte
+
+\subsubsection{Calcul du terme \textit{Data} $D(p)$}
+
+Texte
+
+\subsection{Le \textit{Matching} et le calcul des distances}
+
+Texte
+
+
+\subsection{Mise à jour de la \textit{target zone} $\Omega$ et de la frontière $\partial\Omega$}
+
+Texte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Analyse des résultats}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sous-partie}
+
+Texte
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sous-partie}
+
+Texte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Sous-Partie}
+
+Texte
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section{Critique de l'algorithme}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{La complexité}
+
+Spatiale et temporelle
+
+Texte
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Les cas limites}
+
+Texte
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Pistes d'amélioration}
+
+Texte
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newpage
+\section*{Conclusion}
+\label{sec:conclu}
+\addcontentsline{toc}{section}{\nameref{sec:conclu}}
+
+\paragraph{Retour d'expérience.} 
+
+\paragraph{Delta.} 
+
+\paragraph{Améliorations.}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\addcontentsline{toc}{section}{Références}
+
+\printbibliography
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newpage
+\appendix
+\section*{Annexes}
+\label{sec:annexes}
+\addcontentsline{toc}{section}{\nameref{sec:annexes}}
+
+\subsection*{Les classes principales}\label{les-classes}
+
+\subsubsection*{La classe \texttt{Pixel}}
+
+Texte
+
+\subsubsection*{La classe \texttt{Image}}
+
+Texte
+
+\subsubsection*{La classe \texttt{Frontière}}
+
+Texte
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection*{Captures d'écran}
+\label{sub:images}
+\addcontentsline{toc}{subsection}{\nameref{sub:images}}
+
+Les bo screens waa
+
+% \begin{figure}[ht]
+%   \centering
+%   \begin{minipage}{0.99\textwidth}
+%      \centering
+%      \includegraphics[width=\linewidth]{images/calendrier_cours.png}
+%   \end{minipage}\hfill
+%   \caption{Calendrier, onglet « Mon emploi du temps »}
+%   \label{fig:impoved_calendar}
+% \end{figure}
+
+% \begin{figure}[ht]
+%   \centering
+%   \begin{minipage}{0.99\textwidth}
+%      \centering
+%      \includegraphics[width=\linewidth]{images/tous_les_cours.png}
+%   \end{minipage}\hfill
+%   \caption{Liste des cours}
+%   \label{fig:touscours}
+% \end{figure}
+
+\end{document}
