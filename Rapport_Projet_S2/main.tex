@@ -118,10 +118,6 @@ Encadrant : \\
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newpage
-\begin{abstract}
-    Abstract
-    
-\end{abstract}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -143,13 +139,17 @@ Encadrant : \\
 
 se base principalement sur le papier de A.Criminisi \cite{criminisi2004region}.
 
-Dans un premier temps, notre travail s'est concentré sur la compréhension du document et de l'algorithme expliqué.
+Dans un premier temps, notre travail s'est concentré sur la compréhension 
+du document et de l'algorithme expliqué.
 
 \vspace{7pt}
 
-L'\textbf{inpainting} est le nom donné à la technique de reconstruction d'images détériorées ou de remplissage des parties manquantes d'une image\\[0.5cm]
+L'\textbf{inpainting} est le nom donné à la technique de reconstruction 
+d'images détériorées ou de remplissage des parties manquantes d'une image\\[0.5cm]
 
-\textbf{L'objectif principal} de notre projet va être de construire un algorithme capable d'effectuer ce trucage par inpainting, idéalement dans une complexité spatiale et temporelle maîtrisée, puis d'en trouver les limites.
+\textbf{L'objectif principal} de notre projet va être de construire un 
+algorithme capable d'effectuer ce trucage par inpainting, idéalement 
+dans une complexité spatiale et temporelle maîtrisée, puis d'en trouver les limites.
 
 
 
@@ -177,7 +177,9 @@ L'\textbf{inpainting} est le nom donné à la technique de reconstruction d'imag
 
 
 
-De la lecture du document \cite{criminisi2004region}, nous en avons déduit l'\textbf{algorithme 1} suivant en pseudo-code  qui permet de résoudre le problème du trucage par inpainting.
+De la lecture du document \cite{criminisi2004region}, nous en avons déduit 
+l'\textbf{algorithme 1} suivant en pseudo-code  qui permet de résoudre 
+le problème du trucage par inpainting.
 
 \begin{algorithm}
     \caption{Algorithme de remplissage de la zone target}\label{alg:cap}
@@ -200,9 +202,12 @@ De la lecture du document \cite{criminisi2004region}, nous en avons déduit l'\t
 
 \vspace{0.3cm}
 
-Nous avons fragmenté le travail en plusieurs sous problèmes que nous avons ensuite répartit entre les différents membres du groupe.
+Nous avons fragmenté le travail en plusieurs sous problèmes que nous 
+avons ensuite répartit entre les différents membres du groupe.
 
-Les sous problèmes sont notamment ceux du traitement de la frontière de la \textit{target zone}, de la gestion des paramètres \texttt{confidence} et \texttt{data}, l'affichage des images, le matching d'un \textit{patch}, etc.
+Les sous problèmes sont notamment ceux du traitement de la frontière 
+de la \textit{target zone}, de la gestion des paramètres \texttt{confidence} 
+et \texttt{data}, l'affichage des images, le matching d'un \textit{patch}, etc.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -210,7 +215,8 @@ Les sous problèmes sont notamment ceux du traitement de la frontière de la \te
 
 La \textit{target zone} $\Omega$, un patch $\Psi_p$, la frontière $\partial\Omega$. \\[0.3cm]
 
-Pour mieux comprendre les objects appartenant aux classes \texttt{Pixel}, \texttt{Image} et \texttt{Frontiere}, les choix d'implémentation 
+Pour mieux comprendre les objects appartenant aux classes \texttt{Pixel}, 
+\texttt{Image} et \texttt{Frontiere}, les choix d'implémentation 
 sont développés \hyperref[les-classes]{en Annexe}.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -220,6 +226,7 @@ sont développés \hyperref[les-classes]{en Annexe}.
 \subsubsection{Initialisation des pixels hors de la zone $\Omega$}
 
 Texte
+
 
 \subsubsection{Initialisation de la frontière $\partial\Omega$}
 
@@ -248,7 +255,8 @@ Texte
 Texte
 
 
-\subsection{Mise à jour de la \textit{target zone} $\Omega$ et de la frontière $\partial\Omega$}
+\subsection{Mise à jour de la \textit{target zone} $\Omega$ et de la 
+frontière $\partial\Omega$}
 
 Texte
 

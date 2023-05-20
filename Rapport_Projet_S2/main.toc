@@ -1,0 +1,29 @@
+\babel@toc {french}{}\relax 
+\contentsline {section}{\nameref {sec:intro}}{2}{section*.2}%
+\contentsline {paragraph}{Notre projet}{2}{section*.3}%
+\contentsline {section}{\numberline {1}Présentation de l'algorithme}{3}{section.1}%
+\contentsline {subsection}{\numberline {1.1}Les objets exploités}{3}{subsection.1.1}%
+\contentsline {subsection}{\numberline {1.2}L'initialisation}{3}{subsection.1.2}%
+\contentsline {subsubsection}{\numberline {1.2.1}Initialisation des pixels hors de la zone $\Omega $}{3}{subsubsection.1.2.1}%
+\contentsline {subsubsection}{\numberline {1.2.2}Initialisation de la frontière $\partial \Omega $}{3}{subsubsection.1.2.2}%
+\contentsline {subsection}{\numberline {1.3}Calcul des termes \textit {Priorité, Confiance} et \textit {Data}}{3}{subsection.1.3}%
+\contentsline {subsubsection}{\numberline {1.3.1}Calcul des priorités $P(p)$}{3}{subsubsection.1.3.1}%
+\contentsline {subsubsection}{\numberline {1.3.2}Calcul de la Confiance (ou \textit {Confidence}) $C(p)$}{3}{subsubsection.1.3.2}%
+\contentsline {subsubsection}{\numberline {1.3.3}Calcul du terme \textit {Data} $D(p)$}{4}{subsubsection.1.3.3}%
+\contentsline {subsection}{\numberline {1.4}Le \textit {Matching} et le calcul des distances}{4}{subsection.1.4}%
+\contentsline {subsection}{\numberline {1.5}Mise à jour de la \textit {target zone} $\Omega $ et de la frontière $\partial \Omega $}{4}{subsection.1.5}%
+\contentsline {section}{\numberline {2}Analyse des résultats}{5}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Sous-partie}{5}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Sous-partie}{5}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}Sous-Partie}{5}{subsection.2.3}%
+\contentsline {section}{\numberline {3}Critique de l'algorithme}{6}{section.3}%
+\contentsline {subsection}{\numberline {3.1}La complexité}{6}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Les cas limites}{6}{subsection.3.2}%
+\contentsline {subsection}{\numberline {3.3}Pistes d'amélioration}{6}{subsection.3.3}%
+\contentsline {section}{\nameref {sec:conclu}}{7}{section*.4}%
+\contentsline {paragraph}{Retour d'expérience.}{7}{section*.5}%
+\contentsline {paragraph}{Delta.}{7}{section*.6}%
+\contentsline {paragraph}{Améliorations.}{7}{section*.7}%
+\contentsline {section}{Références}{8}{section*.7}%
+\contentsline {section}{\nameref {sec:annexes}}{9}{section*.9}%
+\contentsline {subsection}{\nameref {sub:images}}{9}{section*.14}%
