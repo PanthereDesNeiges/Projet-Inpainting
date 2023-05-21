@@ -243,7 +243,11 @@ int max(int x, int y){
 
 //FONCTION A DEFINIR (explication quant à leur objectif en commentaire de pseudoMain()
 bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){
-
+    setActiveWindow(win1);
+    return(getMouse(x1, y1)==1 && getMouse(x2,y2)==1);
+    /* demande deux clics gauches, remplit x1, y1, x2 et y2 avec les coordonnées des clics et retourne True
+     * En cas de clic droit, retourne False
+     */
 }
 
 bool endCondition(frontiere f, Imagine::Image<pixel> I){
@@ -264,17 +268,16 @@ void PseudoMain(int argc,char* argv[]){
     Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
     int x1=0,x2=0,y1=0,y2=0;
     //(A ECRIRE : bool selectZone(win1,x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
-    //while (!selectZone(win1,x1,y1,x2,y2)){            //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
-    //}                                                 //Renvoie false si un click droit est pressé
+    while (!selectZone(win1,x1,y1,x2,y2)){              //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
+    }                                                   //Renvoie false si un click droit est pressé
                                                         //NB : le code ci-dessus force l'utilisateur à sélectionner au moins une zone
-
     std::vector<pixel> v(0);                            //Vecteur qui contiendra les pixels des zones selectionnés par l'utilisateur
     initialize_frontiere(I1,v,x1,y1,x2,y2);             //Initialise la frontière à partir des coordonnées des points
                                                         //(NB : la frontière étant consituée pixels étant remplit, seul les pixels STRICTEMENT
                                                         //      dans le rectangle sont effacés)
     noRefreshBegin();                                   //Permettra de gagner du temps de calcul
     for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
-        for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+        for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
             drawPoint(i,j,WHITE);                       //Dessine le pixel en blanc sur l'affichage
             I1(i,j).setColor(WHITE);                    //Remplace la couleur du pixel par blanc
             I1(i,j).setV(0);                            //Met le pixel sur "non visité"
@@ -284,14 +287,13 @@ void PseudoMain(int argc,char* argv[]){
     noRefreshEnd();                                     //Met à jour l'affichage
     frontiere f;                                        //Frontière de l'image "pleine" avec les parties vides
     f.initialize_frontiere(v);                          //Initialisation de f
-
     while(selectZone(win1,x1,y1,x2,y2)){
         v.clear();                                      //Vide le vecteur
 
         initialize_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
         noRefreshBegin();
         for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
-            for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+            for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
                 drawPoint(i,j,WHITE);
                 I1(i,j).setColor(WHITE);
                 I1(i,j).setV(0);
@@ -347,6 +349,7 @@ void PseudoMain(int argc,char* argv[]){
 }
 
 int main(int argc, char* argv[]) {
-    testMatching2(argc,argv);
+    //testMatching2(argc,argv);
+    PseudoMain(argc,argv);
 	return 0;
 }
