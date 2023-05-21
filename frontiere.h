@@ -14,10 +14,11 @@ public:
     void compute_and_change_confidence(Imagine::Image<pixel> I,int n);
     std::list<pixel>::iterator begin();
     std::list<pixel>::iterator end();
+    bool isVoid();
 };
 
 //double compute_confidence(image I, int n, int x, int y)
 
 std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n);
 void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel>& v);
-void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v, int x1, int y1, int x2, int y2);
+void initialize_frontiere(Imagine::Image<pixel> I1, std::vector<pixel> &v, int x1, int y1, int x2, int y2);
