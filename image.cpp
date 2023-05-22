@@ -20,9 +20,8 @@ Window affiche(Imagine::Image<pixel> I, int coeff){
             I0(i,j)=I(i,j).getColor();
         }
     }
-    Window win = openWindow(w*coeff, h*coeff);
+
     Imagine::display(I0,0,0,false,coeff);
-    return win;
 }
 
 bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
