@@ -35,3 +35,15 @@ Wandrille :
 
 Philomène :
 - 
+
+
+### Mercredi  12H envoyer monasse
+
+# Analyse
+- influence de la taille de patchs
+- complexité de l'image
+- choix de la zone
+
+# en +
+- zones pas carrées
+- tailles variables/aléa
