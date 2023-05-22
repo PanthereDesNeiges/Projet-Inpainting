@@ -43,9 +43,9 @@ int testPhilo(int argc, char* argv[]){
     /*
     // CHARGER ET AFFICHER L'IMAGE
     Image<byte> I;
-    const char* fic1 = srcPath("zebra.png");
+    const char* fic1 = srcPath("/pictures/zebra.png");
     if(! load(I, fic1)) {
-        std::cout << "Probleme dans le chargement d'images" << std::endl;
+        std::cout << "Probleme dans le chargement d'pictures" << std::endl;
         return 1;
     }
     openWindow(I.width(),I.height());
@@ -75,7 +75,7 @@ int testPhilo(int argc, char* argv[]){
 
 */
     Imagine::Image<pixel>I;
-    getImage(I,srcPath("apple.png"), argc, argv);
+    getImage(I,srcPath("/pictures/apple.png"), argc, argv);
     std::vector<pixel> v;
     affiche(I,1);
     initialize_frontiere(I,v);
@@ -88,7 +88,7 @@ int testPhilo(int argc, char* argv[]){
 /*
 void test_frontiere(int argc, char* argv[],frontiere f){
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("baby.png"),argc,argv);
+    getImage(I1,srcPath("/pictures/baby.png"),argc,argv);
     affiche(I1,1);
     std::vector<pixel> v;
     initialize_frontiere(I1,v);
@@ -175,7 +175,7 @@ void test_frontiere(int argc, char* argv[],frontiere f){
 void testMatching1(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("apple.png"),argc,argv);
+    getImage(I1,srcPath("/pictures/apple.png"),argc,argv);
     affiche(I1,1);
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,I1.height()/2);
@@ -194,7 +194,7 @@ void testMatching1(int argc, char* argv[]){
 void testMatching2(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("landscape.png"),argc,argv);
+    getImage(I1,srcPath("/pictures/landscape.png"),argc,argv);
     affiche(I1,1);
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,rand()%(I1.height()-40)+20);
@@ -260,7 +260,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("/pictures/landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
     Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
     int x1=0,x2=0,y1=0,y2=0;
     //(A ECRIRE : bool selectZone(win1,x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
@@ -347,6 +347,6 @@ void PseudoMain(int argc,char* argv[]){
 }
 
 int main(int argc, char* argv[]) {
-    testMatching2(argc,argv);
+    PseudoMain(argc,argv);
 	return 0;
 }
