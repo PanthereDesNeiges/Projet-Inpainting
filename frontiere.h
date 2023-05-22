@@ -11,7 +11,6 @@ public:
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le tampon
     pixel max_priority();
     void changeData(Imagine::Image<pixel> I);   //prend en argument l'image
-    void compute_and_change_confidence(Imagine::Image<pixel> I,int n);
     std::list<pixel>::iterator begin();
     std::list<pixel>::iterator end();
     bool isVoid();

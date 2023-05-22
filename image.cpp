@@ -46,10 +46,21 @@ bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* ar
     return true;
 }
 
-void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique la confiance du pixel p aux pixels alentour
+void compute_and_changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique la confiance du pixel p aux pixels alentour
     int x=p.getX();
-    int y=p.getY();
-    double c=p.getConfidence();
+    int y=p.getY(); // coordonnées du pixel de la frontière autour duquel on applique le tampon
+    double c=0;
+    for (int i=0;i<2*n+1;i++){
+        for (int j=0;j<2*n+1;j++){
+            if (I(x-n+i,y-n+j).getV()){
+                c+=I(x-n+i,y-n+j).getConfidence();
+            }
+        }
+    }
+// somme des confiances des pixels déjà rempli du tampon
+
+    c=double(c/((2*n+1)*(2*n+1))); // normalisation du terme de confiance par l'aire du tampon
+
     for (int i=0;i<2*n+1;i++){
         for (int j=0;j<2*n+1;j++){
             if (!I(x-n+i,y-n+j).getV()){
@@ -57,4 +68,5 @@ void changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     //Applique l
             }
         }
     }
+// met à jour la confiance des termes nouvellement empli du tampon
 }

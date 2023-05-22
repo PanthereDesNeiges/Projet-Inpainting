@@ -200,44 +200,61 @@ pixel frontiere::max_priority(){
     return (max);
 }
 
-void gradient_frontiere(vector<double> v,Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
+void gradient_and_normal_frontiere(vector<double> gradient,vector<double> normal,Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
     int w = I1.width();
     int h = I1.height();
-
-    if (a.getX()==0 || a.getX()==w-1){
-        v[0]=0;
-        v[1]=0;
+    int x = a.getX();
+    int y = a.getY();
+    normal[0]=0;
+    normal[1]=0;
+    gradient[0]=0;
+    gradient[1]=0;
+    if (x==0 || x==w-1){
     }
 
-    else if (I1(a.getX()+1,a.getY()).getV()){
-        if (I1(a.getX()-1,a.getY()).getV()){
-            v[0]=double(I2(a.getX()+1,a.getY())-I2(a.getX()-1,a.getY()))/2;
+    else if (I1(x+1,y).getV()){
+        if (I1(x-1,y).getV()){
+            gradient[0]=double(I2(x+1,y)-I2(x-1,y))/2;
+            if (I1(x,y+1).getV()){
+                normal[0]=0;
+                normal[1]=1;
+            }
+            else {
+                normal[0]=0;
+                normal[1]=-1;
+            }
         }
         else {
-            v[0]=double(I2(a.getX()+1,a.getY())-I2(a.getX(),a.getY()))/2;
+            gradient[0]=double(I2(x+1,y)-I2(x,y))/2;
         }
     }
 
-    else if (I1(a.getX()-1,a.getY()).getV()){
-        v[0]=double(I2(a.getX(),a.getY())-I2(a.getX()-1,a.getY()))/2;
+    else if (I1(x-1,y).getV()){
+        gradient[0]=double(I2(x,y)-I2(x-1,y))/2;
     }
 
-    if ( a.getY()==0 || a.getY()==h-1){
-        v[0]=0;
-        v[1]=0;
+    if ( y==0 || y==h-1){
     }
 
-    else if (I1(a.getX(),a.getY()+1).getV()){
-        if (I1(a.getX(),a.getY()-1).getV()){
-            v[0]=double(I2(a.getX(),a.getY()+1)-I2(a.getX(),a.getY()-1))/2;
+    else if (I1(x,y+1).getV()){
+        if (I1(x,y-1).getV()){
+            gradient[0]=double(I2(x,y+1)-I2(x,y-1))/2;
+            if (I1(x+1,y).getV()){
+                normal[0]=1;
+                normal[1]=0;
+            }
+            else {
+                normal[0]=0;
+                normal[1]=-1;
+            }
         }
         else {
-            v[0]=double(I2(a.getX(),a.getY()+1)-I2(a.getX(),a.getY()))/2;
+            gradient[0]=double(I2(x,y+1)-I2(x,y))/2;
         }
     }
 
-    else if (I1(a.getX(),a.getY()-1).getV()){
-        v[0]=double(I2(a.getX(),a.getY()-1)-I2(a.getX(),a.getY()))/2;
+    else if (I1(x,y-1).getV()){
+        gradient[0]=double(I2(x,y-1)-I2(x,y))/2;
     }
 }
 
@@ -250,6 +267,19 @@ double Data(vector<double> gradient,vector<double> normal){
     }
     D=double(D/alpha);
     return (D);
+}
+
+void frontiere::changeData(Imagine::Image<pixel> I){
+    Imagine::Image<byte> I2;
+    std::list<pixel>::iterator it;
+    vector<double> gradient;
+    vector<double> normal;
+    double G;
+    for (it=f.begin();it!=f.end();++it){
+        gradient_and_normal_frontiere(gradient,normal,I,(*it),I2);
+        G=Data(gradient,normal);
+        (*it).setData(G);
+    }
 }
 
 std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n){

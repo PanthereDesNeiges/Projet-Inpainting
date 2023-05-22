@@ -326,7 +326,7 @@ void PseudoMain(int argc,char* argv[]){
     //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapter le tampon
     while(!endCondition(f,I1)) {                            //Fonction à définir selon les conditions plus haut
 
-        //PARTIE CALCUL DE LA DATA ET CONFIANCE (de la frontière) (Wandrille je te laisse faire)
+        //PARTIE CALCUL DE LA DATA (de la frontière) (Wandrille je te laisse faire)
 
         //NOTE POUR TOUT LE MONDE : Il me semble que pour le terme de confiance, celui-ci est effectivement update pour les element nouvellement
         //                          copié par le tampon depuis le pixel source. Cependant, les pixels faisant parti de la frontière fois ensuite
@@ -345,7 +345,7 @@ void PseudoMain(int argc,char* argv[]){
             //                                         index tailleTampon et index (indexMax-(tailleTampon+1))) (NB : l'index commence à 0)
 
             matching2(Qx,Qy,I1,Pmax.getX(),Pmax.getY(),tailleTampon); //Recherche du meilleur pixel source (Qx,Qy) dans l'image
-            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront re
+            compute_and_changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront re
             copyTampon(Pmax.getX(), Pmax.getY(), Qx, Qy, I1, tailleTampon); //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
             affiche(I1,zoom);                                         //Affiche l'image modifié (nb : les pixels des zones "vides" ont été changé en blanc lors de leur sélection)
             std::vector<pixel> v1=frontiere_tampon(I1,Pmax.getX(),Pmax.getY(),tailleTampon);        //Une "nouvelle frontière" est crée, celle entourant la zone nouvellement copiée (ce n'est en réalité qu'une liste de pixel potentiel à la frontière
