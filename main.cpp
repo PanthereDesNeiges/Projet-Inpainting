@@ -290,12 +290,10 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-<<<<<<< HEAD
-    int tailleTampon=3;                                //valeur caractérisant la taille du tampon (modifiable)
-=======
+
     int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
     int savetailleTampon=tailleTampon;                 // Sera utilisé pour retrouver la valeur initiale du tampon
->>>>>>> 502add78e2924e92a18e0715098ae182a401df4c
+
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
