@@ -205,21 +205,17 @@ bool selectZone(int& x1,int& y1,int& x2,int& y2){
 bool endCondition(frontiere f, Imagine::Image<pixel> I){
     return f.isVoid();
     // A completer
-
     /* La condition de fin est : 1- la frontière est vide ; 2- la frontière est réduite au bord de l'image
      */
 }
 
 void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tailleTampon){
     //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
-    int lx,ly;
-    if (Px<Qx) lx = 1; else lx = -1;    // On choisit l'ordre de parcours pour que, si les deux zones se chevauchent,
-    if (Py<Qy) ly = 1; else ly = -1;    // la copie soit quand même bien faite
-    for(int i=-tailleTampon; i<=tailleTampon; i++){
+    for(int i=-tailleTampon; i<=tailleTampon; i++){                 // on parcourt le tampon autour du pixel P
         for(int j=-tailleTampon; j<=tailleTampon; j++){
-            if (not I(Px+i*lx,Py+j*ly).getV()){
-                I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
-                I(Px+i*lx,Py+j*ly).setV(true);
+            if (not I(Px+i,Py+j).getV()){                           // si le pixel P n'a pas encore été visité,
+                I(Px+i,Py+j).setColor(I(Qx+i,Qy+j).getColor());     // on copie la couleur de Q
+                I(Px+i,Py+j).setV(true);                            // et on passe P en visité
             }
         }
     }
