@@ -1,9 +1,5 @@
 #include "matching.h"
 #include <queue>
-/* OBJECTIF : Coder une fonction qui trouve des exemples dans Phi (figure 2) du pattern déjà présent dans Psy_p
- *
- * pb : Que faire s'il n'y a aucun matching ? Plusieurs matching ?
- */
 
 void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n){
     /* Principe : La fonction cherche les coordonnées d'un pixel Q dont le carré Psy_Q (carré de coté 2n+1 centré en Q) "match"
@@ -14,29 +10,29 @@ void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n)
      *            ATTENTION A DECALER QUAND ON COPIE (la fonction copie prend le pixel en haut à gauche, la mienne donne le pixel du centre
      */
     int h=I.height(), w=I.width();
-    bool flag;
+    bool flag;                                //Sera utile pour indiquer si un pixel est entier ou pas
 
     Imagine::Image<bool> filled(w,h);         //Stock l'image représentant les cases remplis/pas remplis
-    getFilledMap(I, filled);
+    getFilledMap(I, filled);                  //Initialisation de filled
 
-    std::queue<int> ListQx;              //On va stocker les pixels candidats à Q (pixel q tel que Psy_q est "plein".
-    std::queue<int> ListQy;              //Le choix d'une file est arbitraire (une pile aurait été équivalente)
+    std::queue<int> ListQx;                   //On va stocker les pixels candidats à Q (pixel q tel que Psy_q est "plein" (le tampon))
+    std::queue<int> ListQy;                   //Le choix d'une file est arbitraire (une pile aurait été équivalente)
 
     for (int i=n;i<w-n-1;i++){
-        for (int j=n; j<h-n-1;j++){      // Les sample potentiels sont ceux de coordonné (i,j). Au dela de ces valeurs, Psy_q n'est plus carré
-            flag=true;                   // Cherchons les q potentiel (ceux dont Psy_q est "plein")
+        for (int j=n; j<h-n-1;j++){           // Les sample potentiels sont ceux de coordonné (i,j). Au dela de ces valeurs, Psy_q n'est plus carré
+            flag=true;                        // Cherchons les q potentiel (ceux dont Psy_q est "plein")
 
             for (int k=-n;k<=n;k++){
                 for (int l=-n;l<=n;l++){
                     if(not filled(i+k,j+l)){
-                        flag=false;
-                        break;           //Sortie des boucles
+                        flag=false;           // Si un des pixels environnants est non rempli, on passe le flag à "faux"
+                        break;                // Sortie des boucles
                     }
                 }
-                if (not flag)
-                    break;
+                if (not flag)                 // Si un des pixels environnants est non rempli (flag false)
+                    break;                    // Sortie des boucles
             }
-            if (flag){
+            if (flag){                        // Si aucun pixel environnant est vide
                 ListQx.push(i);
                 ListQy.push(j);
             }

@@ -2,12 +2,12 @@
 #include <cmath>
 using namespace std;
 
-void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B){ // Prends une image et modifie B de façon à en faire la "carte des pixel rempli" (w et h sont les tailles de b)
-    int h=I.height(), w=I.width();
-    assert(h==B.height() and w==B.width()); // Tableau B de mauvaise taille
+void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B){ // Prends une image I et modifie l'image de bool B de façon à en faire la "carte
+    int h=I.height(), w=I.width();                                  //  des pixel rempli" (qui sera plus facile à manier
+    assert(h==B.height() and w==B.width()); // Erreur si l'image B est de mauvaise taille
     for(int i=0; i<w; i++){
         for(int j=0; j<h; j++){
-            B(i,j)=I(i,j).getV();
+            B(i,j)=I(i,j).getV();           //getV = 1 si le pixel est rempli, 0 si il est vide
         }
     }
 }
@@ -20,9 +20,8 @@ Window affiche(Imagine::Image<pixel> I, int coeff){
             I0(i,j)=I(i,j).getColor();
         }
     }
-    Window win = openWindow(w*coeff, h*coeff);
+
     Imagine::display(I0,0,0,false,coeff);
-    return win;
 }
 
 bool getImage(Imagine::Image<pixel> &I,std::string imageLink, int argc, char* argv[]){    // Transverse l'image de lien imageLink (.png) dans l'image I
@@ -69,4 +68,14 @@ void compute_and_changeConfidence(Imagine::Image<pixel> I, pixel p, int n){     
         }
     }
 // met à jour la confiance des termes nouvellement empli du tampon
+}
+
+void toImageByte(Imagine::Image<pixel> I, Imagine::Image<byte> Ib){ // Modifie Ib de façon à en faire l'image des intensités lumineuses (en noir et blanc)
+    int w=I.width(), h=I.height();
+    assert(w==Ib.width() && h==Ib.height());                        //Erreur si les tailles des tableaux ne correspondent pas
+    for(int i=0; i<w; i++){
+        for(int j=0; j<h; j++){
+            Ib(i,j)=byte((int(I(i,j).getColor().r()) + int(I(i,j).getColor().g()) + int(I(i,j).getColor().b()))/3);
+        }
+    }
 }

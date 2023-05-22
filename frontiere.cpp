@@ -200,7 +200,7 @@ pixel frontiere::max_priority(){
     return (max);
 }
 
-void gradient_and_normal_frontiere(vector<double> gradient,vector<double> normal,Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
+void gradient_and_normal_frontiere(double gradient[2],double normal[2],Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
     int w = I1.width();
     int h = I1.height();
     int x = a.getX();
@@ -258,7 +258,7 @@ void gradient_and_normal_frontiere(vector<double> gradient,vector<double> normal
     }
 }
 
-double Data(vector<double> gradient,vector<double> normal){
+double Data(double gradient[2],double normal[2]){
     double D=0;
     D+=gradient[0]*normal[0];
     D+=gradient[1]*normal[1];
@@ -270,10 +270,13 @@ double Data(vector<double> gradient,vector<double> normal){
 }
 
 void frontiere::changeData(Imagine::Image<pixel> I){
-    Imagine::Image<byte> I2;
+    int w=I.width();
+    int h=I.height();
+    Imagine::Image<byte> I2(w,h);
+    toImageByte(I,I2);
     std::list<pixel>::iterator it;
-    vector<double> gradient;
-    vector<double> normal;
+    double gradient[2];
+    double normal[2];
     double G;
     for (it=f.begin();it!=f.end();++it){
         gradient_and_normal_frontiere(gradient,normal,I,(*it),I2);
