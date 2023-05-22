@@ -12,7 +12,7 @@ void getFilledMap(Imagine::Image<pixel> I, Imagine::Image<bool> B){ // Prends un
     }
 }
 
-Window affiche(Imagine::Image<pixel> I, int coeff){
+void affiche(Imagine::Image<pixel> I, int coeff){
     int w=I.width(), h=I.height();
     Imagine::Image<Color> I0(w,h);
     for (int i=0;i<w;i++){
