@@ -18,3 +18,32 @@ N'oubliez pas de suivre ces règles
 - ```git add <nom du fichier>``` ou ```git add --all``` -> ajouter les fichiers modifiés à git
 - ```git commit -m "<Description des modifications>"``` -> créer le commit
 - ```git push``` -> charger sur la partie commune
+
+
+
+## Rapport
+
+Erwann : 
+- matching
+- Main
+- distance
+
+Wandrille : 
+- frontière
+- data
+- confiance
+
+Philomène :
+- 
+
+
+### Mercredi  12H envoyer monasse
+
+# Analyse
+- influence de la taille de patchs
+- complexité de l'image
+- choix de la zone
+
+# en +
+- zones pas carrées
+- tailles variables/aléa
