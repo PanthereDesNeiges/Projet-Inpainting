@@ -39,52 +39,6 @@ std::vector<pixel> expand(std::vector<pixel> v){
     return v1;
 }
 
-int testPhilo(int argc, char* argv[]){
-    /*
-    // CHARGER ET AFFICHER L'IMAGE
-    Image<byte> I;
-    const char* fic1 = srcPath("zebra.png");
-    if(! load(I, fic1)) {
-        std::cout << "Probleme dans le chargement d'images" << std::endl;
-        return 1;
-    }
-    openWindow(I.width(),I.height());
-    display(I);
-
-    // SELECTIONNER LES POINTS DU CONTOUR DANS UN VECTEUR
-
-    std::cout<<"Cliquez pour selectionner les points de la frontiere, clic droit pour finir (3 points au moins)\n";
-    std::vector<pixel> v;
-    int x,y,m;
-    getMouse(x,y);
-    for (int i=0; i<2;i++){
-        v.push_back(pixel(x,y));
-        m=getMouse(x, y);
-        drawLine(x,y,v.back().getX(),v.back().getY(),RED);
-    }
-    while (m==1) {
-        v.push_back(pixel(x,y));
-        m=getMouse(x, y);
-        if(m==1)
-            drawLine(x,y,v.back().getX(),v.back().getY(),RED);
-    }
-    drawLine(v.front().getX(),v.front().getY(),v.back().getX(),v.back().getY(),RED);
-
-    // RELIER LES POINTS
-    std::vector<pixel> v1 = expand(v);
-
-*/
-    Imagine::Image<pixel>I;
-    getImage(I,srcPath("apple.png"), argc, argv);
-    std::vector<pixel> v;
-    affiche(I,1);
-    initialize_frontiere(I,v);
-
-    endGraphics();
-    return 0 ;
-}
-
-
 /*
 void test_frontiere(int argc, char* argv[],frontiere f){
     Imagine::Image<pixel> I1(100,200);  //Image I1
@@ -263,8 +217,10 @@ void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tai
     if (Py<Qy) ly = 1; else ly = -1;    // la copie soit quand même bien faite
     for(int i=-tailleTampon; i<=tailleTampon; i++){
         for(int j=-tailleTampon; j<=tailleTampon; j++){
-            I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
-            I(Px+i*lx,Py+j*ly).setV(true);
+            if (not I(Px+i*lx,Py+j*ly).getV()){
+                I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
+                I(Px+i*lx,Py+j*ly).setV(true);
+            }
         }
     }
 }
@@ -275,7 +231,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("apple.png"),argc,argv);    //Lecture de l'image "landscape.png"
     openWindow(I1.width()*zoom, I1.height()*zoom);;
     affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
