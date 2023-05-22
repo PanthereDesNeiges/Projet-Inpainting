@@ -19,3 +19,4 @@ bool getImage(Imagine::Image<pixel> &I, std::string imageLink, int argc, char* a
 void changeConfidence(Imagine::Image<pixel> I, pixel p, int n);
 // A CODER
 int translatation(int x, int y, int xd, int yd, int xa, int ya);
+void toImageByte(Imagine::Image<pixel> I, Imagine::Image<byte> &Ib);

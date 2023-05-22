@@ -148,11 +148,18 @@ void testMatching1(int argc, char* argv[]){
 void testMatching2(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("landscape.png"),argc,argv);
+    getImage(I1,srcPath("baby.png"),argc,argv);
     affiche(I1,1);
+    /*
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,rand()%(I1.height()-40)+20);
     drawPoint(testpixel.getX(),testpixel.getY(),RED);
+    */
+
+    int clickX, clickY;
+    getMouse(clickX, clickY);
+    pixel testpixel(clickX,clickY);
+
     int sizeTamp=10;
 
     for(int i=testpixel.getX()-2*sizeTamp;i<=testpixel.getX()+2*sizeTamp;i++){
@@ -168,7 +175,7 @@ void testMatching2(int argc, char* argv[]){
     int distanceMin=matching2(goodMatch.x(),goodMatch.y(),I1,testpixel.getX(),testpixel.getY(),sizeTamp);
     std::cout<<"x="<<goodMatch.x()<<", y="<<goodMatch.y()<<"Distance du tampon à la source :"<<distanceMin<<std::endl;
     drawPoint(goodMatch.x(),goodMatch.y(),BLUE);
-    drawRect(goodMatch.x()-sizeTamp,goodMatch.y()-sizeTamp,2*sizeTamp,2*sizeTamp,BLUE);
+    drawRect(goodMatch.x()-sizeTamp,goodMatch.y()-sizeTamp,2*sizeTamp,2*sizeTamp,CYAN);
 
     /*
     std::cout<<(I1[testpixel.getX(),testpixel.getY()].getColor().r(), I1[testpixel.getX(),testpixel.getY()].getColor().g(),I1[testpixel.getX(),testpixel.getY()].getColor().b())<<std::endl;
@@ -270,7 +277,7 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-    int tailleTampon=5;                                //valeur caractérisant la taille du tampon (modifiable)
+    int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
@@ -297,7 +304,7 @@ void PseudoMain(int argc,char* argv[]){
             //                                         index tailleTampon et index (indexMax-(tailleTampon+1))) (NB : l'index commence à 0)
 
             matching2(Qx,Qy,I1,Pmax.getX(),Pmax.getY(),tailleTampon); //Recherche du meilleur pixel source (Qx,Qy) dans l'image
-            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront re
+            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront rempli
             copyTampon(Pmax.getX(), Pmax.getY(), Qx, Qy, I1, tailleTampon); //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
             affiche(I1,zoom);                                         //Affiche l'image modifié (nb : les pixels des zones "vides" ont été changé en blanc lors de leur sélection)
             std::vector<pixel> v1=frontiere_tampon(I1,Pmax.getX(),Pmax.getY(),tailleTampon);        //Une "nouvelle frontière" est crée, celle entourant la zone nouvellement copiée (ce n'est en réalité qu'une liste de pixel potentiel à la frontière
