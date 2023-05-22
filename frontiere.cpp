@@ -277,6 +277,10 @@ std::list<pixel>::iterator frontiere::begin(){
 std::list<pixel>::iterator frontiere::end(){
     return (f.end());
 }
+bool frontiere::isVoid(){
+    return f.size()==0;
+}
+
 
 void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel>& v){
     int x1;
@@ -307,7 +311,7 @@ void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel>& v){
         }
     }
 }
-void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> v, int x1, int y1, int x2, int y2){
+void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1, int y1, int x2, int y2){
     for (int i=0;i<abs(x1-x2)+1;i++){
         v.push_back(I1(min(x1,x2)+i,min(y1,y2)));
     }

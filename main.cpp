@@ -208,7 +208,6 @@ void testMatching2(int argc, char* argv[]){
 
     int sizeTamp=10;
 
-
     for(int i=testpixel.getX()-2*sizeTamp;i<=testpixel.getX()+2*sizeTamp;i++){
         for(int j=testpixel.getY()+1;j<=testpixel.getY()+2*sizeTamp;j++){
             I1(i,j).setV(0);
@@ -250,15 +249,32 @@ int max(int x, int y){
 
 //FONCTION A DEFINIR (explication quant à leur objectif en commentaire de pseudoMain()
 bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){
-
+    setActiveWindow(win1);
+    return(getMouse(x1, y1)==1 && getMouse(x2,y2)==1);
+    /* demande deux clics gauches, remplit x1, y1, x2 et y2 avec les coordonnées des clics et retourne True
+     * En cas de clic droit, retourne False
+     */
 }
 
 bool endCondition(frontiere f, Imagine::Image<pixel> I){
+    return f.isVoid();
+    // A completer
 
+    /* La condition de fin est : 1- la frontière est vide ; 2- la frontière est réduite au bord de l'image
+     */
 }
 
 void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tailleTampon){
-
+    //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
+    int lx,ly;
+    if (Px<Qx) lx = 1; else lx = -1;    // On choisit l'ordre de parcours pour que, si les deux zones se chevauchent,
+    if (Py<Qy) ly = 1; else ly = -1;    // la copie soit quand même bien faite
+    for(int i=-tailleTampon; i<=tailleTampon; i++){
+        for(int j=-tailleTampon; j<=tailleTampon; j++){
+            I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
+            I(Px+i*lx,Py+j*ly).setV(true);
+        }
+    }
 }
 //
 void PseudoMain(int argc,char* argv[]){
@@ -271,17 +287,16 @@ void PseudoMain(int argc,char* argv[]){
     Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
     int x1=0,x2=0,y1=0,y2=0;
     //(A ECRIRE : bool selectZone(win1,x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
-    //while (!selectZone(win1,x1,y1,x2,y2)){            //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
-    //}                                                 //Renvoie false si un click droit est pressé
+    while (!selectZone(win1,x1,y1,x2,y2)){              //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
+    }                                                   //Renvoie false si un click droit est pressé
                                                         //NB : le code ci-dessus force l'utilisateur à sélectionner au moins une zone
-
     std::vector<pixel> v(0);                            //Vecteur qui contiendra les pixels des zones selectionnés par l'utilisateur
     initialize_frontiere(I1,v,x1,y1,x2,y2);             //Initialise la frontière à partir des coordonnées des points
                                                         //(NB : la frontière étant consituée pixels étant remplit, seul les pixels STRICTEMENT
                                                         //      dans le rectangle sont effacés)
     noRefreshBegin();                                   //Permettra de gagner du temps de calcul
     for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
-        for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+        for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
             drawPoint(i,j,WHITE);                       //Dessine le pixel en blanc sur l'affichage
             I1(i,j).setColor(WHITE);                    //Remplace la couleur du pixel par blanc
             I1(i,j).setV(0);                            //Met le pixel sur "non visité"
@@ -291,14 +306,13 @@ void PseudoMain(int argc,char* argv[]){
     noRefreshEnd();                                     //Met à jour l'affichage
     frontiere f;                                        //Frontière de l'image "pleine" avec les parties vides
     f.initialize_frontiere(v);                          //Initialisation de f
-
     while(selectZone(win1,x1,y1,x2,y2)){
         v.clear();                                      //Vide le vecteur
 
         initialize_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
         noRefreshBegin();
         for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
-            for (int j=min(y1,y2)+1;i<max(y1,y2);i++){
+            for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
                 drawPoint(i,j,WHITE);
                 I1(i,j).setColor(WHITE);
                 I1(i,j).setV(0);
@@ -311,12 +325,12 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-    int tailleTampon=5;                                //valeur caractérisant la taille du tampon (modifiable)
+    int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
-    //La condition de fin est : 1- la frontière est vide 2; la frontière est réduite au bord de l'image
-    //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapté le tampon
+    //La condition de fin est : 1- la frontière est vide ; 2- la frontière est réduite au bord de l'image
+    //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapter le tampon
     while(!endCondition(f,I1)) {                            //Fonction à définir selon les conditions plus haut
 
         //PARTIE CALCUL DE LA DATA ET CONFIANCE (de la frontière) (Wandrille je te laisse faire)
@@ -328,17 +342,17 @@ void PseudoMain(int argc,char* argv[]){
 
         //A partir de là, la confiance et la data de chacun des termes de la frontière a été défini
         pixel Pmax=f.max_priority();                        //P est le pixel de priorité maximale dans la frontière
-        int Qx=-1, Qy=-1;                                   //(Qx, Qy) sera le pixel source de notre algorythme
+        int Qx=-1, Qy=-1;                                   //(Qx, Qy) sera le pixel source de notre algorithme
         if ((tailleTampon<=Pmax.getX()) && (Pmax.getX()<(I1.width()-1)-tailleTampon) && (tailleTampon<=Pmax.getY()) && (Pmax.getY()<(I1.height()-1)-tailleTampon) ){
             //EXPLICATION DE LA CONDITION CI-DESSUS : Le tampon, qui sera la zone qui sera recopiée autour de Pmax, doit nécessairement être
             //                                        contenue dans l'image (sinon matching2 ne marche pas). Pour cela, on adapte la taille
             //                                        du tampon. la condition ci-dessus est satisfaite ssi le tampon est dans l'image
-            //                                        (les pixels remplit par le tampons vont de Pmax à ses tailleTampon pixels environant (norme inf),
+            //                                        (les pixels remplis par le tampon vont de Pmax à ses tailleTampon pixels environant (norme inf),
             //                                         il faut donc que Pmax soit à tous moments à tailleTampon+1 (inclu) du bord (donc entre
-            //                                         index tailleTampon et index (indexMax-(tailleTampon+1))) (nb : l'index commence à 0)
+            //                                         index tailleTampon et index (indexMax-(tailleTampon+1))) (NB : l'index commence à 0)
 
             matching2(Qx,Qy,I1,Pmax.getX(),Pmax.getY(),tailleTampon); //Recherche du meilleur pixel source (Qx,Qy) dans l'image
-            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront re
+            changeConfidence(I1,Pmax,tailleTampon);                   //Copie le terme C de Pmax dans les pixels qui seront rempli
             copyTampon(Pmax.getX(), Pmax.getY(), Qx, Qy, I1, tailleTampon); //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
             affiche(I1,zoom);                                         //Affiche l'image modifié (nb : les pixels des zones "vides" ont été changé en blanc lors de leur sélection)
             std::vector<pixel> v1=frontiere_tampon(I1,Pmax.getX(),Pmax.getY(),tailleTampon);        //Une "nouvelle frontière" est crée, celle entourant la zone nouvellement copiée (ce n'est en réalité qu'une liste de pixel potentiel à la frontière
@@ -354,6 +368,7 @@ void PseudoMain(int argc,char* argv[]){
 }
 
 int main(int argc, char* argv[]) {
-    testMatching2(argc,argv);
+    //testMatching2(argc,argv);
+    PseudoMain(argc,argv);
 	return 0;
 }
