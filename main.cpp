@@ -42,7 +42,7 @@ std::vector<pixel> expand(std::vector<pixel> v){
 /*
 void test_frontiere(int argc, char* argv[],frontiere f){
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("baby.png"),argc,argv);
+    getImage(I1,srcPath("pictures/baby.png"),argc,argv);
     affiche(I1,1);
     std::vector<pixel> v;
     initialize_frontiere(I1,v);
@@ -129,7 +129,7 @@ void test_frontiere(int argc, char* argv[],frontiere f){
 void testMatching1(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("apple.png"),argc,argv);
+    getImage(I1,srcPath("pictures/apple.png"),argc,argv);
     affiche(I1,1);
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,I1.height()/2);
@@ -231,7 +231,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("apple.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("pictures/landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
     openWindow(I1.width()*zoom, I1.height()*zoom);;
     affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
