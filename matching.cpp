@@ -33,18 +33,18 @@ void matching1(int& Qx, int& Qy, Imagine::Image<pixel> I, int Px, int Py, int n)
                     break;                    // Sortie des boucles
             }
             if (flag){                        // Si aucun pixel environnant est vide
-                ListQx.push(i);
+                ListQx.push(i);               //On ajoue le pixel (i,j) aux pixels potentiels
                 ListQy.push(j);
             }
         }
     }
-    assert(not ListQx.empty()); // La liste ne doit pas être vide
-    // On a maintenant dans la queue tous les point x de phi tel que Psy_phy soit plein. On peut chercher parmi ceux ci lequel match avec le patern de Psy_p
-    int x,y;
+    assert(not ListQx.empty());               // La liste ne doit pas être vide (sinon il n'y a pas de matching possible)
+    // On a maintenant dans la queue tous les point x de phi tel que Psy_phy soit plein. On peut chercher parmi ceux-ci un candidant qui match (parfaitement) avec le patern (la partie déjà rempli) de Psy_p
+    int x,y;                                  //Tampons servant à sélectionner chaque pixel de la liste
     int InitSize=ListQx.size();
-    for(int m=0;m<InitSize;m++){ //Tant que la liste n'est pas vide
-        flag=true;
-        x=ListQx.front();
+    for(int m=0;m<InitSize;m++){              //Tant que la liste n'est pas vide
+        flag=true;                            //Sera passé à false si un pixel ne marche pas
+        x=ListQx.front();                     //
         y=ListQy.front();
         ListQx.pop();
         ListQy.pop();
