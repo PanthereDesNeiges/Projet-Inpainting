@@ -277,7 +277,7 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-    int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
+    int tailleTampon=3;                                //valeur caractérisant la taille du tampon (modifiable)
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
@@ -316,7 +316,6 @@ void PseudoMain(int argc,char* argv[]){
         }
     }
     endGraphics();
-
 }
 
 int main(int argc, char* argv[]) {
