@@ -228,6 +228,17 @@ void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tai
     }
 }
 //
+int minBord(int a, int b, int c, int d){    //Renvoie le minimum de 4 entier (utilisé pour le cas où le tampon est inférieur au bord
+    int min = a;
+    if (min>b)
+        min=b;
+    if (min>c)
+        min=c;
+    if (min>d)
+        min=d;
+    return min;
+
+}
 void PseudoMain(int argc,char* argv[]){
 
     //ETAPE 1 : Initialisation des variables, de l'image et de la frontière
@@ -279,7 +290,12 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
+<<<<<<< HEAD
+    int tailleTampon=3;                                //valeur caractérisant la taille du tampon (modifiable)
+=======
     int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
+    int savetailleTampon=tailleTampon;                 // Sera utilisé pour retrouver la valeur initiale du tampon
+>>>>>>> 502add78e2924e92a18e0715098ae182a401df4c
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
@@ -315,11 +331,22 @@ void PseudoMain(int argc,char* argv[]){
             f.changeData(I1);
         }
         else {
-            //Je remplis ça plus tard :) mais l'idée est la même qu'au dessus, avec un tampon de taille adapté
+            tailleTampon=minBord(Pmax.getX(), Pmax.getY(), abs(I1.width()-1-Pmax.getX()), abs(I1.height()-1-Pmax.getY()));  //Le tampon prend comme taille la distance la plus courte jusqu'au bord (pour pouvoir appliquer matching sans problème)
+
+            matching2(Qx,Qy,I1,Pmax.getX(),Pmax.getY(),tailleTampon); //Recherche du meilleur pixel source (Qx,Qy) dans l'image
+            compute_and_changeConfidence(I1,Pmax,tailleTampon);                 //Copie le terme C de Pmax dans les pixels qui seront re
+            copyTampon(Pmax.getX(), Pmax.getY(), Qx, Qy, I1, tailleTampon); //Copie les couleurs de la zone source à la zone copiée (lorsque leur v=0) ET passe leur v à 1 (visité)
+            affiche(I1,zoom);                                         //Affiche l'image modifié (nb : les pixels des zones "vides" ont été changé en blanc lors de leur sélection)
+            std::vector<pixel> v1=frontiere_tampon(I1,Pmax.getX(),Pmax.getY(),tailleTampon);        //Une "nouvelle frontière" est crée, celle entourant la zone nouvellement copiée (ce n'est en réalité qu'une liste de pixel potentiel à la frontière
+            f.pop_frontiere(v1);                                      //Suppression des éléments à l'intérieur du tampon
+            f.add_frontiere(v1,I1);                                   //Ajout de la nouvelle frontière
+            f.changeData(I1);
+
+            tailleTampon=savetailleTampon;  //On redonne la valeur initiale au tampon
+
         }
     }
     endGraphics();
-
 }
 
 int main(int argc, char* argv[]) {
