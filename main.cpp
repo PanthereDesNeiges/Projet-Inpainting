@@ -39,56 +39,10 @@ std::vector<pixel> expand(std::vector<pixel> v){
     return v1;
 }
 
-int testPhilo(int argc, char* argv[]){
-    /*
-    // CHARGER ET AFFICHER L'IMAGE
-    Image<byte> I;
-    const char* fic1 = srcPath("zebra.png");
-    if(! load(I, fic1)) {
-        std::cout << "Probleme dans le chargement d'images" << std::endl;
-        return 1;
-    }
-    openWindow(I.width(),I.height());
-    display(I);
-
-    // SELECTIONNER LES POINTS DU CONTOUR DANS UN VECTEUR
-
-    std::cout<<"Cliquez pour selectionner les points de la frontiere, clic droit pour finir (3 points au moins)\n";
-    std::vector<pixel> v;
-    int x,y,m;
-    getMouse(x,y);
-    for (int i=0; i<2;i++){
-        v.push_back(pixel(x,y));
-        m=getMouse(x, y);
-        drawLine(x,y,v.back().getX(),v.back().getY(),RED);
-    }
-    while (m==1) {
-        v.push_back(pixel(x,y));
-        m=getMouse(x, y);
-        if(m==1)
-            drawLine(x,y,v.back().getX(),v.back().getY(),RED);
-    }
-    drawLine(v.front().getX(),v.front().getY(),v.back().getX(),v.back().getY(),RED);
-
-    // RELIER LES POINTS
-    std::vector<pixel> v1 = expand(v);
-
-*/
-    Imagine::Image<pixel>I;
-    getImage(I,srcPath("apple.png"), argc, argv);
-    std::vector<pixel> v;
-    affiche(I,1);
-    initialize_frontiere(I,v);
-
-    endGraphics();
-    return 0 ;
-}
-
-
 /*
 void test_frontiere(int argc, char* argv[],frontiere f){
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("baby.png"),argc,argv);
+    getImage(I1,srcPath("pictures/baby.png"),argc,argv);
     affiche(I1,1);
     std::vector<pixel> v;
     initialize_frontiere(I1,v);
@@ -175,7 +129,7 @@ void test_frontiere(int argc, char* argv[],frontiere f){
 void testMatching1(int argc, char* argv[]){
     initRandom();
     Imagine::Image<pixel> I1(100,200);  //Image I1
-    getImage(I1,srcPath("apple.png"),argc,argv);
+    getImage(I1,srcPath("pictures/apple.png"),argc,argv);
     affiche(I1,1);
     click();
     pixel testpixel(rand()%(I1.width()-40)+20,I1.height()/2);
@@ -248,8 +202,7 @@ int max(int x, int y){
 }
 
 //FONCTION A DEFINIR (explication quant à leur objectif en commentaire de pseudoMain()
-bool selectZone(Window win1,int& x1,int& y1,int& x2,int& y2){
-    setActiveWindow(win1);
+bool selectZone(int& x1,int& y1,int& x2,int& y2){
     return(getMouse(x1, y1)==1 && getMouse(x2,y2)==1);
     /* demande deux clics gauches, remplit x1, y1, x2 et y2 avec les coordonnées des clics et retourne True
      * En cas de clic droit, retourne False
@@ -271,8 +224,10 @@ void copyTampon(int Px, int Py, int Qx, int Qy, Imagine::Image<pixel> I, int tai
     if (Py<Qy) ly = 1; else ly = -1;    // la copie soit quand même bien faite
     for(int i=-tailleTampon; i<=tailleTampon; i++){
         for(int j=-tailleTampon; j<=tailleTampon; j++){
-            I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
-            I(Px+i*lx,Py+j*ly).setV(true);
+            if (not I(Px+i*lx,Py+j*ly).getV()){
+                I(Px+i*lx,Py+j*ly).setColor(I(Qx+i*lx,Qy+j*ly).getColor());
+                I(Px+i*lx,Py+j*ly).setV(true);
+            }
         }
     }
 }
@@ -283,11 +238,12 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
-    Window win1=affiche(I1,zoom);                       //Affichage de l'image dans une nouvelle fenêtre win1
+    getImage(I1,srcPath("pictures/landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    openWindow(I1.width()*zoom, I1.height()*zoom);;
+    affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
-    //(A ECRIRE : bool selectZone(win1,x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
-    while (!selectZone(win1,x1,y1,x2,y2)){              //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
+    //(A ECRIRE : bool selectZone(x1,y1,x2,y2) )   //Fonction demandant à l'utilisateur de clique-gauche 2 fois et renvoyant dans
+    while (!selectZone(x1,y1,x2,y2)){              //x1, y1, x2 et y2 les coordonnées des clicks correspondant et True via le return
     }                                                   //Renvoie false si un click droit est pressé
                                                         //NB : le code ci-dessus force l'utilisateur à sélectionner au moins une zone
     std::vector<pixel> v(0);                            //Vecteur qui contiendra les pixels des zones selectionnés par l'utilisateur
@@ -306,7 +262,7 @@ void PseudoMain(int argc,char* argv[]){
     noRefreshEnd();                                     //Met à jour l'affichage
     frontiere f;                                        //Frontière de l'image "pleine" avec les parties vides
     f.initialize_frontiere(v);                          //Initialisation de f
-    while(selectZone(win1,x1,y1,x2,y2)){
+    while(selectZone(x1,y1,x2,y2)){
         v.clear();                                      //Vide le vecteur
 
         initialize_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
