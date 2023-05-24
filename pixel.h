@@ -10,8 +10,7 @@ public:
     Color col;      // Color
 private:
     double c,d;     // Confidence and Data term
-    bool v;         // 0 if not filled yet, 1 else
-    int nx,ny;      // vecteur normal unitaire (quand dans la frontiere)
+    bool v;         // false if not filled yet, true else
 
 public:
     pixel();
@@ -41,7 +40,3 @@ public:
 };
 
 double norme(pixel p);
-pixel normal_unitaire(int x1,int y1, int x2, int y2);
-void normal_unitaire(pixel a, pixel b); // Ne retourne rien => faire plutôt normal_unitaire(int &nx, int &ny, pixel a, pixel b)
-                                        // De plus à cause de la division entière le vecteur ne sera pas vraiment unitaire
-
