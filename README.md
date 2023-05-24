@@ -36,6 +36,10 @@ Wandrille :
 Philomène :
 - 
 
+# TODO
+! Le main marche pas bien et oublie parfois des bouts de zone
+! Débuger suivi frontières de couleur (ordre de parcours)
+
 
 ### Mercredi  12H envoyer monasse
 

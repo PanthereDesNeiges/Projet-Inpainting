@@ -3,7 +3,7 @@
 using namespace std;
 
 bool visited_voisins(pixel p,Imagine::Image<pixel> I){
-    //retourne true si un des voisins est rempli, false sinon
+    //retourne true si un des voisins de p est rempli, false sinon
     int w=I.width();
     int h=I.height();
     int x=p.getX();
@@ -82,6 +82,8 @@ bool visited_voisins(pixel p,Imagine::Image<pixel> I){
 }
 
 void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
+//v contient les elements de la frontiere du tampon
+// ajoute les elements de la frontiere du tampon qui définissent la nouvelle zone target dans la frontiere
     std::list<pixel>::iterator it;
     int n=v.size();
     int k=0;
@@ -123,6 +125,8 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
 }
 
 void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pixel> I){
+// v contient les elements de la frontiere du carré dessiné par l'utilisateur
+// ajoute lors de l'initialisation les elements de cette frontiere qui définissent la nouvelle zone target
     std::list<pixel>::iterator it;
     int n=v.size();
     int k=0;
@@ -164,6 +168,8 @@ void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pix
 }
 
 void frontiere::initialize_frontiere(std::vector<pixel> v){
+// v contient les elements de la frontiere du premier carre detoure par l'utilisateur
+// cette fonction ajoute tous les elements de v a la frontiere
     int s=v.size();
     std::list<pixel>::iterator it;
     it=f.begin();
@@ -173,6 +179,7 @@ void frontiere::initialize_frontiere(std::vector<pixel> v){
 }
 
 void frontiere::pop_frontiere(std::vector<pixel> v){
+// cette fonction retire de la frontiere tous les elements contenus dans le vecteur v
     std::list<pixel>::iterator it;
     int s=v.size()-1;
     int x1 = v[0].getX();
@@ -190,6 +197,7 @@ void frontiere::pop_frontiere(std::vector<pixel> v){
 }
 
 pixel frontiere::max_priority(){
+// cette fonction parcourt la frontiere et retourne le pixel qui a la priorite maximale
     std::list<pixel>::iterator it;
     pixel max=*f.begin();
     for (it=f.begin();it!=f.end();++it){
@@ -201,6 +209,8 @@ pixel frontiere::max_priority(){
 }
 
 void gradient_and_normal_frontiere(double gradient[2],double normal[2],Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
+// cette fonction calcule le gradients et le vecteur normal unitaire au pixel p (appartenant a la frontiere)
+// on fixe le gradient et le vecteur normal unitaire a zero pour les pixels trop proche des bords de l'image et pour les pixels situes aux angles droits de la frontiere
     int w = I1.width();
     int h = I1.height();
     int x = a.getX();
@@ -259,6 +269,7 @@ void gradient_and_normal_frontiere(double gradient[2],double normal[2],Imagine::
 }
 
 double Data(double gradient[2],double normal[2]){
+// calcule le terme data a partir d'un gradient et d'un vecteur normal unitaire
     double D=0;
     D+=gradient[0]*normal[0];
     D+=gradient[1]*normal[1];
@@ -270,6 +281,7 @@ double Data(double gradient[2],double normal[2]){
 }
 
 void frontiere::changeData(Imagine::Image<pixel> I){
+// parcourt tous les elements de la frontiere, calcule et change le terme data de ceux-ci
     int w=I.width();
     int h=I.height();
     Imagine::Image<byte> I2(w,h);
@@ -286,6 +298,7 @@ void frontiere::changeData(Imagine::Image<pixel> I){
 }
 
 std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n){
+// retourne un vecteur dans lequel est contenu tous les elements de la frontiere d'un tampon
     std::vector<pixel> v;
     v.clear();
     for (int i=0;i<2*n+1;i++){
