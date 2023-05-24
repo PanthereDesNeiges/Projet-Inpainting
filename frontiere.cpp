@@ -208,6 +208,12 @@ pixel frontiere::max_priority(){
     return (max);
 }
 
+pixel frontiere::ordre(){
+    std::list<pixel>::iterator it;
+    pixel premier=*f.begin();
+    return (premier);
+}
+
 void gradient_and_normal_frontiere(double gradient[2],double normal[2],Imagine::Image<pixel> I1, pixel a, Imagine::Image<byte> I2){
 // cette fonction calcule le gradients et le vecteur normal unitaire au pixel p (appartenant a la frontiere)
 // on fixe le gradient et le vecteur normal unitaire a zero pour les pixels trop proche des bords de l'image et pour les pixels situes aux angles droits de la frontiere

@@ -245,7 +245,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("pictures/landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("pictures/zebra.png"),argc,argv);    //Lecture de l'image "landscape.png"
     openWindow(I1.width()*zoom, I1.height()*zoom);;
     affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
@@ -290,10 +290,8 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-
-    int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
+    int tailleTampon=15;                                //valeur caractérisant la taille du tampon (modifiable)
     int savetailleTampon=tailleTampon;                 // Sera utilisé pour retrouver la valeur initiale du tampon
-
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
@@ -310,6 +308,7 @@ void PseudoMain(int argc,char* argv[]){
 
         //A partir de là, la confiance et la data de chacun des termes de la frontière a été défini
         pixel Pmax=f.max_priority();                        //P est le pixel de priorité maximale dans la frontière
+        //pixel Pmax = f.ordre();
         int Qx=-1, Qy=-1;                                   //(Qx, Qy) sera le pixel source de notre algorithme
         if ((tailleTampon<=Pmax.getX()) && (Pmax.getX()<(I1.width()-1)-tailleTampon) && (tailleTampon<=Pmax.getY()) && (Pmax.getY()<(I1.height()-1)-tailleTampon) ){
             //EXPLICATION DE LA CONDITION CI-DESSUS : Le tampon, qui sera la zone qui sera recopiée autour de Pmax, doit nécessairement être

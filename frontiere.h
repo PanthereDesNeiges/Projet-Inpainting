@@ -10,6 +10,7 @@ public:
     void pop_frontiere();
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le tampon
     pixel max_priority();
+    pixel ordre();
     void changeData(Imagine::Image<pixel> I);   //prend en argument l'image
     std::list<pixel>::iterator begin();
     std::list<pixel>::iterator end();
