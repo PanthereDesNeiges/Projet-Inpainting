@@ -245,7 +245,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("pictures/landscape.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("pictures/baby.png"),argc,argv);    //Lecture de l'image "landscape.png"
     openWindow(I1.width()*zoom, I1.height()*zoom);;
     affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
@@ -290,12 +290,8 @@ void PseudoMain(int argc,char* argv[]){
 
     //L'image et la frontière sont à ce moment initialisé
 
-<<<<<<< HEAD
-    int tailleTampon=3;                                //valeur caractérisant la taille du tampon (modifiable)
-=======
     int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
     int savetailleTampon=tailleTampon;                 // Sera utilisé pour retrouver la valeur initiale du tampon
->>>>>>> 502add78e2924e92a18e0715098ae182a401df4c
 
     //ETAPE 2 : Boucle de remplissage de l'image
 
