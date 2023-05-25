@@ -81,6 +81,7 @@ bool visited_voisins(pixel p,Imagine::Image<pixel> I){
     return (true);
 }
 
+/*
 void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
 //v contient les elements de la frontiere du tampon
 // ajoute les elements de la frontiere du tampon qui définissent la nouvelle zone target dans la frontiere
@@ -123,47 +124,22 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
         }
     }
 }
+*/
+void frontiere::add_frontiere(std::vector<pixel> v, Imagine::Image<pixel> I){
+    std::list<pixel>::iterator it=f.end();
+    for(int i=0; i<v.size(); i++){
+        if (!visited_voisins(v[i],I)){
+            it=f.insert(it,v[i]);
+        }
+    }
+}
 
 void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pixel> I){
 // v contient les elements de la frontiere du carré dessiné par l'utilisateur
 // ajoute lors de l'initialisation les elements de cette frontiere qui définissent la nouvelle zone target
-    std::list<pixel>::iterator it;
-    int n=v.size();
-    int k=0;
-    int c=0;
-    // on parcourt l'ensemble des elements de la frontiere
-    for (it=f.begin();it!=f.end();++it){
-        if (it==f.begin()){
-        }
-        // on passe le premier element
-        else {
-            for (int i=0;i<n;i++){
-                // on parcourt la liste v qu'on veut ajouter
-                if ((*it)==v[i] && c==0){
-                    c=1;
-                    //lorsque l'on trouve le point commun entre la frontiere et la frontiere du tampon, on ajoute à cet endroit tous les elements de v
-                    if (visited_voisins(v[(i+1)%n],I)){
-                        for(int j=1;j<n;j++){
-                            k=(i+j)%n;
-                            if (visited_voisins(v[k],I)){
-                                it=f.insert(it,v[k]);
-                            }
-                        }
-                    }
-                    else {
-                        for(int j=1;j<n;j++){
-                            k=int(i-j) % n;
-                            if (k<0){
-                                k=n+k;
-                            }
-                            if (visited_voisins(v[k],I)){
-                                it=f.insert(it,v[k]);
-                            }
-                        }
-                    }
-                }
-            }
-        }
+    std::list<pixel>::iterator it=f.end();
+    for(int i=0; i<v.size(); i++){
+        it=f.insert(it,v[i]);
     }
 }
 
@@ -177,6 +153,7 @@ void frontiere::initialize_frontiere(std::vector<pixel> v){
         it=f.insert(it,v[i]);
     }
 }
+
 
 void frontiere::pop_frontiere(std::vector<pixel> v){
 // cette fonction retire de la frontiere tous les elements contenus dans le vecteur v
@@ -195,7 +172,21 @@ void frontiere::pop_frontiere(std::vector<pixel> v){
         }
     }
 }
-
+/*
+void frontiere::pop_frontiere(std::vector<pixel> v){
+    // cette fonction retire de la frontiere tous les elements contenus dans le vecteur v
+    for (int i=0; i<(int)v.size(); i++){
+        for (std::list<pixel>::iterator it=f.begin();it!=f.end();){
+            if((*it).getX()==v[i].getX()&&(*it).getY()==v[i].getY()){
+                it=f.erase(it);
+            }
+            else{
+                it++;
+            }
+        }
+    }
+}
+*/
 pixel frontiere::max_priority(){
 // cette fonction parcourt la frontiere et retourne le pixel qui a la priorite maximale
     std::list<pixel>::iterator it;
@@ -327,6 +318,11 @@ bool frontiere::isVoid(){
     return f.size()==0;
 }
 
+void frontiere::affiche(){
+    for(std::list<pixel>::iterator it=f.begin(); it!=f.end(); it++){
+        drawPoint((*it).getX(),(*it).getY(),BLACK);
+    }
+}
 
 void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel>& v){
     int x1;
@@ -369,5 +365,25 @@ void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1
     }
     for (int i=1;i<abs(y1-y2);i++){
         v.push_back(I1(min(x1,x2),max(y1,y2)-i));
+    }
+}
+
+
+void add_frontiere_cond(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1, int y1, int x2, int y2){
+    for (int i=0;i<=abs(x1-x2);i++){
+        if (I1(min(x1,x2)+i,y1).getV())
+        v.push_back(I1(min(x1,x2)+i,y1));
+    }
+    for (int i=0;i<=abs(x1-x2);i++){
+        if(I1(min(x1,x2)+i,y2).getV())
+        v.push_back(I1(min(x1,x2)+i,y2));
+    }
+    for (int i=1;i<abs(y1-y2);i++){
+        if(I1(x1,min(y1,y2)+i).getV())
+        v.push_back(I1(x1,min(y1,y2)+i));
+    }
+    for (int i=1;i<abs(y1-y2);i++){
+        if(I1(x2,min(y1,y2)+i).getV())
+        v.push_back(I1(x2,min(y1,y2)+i));
     }
 }

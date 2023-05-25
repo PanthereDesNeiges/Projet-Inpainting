@@ -262,7 +262,7 @@ void PseudoMain(int argc,char* argv[]){
         for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
             drawPoint(i,j,WHITE);                       //Dessine le pixel en blanc sur l'affichage
             I1(i,j).setColor(WHITE);                    //Remplace la couleur du pixel par blanc
-            I1(i,j).setV(0);                            //Met le pixel sur "non visité"
+            I1(i,j).setV(false);                            //Met le pixel sur "non visité"
             I1(i,j).setConfidence(0);                   //Met la confiance du pixel à 0
         }
     }
@@ -271,14 +271,13 @@ void PseudoMain(int argc,char* argv[]){
     f.initialize_frontiere(v);                          //Initialisation de f
     while(selectZone(x1,y1,x2,y2)){
         v.clear();                                      //Vide le vecteur
-
-        initialize_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
+        add_frontiere_cond(I1,v,x1,y1,x2,y2);         //Code précédent
         noRefreshBegin();
         for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
             for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
                 drawPoint(i,j,WHITE);
                 I1(i,j).setColor(WHITE);
-                I1(i,j).setV(0);
+                I1(i,j).setV(false);
             }
         }
         noRefreshEnd();                                     //Met à jour l'affichage
@@ -288,7 +287,7 @@ void PseudoMain(int argc,char* argv[]){
 
     f.changeData(I1);
 
-    //L'image et la frontière sont à ce moment initialisé
+    //L'image et la frontière sont à ce moment initialisés
 
     int tailleTampon=8;                                //valeur caractérisant la taille du tampon (modifiable)
     int savetailleTampon=tailleTampon;                 // Sera utilisé pour retrouver la valeur initiale du tampon
@@ -298,6 +297,8 @@ void PseudoMain(int argc,char* argv[]){
     //La condition de fin est : 1- la frontière est vide ; 2- la frontière est réduite au bord de l'image
     //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapter le tampon
     while(!endCondition(f,I1)) {                            //Fonction à définir selon les conditions plus haut
+        f.affiche();
+        click();
 
         //PARTIE CALCUL DE LA DATA (de la frontière) (Wandrille je te laisse faire)
 
