@@ -11,6 +11,7 @@ public:
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le tampon
     void pop_frontiere(int Px, int Py, int tailleTampon);
     void pop_frontiere(Imagine::Image<pixel> I1);
+    void clear_sides(Imagine::Image<pixel> I);
     pixel max_priority();
     pixel ordre();
     void changeData(Imagine::Image<pixel> I);   //prend en argument l'image

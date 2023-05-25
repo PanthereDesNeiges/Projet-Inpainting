@@ -135,6 +135,7 @@ void frontiere::add_frontiere(std::vector<pixel> v, Imagine::Image<pixel> I){
     }
 }
 
+/*
 void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pixel> I){
 // v contient les elements de la frontiere du carré dessiné par l'utilisateur
 // ajoute lors de l'initialisation les elements de cette frontiere qui définissent la nouvelle zone target
@@ -175,6 +176,14 @@ void frontiere::add_frontiere_initialise(std::vector<pixel> v,Imagine::Image<pix
                 }
             }
         }
+    }
+}
+*/
+
+void frontiere::add_frontiere_initialise(std::vector<pixel> v, Imagine::Image<pixel> I){
+    std::list<pixel>::iterator it=f.end();
+    for(int i=0; i<v.size(); i++){
+        it=f.insert(it,v[i]);
     }
 }
 
@@ -409,6 +418,18 @@ void frontiere::pop_frontiere(int Px, int Py, int tailleTampon){
         }
     }
 }
+
+void frontiere::clear_sides(Imagine::Image<pixel> I){
+    for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
+        if((*it).getX()==I.width() || (*it).getX()==0 ||(*it).getY()==I.height()||(*it).getY()==0){
+            it=f.erase(it);
+        }
+        else{
+            ++it;
+        }
+    }
+}
+
 
 void frontiere::affiche(){
     for(std::list<pixel>::iterator it=f.begin(); it!=f.end(); it++){

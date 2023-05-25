@@ -245,7 +245,7 @@ void PseudoMain(int argc,char* argv[]){
 
     int zoom=1;                                         //Variable zoom qui permettra d'agrandir l'image (on adaptera les fonctions si on a le temps à la fin)
     Imagine::Image<pixel> I1(100,200);                  //Déclaration de l'image 1
-    getImage(I1,srcPath("pictures/zebra.png"),argc,argv);    //Lecture de l'image "landscape.png"
+    getImage(I1,srcPath("pictures/dog.png"),argc,argv);    //Lecture de l'image "landscape.png"
     openWindow(I1.width()*zoom, I1.height()*zoom);;
     affiche(I1,zoom);                                   //Affichage de l'image
     int x1=0,x2=0,y1=0,y2=0;
@@ -286,6 +286,7 @@ void PseudoMain(int argc,char* argv[]){
         f.add_frontiere_initialise(v,I1);                   //Adapte f au nouveau contour
     }
 
+    f.pop_frontiere(I1);
     f.changeData(I1);
 
     //L'image et la frontière sont à ce moment initialisé
@@ -299,6 +300,7 @@ void PseudoMain(int argc,char* argv[]){
     //De plus, si le tampon "dépasse" l'image, la fonction matching2 ne marchera pas (out of index), il faudra donc adapter le tampon
     std::vector<pixel> v1;
     while(!endCondition(f,I1)) {                            //Fonction à définir selon les conditions plus haut
+        f.clear_sides(I1);
         f.affiche();
         //PARTIE CALCUL DE LA DATA (de la frontière) (Wandrille je te laisse faire)
 
