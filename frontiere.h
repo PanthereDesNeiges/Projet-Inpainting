@@ -15,6 +15,7 @@ public:
     std::list<pixel>::iterator end();
     bool isVoid();
     void clear_frontiere_not_vis(Imagine::Image<pixel> I1);
+    void clear_frontiere_between(int Px, int Py, int tailleTampon);
     void affiche();
 };
 

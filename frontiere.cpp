@@ -128,7 +128,7 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
 void frontiere::add_frontiere(std::vector<pixel> v, Imagine::Image<pixel> I){
     std::list<pixel>::iterator it=f.end();
     for(int i=0; i<v.size(); i++){
-        if (!visited_voisins(v[i],I)){
+        if (!I(v[i].getX(),v[i].getY()).getV()){
             it=f.insert(it,v[i]);
         }
     }
@@ -292,17 +292,17 @@ std::vector<pixel> frontiere_tampon(Imagine::Image<pixel> I1,int x, int y, int n
 // retourne un vecteur dans lequel est contenu tous les elements de la frontiere d'un tampon
     std::vector<pixel> v;
     v.clear();
-    for (int i=0;i<2*n+1;i++){
-        v.push_back(I1(x-n,y-n+i));
+    for (int i=-n;i<=n;i++){
+        v.push_back(I1(x-n,y+i));
     }
-    for (int i=1;i<2*n+1;i++){
-        v.push_back(I1(x+n,y+n-i));
+    for (int i=-n;i<=n;i++){
+        v.push_back(I1(x+n,y+i));
     }
-    for (int i=1;i<2*n;i++){
-        v.push_back(I1(x+n-i,y-n));
+    for (int i=-n+1;i<=n-1;i++){
+        v.push_back(I1(x+i,y-n));
     }
-    for (int i=1;i<2*n+1;i++){
-        v.push_back(I1(x-n+i,y+n));
+    for (int i=-n+1;i<=n-1;i++){
+        v.push_back(I1(x+i,y+n));
     }
     return (v);
 }
@@ -387,6 +387,17 @@ void add_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1, int y
 void frontiere::clear_frontiere_not_vis(Imagine::Image<pixel> I1){
     for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
         if(!I1((*it).getX(),(*it).getY()).getV()){
+            it=f.erase(it);
+        }
+        else{
+            ++it;
+        }
+    }
+}
+
+void frontiere::clear_frontiere_between(int Px, int Py, int tailleTampon){
+    for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
+        if((*it).getX()>Px-tailleTampon&&(*it).getX()<Px+tailleTampon&&(*it).getY()>Py-tailleTampon&&(*it).getY()<Py+tailleTampon){
             it=f.erase(it);
         }
         else{
