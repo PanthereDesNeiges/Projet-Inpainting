@@ -81,6 +81,7 @@ bool visited_voisins(pixel p,Imagine::Image<pixel> I){
     return (true);
 }
 
+/*
 void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
 //v contient les elements de la frontiere du tampon
 // ajoute les elements de la frontiere du tampon qui définissent la nouvelle zone target dans la frontiere
@@ -120,6 +121,16 @@ void frontiere::add_frontiere(std::vector<pixel> v,Imagine::Image<pixel> I){
                     }
                 }
             }
+        }
+    }
+}
+*/
+
+void frontiere::add_frontiere(std::vector<pixel> v, Imagine::Image<pixel> I){
+    std::list<pixel>::iterator it=f.end();
+    for(int i=0; i<v.size(); i++){
+        if (!I(v[i].getX(),v[i].getY()).getV()){
+            it=f.insert(it,v[i]);
         }
     }
 }
@@ -375,5 +386,32 @@ void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1
     }
     for (int i=1;i<abs(y1-y2);i++){
         v.push_back(I1(min(x1,x2),max(y1,y2)-i));
+    }
+}
+void frontiere::pop_frontiere(Imagine::Image<pixel> I1){
+    for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
+        if(!I1((*it).getX(),(*it).getY()).getV()){
+            it=f.erase(it);
+        }
+        else{
+            ++it;
+        }
+    }
+}
+
+void frontiere::pop_frontiere(int Px, int Py, int tailleTampon){
+    for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
+        if((*it).getX()>Px-tailleTampon&&(*it).getX()<Px+tailleTampon&&(*it).getY()>Py-tailleTampon&&(*it).getY()<Py+tailleTampon){
+            it=f.erase(it);
+        }
+        else{
+            ++it;
+        }
+    }
+}
+
+void frontiere::affiche(){
+    for(std::list<pixel>::iterator it=f.begin(); it!=f.end(); it++){
+        drawPoint((*it).getX(),(*it).getY(),BLACK);
     }
 }

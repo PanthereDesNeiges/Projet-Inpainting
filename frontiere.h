@@ -9,12 +9,15 @@ public:
     void initialize_frontiere(std::vector<pixel> v);   // prend en argument la liste de points à partir de laquelle on fait la frontière
     void pop_frontiere();
     void pop_frontiere(std::vector<pixel> v);   //prend en argument le tampon
+    void pop_frontiere(int Px, int Py, int tailleTampon);
+    void pop_frontiere(Imagine::Image<pixel> I1);
     pixel max_priority();
     pixel ordre();
     void changeData(Imagine::Image<pixel> I);   //prend en argument l'image
     std::list<pixel>::iterator begin();
     std::list<pixel>::iterator end();
     bool isVoid();
+    void affiche();
 };
 
 //double compute_confidence(image I, int n, int x, int y)

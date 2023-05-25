@@ -1,0 +1,1201 @@
+[33mcommit 107c05250711f0b93d70b110ad3b55f37da8013b[m[33m ([m[1;36mHEAD -> [m[1;32mtemp[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: 1587e7e 1f5fb60
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Wed May 24 19:04:03 2023 +0200
+
+    Merge remote-tracking branch 'origin/main'
+    
+    # Conflicts:
+    #       main.cpp
+
+[33mcommit 1587e7ed2147dcea63d77f469f75db056fe06878[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Wed May 24 19:01:40 2023 +0200
+
+    ajout de basic.png
+
+[33mcommit 1f5fb6062537162bd7dbe3c86e2fb6d2ecf156c8[m
+Merge: f1f9ddb 5fae2ae
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Wed May 24 17:59:37 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit f1f9ddba1e524e55ee998cddfa1e5aa63cb1e6be[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Wed May 24 17:56:26 2023 +0200
+
+    Suppression nx et ny
+
+[33mcommit 093154a8aff694f45e12a7cdb7505a99fa5753b9[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Wed May 24 17:50:18 2023 +0200
+
+    ajout d'une distance avec la norme2, ajout d'une autre manière de parcourir la zone cible
+
+[33mcommit 5fae2ae1dcdffec44106b32bdb284f71195a6f88[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 22 21:35:24 2023 +0200
+
+    resolution de conflit
+
+[33mcommit 76597c92feb4ebe48d7f02417681ba00253388fe[m
+Merge: ec2d0d5 1d5dd93
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 22 21:29:18 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit ec2d0d58a904d15d3156f0c80efe1c21618125fd[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 22 21:29:10 2023 +0200
+
+    commentaire de la frontiere
+
+[33mcommit 1d5dd931f9385bc9d03a32a17f60829e5df4e076[m
+Merge: 5e8e5a5 0355ec7
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 17:08:23 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+    
+    # Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+    # nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+    #
+    # Les lignes commençant par '#' seront ignorées, et un message vide
+    # abandonne la validation.
+
+[33mcommit 5e8e5a5d3136d9268d28709c7ae879230aa2711c[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 17:07:15 2023 +0200
+
+    modify README.md
+
+[33mcommit 0355ec7c7765703e3387bc61ad75fa7a2f45f19b[m
+Merge: d15e5ec 502add7
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 16:26:46 2023 +0200
+
+    màj
+
+[33mcommit 502add78e2924e92a18e0715098ae182a401df4c[m
+Merge: 8b2b52e 46a6aae
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 16:22:22 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+    
+    # Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+    # nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+    #
+    # Les lignes commençant par '#' seront ignorées, et un message vide
+    # abandonne la validation.
+
+[33mcommit 8b2b52e678dfc92da4e5ce44cb8ea6ac608fd8d5[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 16:21:56 2023 +0200
+
+    modify README.md
+
+[33mcommit 46a6aae5ec8ef03d585375cc5f33e7bef15828fe[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 16:19:39 2023 +0200
+
+    cas où la taille du tampon est inférieur à la distance au bord de Pmax
+
+[33mcommit d15e5ec9fb4cdcbf5ee93287c22867f2adf09900[m
+Merge: 34aee73 db57e2d
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 16:17:14 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 34aee733308b81159b93c909028cbbf83dbb45ec[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 16:17:06 2023 +0200
+
+    minor changes
+
+[33mcommit bac83e92565fc3e1b7d6e1f378290a18fba39dec[m
+Merge: 5460c04 db57e2d
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 16:01:57 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 5460c04a340900d25b3360470b2031636977be5b[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 16:00:39 2023 +0200
+
+    Ajout de commentaire
+
+[33mcommit db57e2d5d1d62c618097abc480bfaec172a2604d[m
+Merge: d7f6194 38ff2eb
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 22 15:59:45 2023 +0200
+
+    version finale !
+
+[33mcommit 1d662fccea6f6c49f1de60fcb14a94c59f26d2d9[m
+Merge: 12e68bf 38ff2eb
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 15:34:05 2023 +0200
+
+    merge ?
+    
+    # Veuillez entrer un message de validation pour expliquer en quoi cette fusion est
+    # nécessaire, surtout si cela fusionne une branche amont mise à jour dans une branche de sujet.
+    #
+    # Les lignes commençant par '#' seront ignorées, et un message vide
+    # abandonne la validation.
+
+[33mcommit 12e68bf7814114649e5116c91ed4b76e121de9c2[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 15:32:31 2023 +0200
+
+    modify README.md
+
+[33mcommit d7f61942a2bef2df2b173516a42e0fc80866c350[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 22 15:27:55 2023 +0200
+
+    data et confiance
+
+[33mcommit 38ff2eb36cc0358845d2afa6854c6bda737e7f28[m
+Merge: 69fc0c6 3a55ed8
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 15:27:13 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 69fc0c66c71aea9176259174f7860e0c58ad719d[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 15:26:35 2023 +0200
+
+    documentation
+
+[33mcommit 3a55ed842159f6984a620d12d339758a78c74923[m
+Merge: 5c826b2 d92a2f6
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 15:21:38 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 5c826b2b5dc9df24552bb06ffbc52d6dd9fb1994[m
+Merge: 9e81127 d282ceb
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 15:21:06 2023 +0200
+
+    Ajout de la fonction ToImageByte
+
+[33mcommit d92a2f6097074fe1b71a38e53b14ee057b051604[m
+Merge: c8a1cf6 9465453
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 15:00:48 2023 +0200
+
+    màj copyTampon + merge conflit
+
+[33mcommit c8a1cf6ed7a4f3b9998256c4840099f46285a3d4[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 14:59:16 2023 +0200
+
+    màj copyTampon
+
+[33mcommit 94654535eae55b012dd8fd3daaa9012390b2051d[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon May 22 14:49:54 2023 +0200
+
+    create a folder pictures
+
+[33mcommit 207af1e4b3d8526867b7c894f543cbf9ea0e48fc[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 14:34:22 2023 +0200
+
+    suppression des pixel.h excédentaires
+
+[33mcommit 810b9243639ed9259ec6c9ea953d1427e002bf75[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 22 14:32:33 2023 +0200
+
+    Version définitive 1 - Reste à coder l'ordre du choix dans la frontière
+
+[33mcommit 9e811272cbff862daae01b703388d320d1a82877[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 22 14:09:07 2023 +0200
+
+    add de tous les docs
+
+[33mcommit d282ceb4d2695d49f881eabe6f8a4053dfef4faf[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Sun May 21 22:55:48 2023 +0200
+
+    fonctions auxiliaires oK - minor bugs fixed - mais ne tourne pas encore correctement (je pense qu'on n'a jamais été aussi proches de la fin quand même)
+
+[33mcommit 74aef88fb85661874424ae025d226d9f31450a75[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Sun May 21 20:17:55 2023 +0200
+
+    fonction selectZone oK - ETAPE 1 oK
+
+[33mcommit 1cda1180cafbf9c1288ca2d552b0836d2ee468c8[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Wed May 17 22:38:20 2023 +0200
+
+    Finalisation du cas général de PseudoMain (hors partie Update Data et
+    Confidence)
+
+[33mcommit 0b11d74fe8a06415f8f117e1b84d9c7ae52816a6[m
+Merge: fe4c6f7 f1249e0
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Wed May 17 16:18:03 2023 +0200
+
+    Resolution de conflit avec la branche de Wandrille
+
+[33mcommit fe4c6f76114aea9dd630c8f3ec96ce9ed13ca0b7[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Wed May 17 16:12:17 2023 +0200
+
+    Avancée sur le main, commit pour merge avec Wandrille
+
+[33mcommit 1a4d7ea9c8a2cdcd0512af19d3eb6bc4b3cee152[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Tue May 16 21:10:20 2023 +0200
+
+    Première étape du PseudoMain faite
+
+[33mcommit f1249e0c5224b062eae03921bde85140aef5e431[m
+Merge: 5bb56f8 c8d696a
+Author: flamschou <flams3630@gmail.com>
+Date:   Tue May 16 20:13:17 2023 +0200
+
+    resolution du merge
+
+[33mcommit 5bb56f83303b2ef001fb22e354f2eb6713a13ba4[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Tue May 16 20:11:55 2023 +0200
+
+    mon main mais il faut l'ignorer
+
+[33mcommit 3c8cf2703c88cad6b8ae6016ae56ebc4defe07fb[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Tue May 16 20:09:03 2023 +0200
+
+    fin des tests frontiere
+
+[33mcommit 9f606c16455eaa7d411f885df5f927e8903f6550[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Tue May 16 17:22:29 2023 +0200
+
+    ajout de la surcharge initialize_frontiere + avancée dans PseudoMain
+
+[33mcommit 40b3c2f2bc0d02335b8f898f4e08122a5fda3d1e[m
+Merge: 9975d60 c8d696a
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 15 16:41:23 2023 +0200
+
+    Résolution conflit (branche philomène-erwann)
+
+[33mcommit 9975d60a54f3830a270e02b2fd31aaa8cd192ee2[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 15 16:35:25 2023 +0200
+
+    finalisation de matching2 (fonctionne)
+
+[33mcommit c8d696ac4a83a94e5e42a1241ab875466ee21ac1[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 15 16:28:45 2023 +0200
+
+    pseudo-code mais pas terminé
+
+[33mcommit 4a37d37c3a8312abdf6da71c490432aecf69c149[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon May 15 16:14:20 2023 +0200
+
+    resolution
+
+[33mcommit b2e56482841828037bc8f98843f39e368149f3d3[m
+Merge: c8a515e ab5651f
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 15 14:23:01 2023 +0200
+
+    merge branche Philo
+
+[33mcommit c8a515e66f1730585d5da61668edae1ffe62d53a[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon May 15 14:18:17 2023 +0200
+
+    remise à jour Philomène
+
+[33mcommit 8d981b7580f6382d9c91f9a402e87565a636dc3d[m
+Merge: fe2fff4 ab5651f
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon May 15 13:57:30 2023 +0200
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit fe2fff48e3c54b60be07b2d1d3e5466f66cec734[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 24 16:03:27 2023 +0200
+
+    Finished matching2
+
+[33mcommit ab5651f024df3596a759133311f6de40a61232a9[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Apr 24 15:26:16 2023 +0200
+
+    ajout de fonctions pour initialiser les frontieres
+
+[33mcommit dcf327c181dc774e28ea1905d05192397db9a966[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Apr 24 15:03:53 2023 +0200
+
+    ajout de commentaires
+
+[33mcommit bf549c8a3d492de66c6f88e74e28fe9edad1d7dc[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 17 16:19:46 2023 +0200
+
+    test 2 de matching 1
+
+[33mcommit 08c64f04e168e814969fd8e0b1cff7dd4e494a34[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 17 15:52:15 2023 +0200
+
+    Simplification des #include dans la plupart des fichiers (pour pas qu'il
+    y ait des doublons)
+
+[33mcommit c6a1beb7586895641f31c6d356fdef9c75a0f314[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 17 15:41:33 2023 +0200
+
+    Rectification d'un nom dans main.cpp
+
+[33mcommit c6c2c0614cb9b9d306939af8ce035f0d79dd0018[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 17 15:39:57 2023 +0200
+
+    Finalisation de testMatching1
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-
+    Inpainting
+
+[33mcommit b2e255c069ae02d2150c89bb860c20dfbd1116e3[m
+Merge: a29b795 f2186e2
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Apr 17 14:45:28 2023 +0200
+
+    Résolution de conflit
+
+[33mcommit f2186e241fe93f58940c92e9ec8f3424c575c956[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Mon Mar 27 22:51:59 2023 +0200
+
+    Update .gitignore
+
+[33mcommit f387c4a3279ab99888b7ecd1881fe9852eb3c157[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Sun Mar 26 15:24:50 2023 +0200
+
+    initialisation de la frontiere
+
+[33mcommit d4569a8bfd2dcb35cffb62950ebd1a07beef0f41[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Sat Mar 25 15:41:37 2023 +0100
+
+    changement : les elements de la frontiere sont remplis
+
+[33mcommit b3f4c39c2982d73786cbadca3a42e07e8e6e515a[m
+Merge: f4d4ac5 5b9fd7c
+Author: flamschou <flams3630@gmail.com>
+Date:   Fri Mar 24 12:12:52 2023 +0100
+
+    resolution de conflit
+
+[33mcommit f4d4ac5653adeb61f65b8a773af5029996881583[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Fri Mar 24 12:06:43 2023 +0100
+
+    gradient pour la frontiere et vecteur normal
+
+[33mcommit 5b9fd7c52bdc4ff83a90d2d6c6bb9161a9bcb9c6[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Mar 21 23:01:10 2023 +0100
+
+    changements mineurs
+
+[33mcommit 9312de75d2749d78f19d601f5e7934131bb03cc5[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Mar 21 11:19:45 2023 +0100
+
+    Imagine::Image<pixel> au lieu de image - Compile à nouveau - Suppression de 'alphacolor col'
+
+[33mcommit a29b7954888246a9e8c3f4e3fbc61887b8c1674d[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 20 17:04:05 2023 +0100
+
+    Fais en sorte que le code compil
+
+[33mcommit 3dc459762f8df51b968e7aecd64e0e636759b4f0[m
+Merge: ce55619 26ca7c8
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 20 16:12:22 2023 +0100
+
+    Conflit réglé dans pixel.h
+
+[33mcommit ce55619069e59cccfb6b54d485b988cd1d77a70b[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 20 16:06:10 2023 +0100
+
+    Remplacement de la classe image par la classe Imagine::Image<pixel> dans
+    image.cpp et image.h
+
+[33mcommit 26ca7c83c5848d012bb612e4472f75316eb2162b[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 20 14:53:24 2023 +0100
+
+    ajout d'une donnee normale unitaire pour les elements de la frontiere
+
+[33mcommit 38f7f73f207234c13f79b2ccf41097c66541501c[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 20 14:38:09 2023 +0100
+
+    ajout de fonctions utiles
+
+[33mcommit 1f2346ab81fd33f57357d732741bd866cd159c73[m
+Merge: b8a7189 0a50fbf
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Thu Mar 16 11:20:23 2023 +0100
+
+    conflict merge
+
+[33mcommit b8a7189d42aecaa77328a0d4224210d6623d1930[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Thu Mar 16 11:18:53 2023 +0100
+
+    fin de cours
+
+[33mcommit 0a50fbfca2f49de98abdc112d1e3e1c1dea5a89a[m
+Merge: 3ab7bf4 9105a63
+Author: flamschou <flams3630@gmail.com>
+Date:   Tue Mar 14 13:31:02 2023 +0100
+
+    conflit
+
+[33mcommit 3ab7bf406f3f6f03a45dae0acfc35c7c4de9e363[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Tue Mar 14 13:29:24 2023 +0100
+
+    j'avais oublié de commit ca
+
+[33mcommit 9105a6398ee26ac2c9dddeafb178748068c05af0[m
+Merge: 7607df6 8f455b6
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 13 15:51:40 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 7607df635464ab31d5bdf73a57b508797a7c7266[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 13 15:51:15 2023 +0100
+
+    fin de seance 13/03
+
+[33mcommit 8f455b6e731d2e31d586db6ad14b7e330dd73c98[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 15:45:53 2023 +0100
+
+    compiler (correction frontiere.h)
+
+[33mcommit e2fb5b6a4302eb2cf7a62459b742946a9e4858fd[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 15:27:51 2023 +0100
+
+    creation de la methode qui met a jour la confiance dans la zone qui vient d'etre colorie
+
+[33mcommit e005d9e96bbfb79e4ed2ae51ab515944f236352f[m
+Merge: ae8cef7 bd136b0
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 15:21:42 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit ae8cef7c8a71c4b1fa903153b2b6bdce04b04818[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 15:21:34 2023 +0100
+
+    rien d'important
+
+[33mcommit a172f010325ec5f98a48f6a11e2de3d8ef6e79d6[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 15:17:56 2023 +0100
+
+    fonction qui calcule la confiance des points de la frontiere
+
+[33mcommit bd136b04b802018c5099694b7734a36a26f4ee33[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 13 15:02:39 2023 +0100
+
+    image ImageSimple.png
+
+[33mcommit 31d9a7c8f39cd10bdcbac317bbcc839921db7398[m
+Merge: eac532f 327cc4f
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 13 14:46:49 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit eac532f79b48f41b49e27231a6dd3768f0d2d06f[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 13 14:46:22 2023 +0100
+
+    fonction display et getImagineImage
+
+[33mcommit 327cc4f242f51dae3c3f61f068fc84f032a69606[m
+Author: sinodine <84024353+sinodine@users.noreply.github.com>
+Date:   Mon Mar 13 14:33:55 2023 +0100
+
+    ajout de la règle de build avant de commit
+
+[33mcommit e11ecae4b07015cedd2c779000e8b7fc812c385c[m
+Merge: d39425a fda54fb
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 14:31:52 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit fda54fb864e3643d0fd59b4a667eff53b61e08fe[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Mar 13 14:31:39 2023 +0100
+
+    y a un espace qui buggait
+
+[33mcommit d39425aad7f4bde694eb7373b515b56826888b87[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 14:30:01 2023 +0100
+
+    main
+
+[33mcommit 556ef36a4ea676ffffbf76d25b96212f4f0d98f7[m
+Merge: 368885b a96323d
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 14:24:52 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit a96323ddd5cf22e883a6917c882e055628ee1d2a[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 14:23:43 2023 +0100
+
+    png
+
+[33mcommit 368885b21e64a9c64d37080a74db1dd5fd33cb0e[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 13 14:22:56 2023 +0100
+
+    int dans une boucle for
+
+[33mcommit 8d4833d5914da7d56fd83d99d7169982a729080a[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 14:20:32 2023 +0100
+
+    reparation pixel
+
+[33mcommit d8e2067d6ebe644da70f6f25a37a72d5459ed198[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 13 14:18:20 2023 +0100
+
+    images
+
+[33mcommit f239688c86d699f4e2a68cb5e84afb9e76b9a181[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 16:33:31 2023 +0100
+
+    Rectification getImage
+
+[33mcommit e9cb63141268aa11eb05ed46f72dd762cc864143[m
+Merge: 8a11c55 af61754
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 16:18:24 2023 +0100
+
+    résol conflit
+
+[33mcommit 8a11c55fcd48ad2f78f0f4592f7c09b259c20099[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 16:13:58 2023 +0100
+
+    Fini de faire getImage dans image . cpp (j'ai aussi fait setColor)
+
+[33mcommit af61754f4bd652734f41ed97553b696a4801132e[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 16:11:00 2023 +0100
+
+    main
+
+[33mcommit 286f69b1018d04472f35c1defd075f88c9dc500b[m
+Merge: 41422d4 797d6f3
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:52:10 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 41422d4c723ac281dd61ce937d52d56f20b9de6c[m
+Merge: 3b85658 891c61e
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:51:54 2023 +0100
+
+    resolution de conflit
+
+[33mcommit 797d6f3e00768df734a2855f9fa43ff1e1861c50[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Mar 6 15:49:59 2023 +0100
+
+    mettre en commentaire
+
+[33mcommit 3f8ec66c31bb969803a41c69f6ce1bcc71f29a12[m
+Merge: 71eafbc 891c61e
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:49:19 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 3b856586fbdec84426ce563bfdec9f06c05ced7f[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:49:08 2023 +0100
+
+    methode add frontiere codee
+
+[33mcommit 71eafbc0ae03944ce5042e2029c649bfeda6509b[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:49:08 2023 +0100
+
+    ajout setx sety classe pixel
+
+[33mcommit 891c61e3cc42420f2ccd1751ca7f9a4fd6eaf7be[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Mar 6 15:39:42 2023 +0100
+
+    ajout de la fonction display()
+
+[33mcommit abbed6ad20550f25c4ff04af2b33830fd98ad7ef[m
+Merge: cb8f8e3 9e97ab3
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 15:29:39 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit cb8f8e305991cfa22f3abee3bd7d0c7cadedcd31[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 15:29:11 2023 +0100
+
+    operateur = sur pixel
+
+[33mcommit 9e97ab3ece65748161e0c848960e42c579b1e997[m
+Merge: 654bdf9 f051a80
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:28:59 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 654bdf9eb1f5e48009adfdaf3721392b45126d4d[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:28:51 2023 +0100
+
+    frontiere.h frontiere.cpp
+
+[33mcommit 5d234261101510080e6eb38b184e6359f3225b47[m
+Merge: 8f90e01 f051a80
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 15:20:30 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 8f90e01c33f105b0b52772e747a03096825a6adb[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Mar 6 15:20:17 2023 +0100
+
+    Debut d'ecriture de getImage dans Image.cpp
+
+[33mcommit f051a803de18799df084b21a21bf4b1e54e58a25[m
+Merge: 69b6579 2508a82
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:19:53 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 69b65793d14aec8c9bc10dbed422cebaa1d88408[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:19:33 2023 +0100
+
+    creation d'une methode setData et setConfidence pour pixel ; creation d'une methode pour mettre a jour confidence et data dans frontiere
+
+[33mcommit 2508a82b84623d2791e8f8e6e6b2c0695c5cbab6[m
+Merge: c0b5965 aa53f2d
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:10:50 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit c0b59658d0f0524a80fded0ea11fe6d1de64533e[m
+Merge: 7811701 53e1372
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:08:08 2023 +0100
+
+    conflit
+
+[33mcommit aa53f2d05ebecf0743892c1baaff2520e3c5d6ec[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 15:03:39 2023 +0100
+
+    modification de pop frontiere
+
+[33mcommit 7811701688a892fa89b8515483c8daf0599a1330[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 15:03:15 2023 +0100
+
+    dsfsd
+
+[33mcommit 53e1372721792c75780f888917010be3340513b8[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 14:56:28 2023 +0100
+
+    header pop frontiere
+
+[33mcommit 8574cb0c29837923eaf40a5f8b0f5a2aaac4fa1e[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 14:55:36 2023 +0100
+
+    methode frontiere pop
+
+[33mcommit d862e3dc7773ff099805d439c76bf4db469f130a[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 14:44:21 2023 +0100
+
+    J'ai remis les x, y, getx et gety dans la classe pixel
+
+[33mcommit 56a8c2be3584a32d3723651eedfd3f6e8c5659d0[m
+Merge: 69b4b5b b351c87
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 14:33:51 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 69b4b5bbdcd37950f8e2403e6e44b37d0d0cf003[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Mar 6 14:33:44 2023 +0100
+
+    sdkjqncfldjksnfvlqdjvnlsiwdjc
+
+[33mcommit b351c8704075ac9ea9ffc258a0f1b02354d0dbbb[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Mar 6 14:31:40 2023 +0100
+
+    initialisation du max
+
+[33mcommit 7e6ace3fa0de7c099e19154a1370d69f7fdc8add[m
+Merge: 35f46ba 65880e1
+Author: flamschou <flams3630@gmail.com>
+Date:   Wed Mar 1 12:57:44 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 65880e159909df0cf3eb81247a3aa0c99bcbd118[m
+Merge: 3822075 162d18b
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Wed Mar 1 12:38:52 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 38220751d49d2a851f652ed6426299cdf91d2a7d[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Wed Mar 1 12:38:09 2023 +0100
+
+    Premiere ecriture de la fonction "void matching" dans matching.cpp
+
+[33mcommit 162d18baaced45a1e49e88c1520a5021d3be7edb[m
+Merge: a2a6c61 c57f73d
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 16:09:34 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit c57f73d3d0aa76e60e0aa8b7bd82a1a1756a5963[m
+Merge: e0d6de3 b4e84c0
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 16:07:26 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit a2a6c61d6a6468785a98f24668f439a634dbe5a7[m
+Merge: 13b9af3 b4e84c0
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 16:07:05 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit b4e84c0ce2bf84ba28cc615d0be34e9f92bf2f93[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 16:05:56 2023 +0100
+
+    operator == dans pixel
+
+[33mcommit 35f46ba395b3956f7758c31bec19383353b17b46[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 20 16:03:48 2023 +0100
+
+    creation de la methode qui trouve le pixel de la frontiere avec la plus grande priorite
+
+[33mcommit 13b9af3e550c129a8aba7ce0bdc8ae82e5916d4f[m
+Merge: e4ce777 e0d6de3
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 15:56:47 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit e4ce7772c217ef56cdaf300dab869462d20e22da[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 15:56:29 2023 +0100
+
+    frontiere : liste chainee
+
+[33mcommit e0d6de3627863d2c3fdf44ac450a49c6982031fa[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 15:53:29 2023 +0100
+
+    test
+
+[33mcommit 3445571e17bb3a9475a585283c8131821ce43e0c[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 15:34:03 2023 +0100
+
+    Un max de commentaires sur les fonctions
+    
+    Surtout pour CopyPaste
+
+[33mcommit 93ca56a27a686b5c200ad7add401ffed6f6cedcc[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 15:26:50 2023 +0100
+
+    Méthode CopyPaste de image
+    
+    Dans la image.cpp:
+    j'ai modifié le nom de la fonction getData en getPixel
+    j'ai codé CopyPaste mais elle est pas terminée pour bien mettre à jour le pixel et traiter les cas particuliers
+    RQ: les indices xd,xa,yd,ya correspondent aux coordonées du coin en haut à gauche
+    
+    dans pixel.cpp:
+    J'ai changé le nom de la fonction setPixel en initPixel
+
+[33mcommit 1cf86c08bf5271d7ad48c75e6515094c50761014[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 15:16:40 2023 +0100
+
+    frontiere
+
+[33mcommit 9aa31e53971dee8d092f7f5ec37d7e7ef9be3aa5[m
+Merge: 5733ae8 49c28f2
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 15:14:02 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 49c28f205327881725f503f535f42fceb67c8965[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 20 15:11:52 2023 +0100
+
+    ajout d'une longueur
+
+[33mcommit 5733ae8c3cee05fcad611dee38d83c31618e5ee2[m
+Merge: 6df04e1 4294d60
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 15:11:38 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 4294d6095c02757d20280a3c167d3c109d012512[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 15:07:20 2023 +0100
+
+    Pour que matching existe
+
+[33mcommit c6c66a7d6ec8be4ab51f77011331c77d637d34e9[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 15:05:30 2023 +0100
+
+    Création de matching.cpp et matching.h
+
+[33mcommit 6df04e19959fc1358e25fd88a23eccef6d563e43[m
+Merge: 057b307 2799043
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 15:07:41 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 2799043208b83e23491718965f40014298a73cd7[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 15:06:40 2023 +0100
+
+    frontiere.cpp
+
+[33mcommit c28326ec4efd88e16a48f9e54d0e9a468ca9e700[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 20 15:03:53 2023 +0100
+
+    ajout frontiere.cpp
+
+[33mcommit 9d812166c21f8c5090bd5b673aa0712cae926e96[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 20 15:01:26 2023 +0100
+
+    nouveau fichier .h pour la frontiere
+
+[33mcommit da9940b720237173e6919e9265279d27d15d2572[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 14:42:46 2023 +0100
+
+    allocation dynamique
+
+[33mcommit 83d58ba46892f78d54aa0e7ed7bd997a11171b97[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 14:39:24 2023 +0100
+
+    Pour que image compile
+    
+    modification de la classe et de ses fonctions
+
+[33mcommit 057b307ecd3b59b3032b1f8dfbdae37759b0138c[m
+Merge: 669f51e 1c481c2
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 20 14:38:53 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 1c481c2ae99b5f34249cf38ee50a4f1edec05ed7[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 20 14:30:14 2023 +0100
+
+    Création de la classe image
+    
+    Ajout des fichier image.cpp image.h et ajout de quelques fonctions de base associées
+
+[33mcommit 9187e3851cb0b2294a748c3eb5cd7ca38683dbff[m
+Merge: 4f63530 71fb906
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 15:37:26 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 669f51e3d857d7da7efe4e254519c4df2248365e[m
+Merge: 509796f 71fb906
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 13 15:21:13 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 509796fdb20287a27e9fe070e637efda66354f00[m
+Merge: 309cd64 b0ae2d1
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 13 15:20:33 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 71fb9065daeb917e81e8beb2e4a17bab92465fe9[m
+Merge: 309cd64 b0ae2d1
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 13 15:19:35 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 4f63530e6dd3b7767362a3c89d6af733e0907c9f[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 15:11:21 2023 +0100
+
+    plus de x ni y
+
+[33mcommit f704dbe3b65dfb48b87d9a9cb181f2ec0bbb5816[m
+Merge: 7254af8 309cd64
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 15:10:33 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 7254af85c1a3db8c4ab3e7d1edfc900db42bbff4[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 15:09:35 2023 +0100
+
+    Plus de x et y (on n'en a pas besoin)
+
+[33mcommit 309cd64dd3754131e24cb9b468be4376ee668e1b[m
+Merge: 051b47c 4aae6ff
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 13 15:06:28 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 4aae6ff20ca2e7c186457890fe5b3271e801b32e[m
+Merge: 43075b0 7ea7bca
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 13 15:02:25 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit ca231b2c6dd4f0ca0053e5ff080d24718e5842e0[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 15:02:05 2023 +0100
+
+    float -> int
+
+[33mcommit 051b47cf71a76a33c6f76b855a61da8deda0ca7c[m
+Author: ErwannE <erwannesteve@gmail.com>
+Date:   Mon Feb 13 14:59:19 2023 +0100
+
+    test
+
+[33mcommit 43075b0dee1f2a9fd6c8928221e353b06fb44c67[m
+Author: flamschou <flams3630@gmail.com>
+Date:   Mon Feb 13 14:58:59 2023 +0100
+
+    j'ai ajoute coucou
+
+[33mcommit b0ae2d172308a1658e93ddb96ad08f53857e046f[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 13 14:49:23 2023 +0100
+
+    réglage d'une incohérence
+    
+    dans la fonction setPixel
+
+[33mcommit 40f29ea66d28030ce941d93eb50d39cfbb2c93cf[m
+Merge: 64d1dec 7ea7bca
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 14:46:48 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit 64d1deccc7cb818964465c0fe7b80c4c8f8489c8[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 14:44:15 2023 +0100
+
+    blabla
+
+[33mcommit 7ea7bcaa450f48e7e9005fdd81b0ace166d8de56[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 13 14:37:19 2023 +0100
+
+    coordonnées de type int
+    
+    avant c'était des double
+
+[33mcommit b6cc6f8ac8370d02b0c3e828b6d614349c01a2ff[m
+Author: flamschou <125277236+flamschou@users.noreply.github.com>
+Date:   Mon Feb 13 14:32:26 2023 +0100
+
+    Update pixel.cpp
+
+[33mcommit 0c01249213d0d63740a92b8b1eb54bf83fa44e63[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Mon Feb 13 14:23:27 2023 +0100
+
+    setPixel
+
+[33mcommit a6674fe7c2fd71a2906c8f7e85b96bdf23beec7b[m
+Author: sinodine <sixtine.nodet@gmail.com>
+Date:   Mon Feb 6 16:58:18 2023 +0100
+
+    Ajout des fonctions de base (get, set) de pixel
+    
+    Dans pixel.cpp :
+    J'ai ajouté les arguments col, c, d et v à la classe pixel.
+    J'ai aussi ajouté en publique les méthodes getColor, getConfidence, getData, getPriority et getV.
+    
+    Dans pixel.h :
+    J'ai implementé toutes les nouvelles méthodes de la classe
+
+[33mcommit aca8ada4c0c686fa3c04ddf86897b1d5c02b2249[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Tue Feb 7 16:10:13 2023 +0100
+
+    Update README.md
+
+[33mcommit 5d9b7c45aff20abe03e8580ec0c849634b148268[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 16:08:30 2023 +0100
+
+    README.md - Instructions git
+
+[33mcommit c62c409d0264a1d8bff2977e5e14ec424cb0cecd[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Tue Feb 7 15:56:51 2023 +0100
+
+    Create README.md
+
+[33mcommit 5003edbcce3ae5bb6b7f23be77afb697398f668b[m
+Merge: ac59126 d0442c6
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 15:35:39 2023 +0100
+
+    Merge branch 'main' of https://github.com/PanthereDesNeiges/Projet-Inpainting
+
+[33mcommit ac59126ad2924f6c19fb224ce5ddac23afbde5d2[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 15:35:11 2023 +0100
+
+    Modification de .gitignore
+
+[33mcommit d0442c6378bf72394f8107a7463ef1ab548ed0bb[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Tue Feb 7 15:31:11 2023 +0100
+
+    Delete CMakeLists.txt.user
+
+[33mcommit a36a09d8728a394f8b3a171e99de6df6782af7ed[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 15:30:20 2023 +0100
+
+    Ajout de .gitignore
+
+[33mcommit 097e4d79de0ec86c4f79b9bc312118787640519b[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 15:23:56 2023 +0100
+
+    Corrections minimes sur la classe pixel
+
+[33mcommit ed7be04735070c109d7cc142b6fc5d96d2a54a7d[m
+Author: Philomène <philomene.boisnard@eleves.enpc.fr>
+Date:   Tue Feb 7 15:16:25 2023 +0100
+
+    NAjout des noms et prénoms des membres du projet
+
+[33mcommit 029f10f307730edb5986e0b22a6b8bd5d32d27fe[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Tue Feb 7 14:45:35 2023 +0100
+
+    Update README.md
+
+[33mcommit 567cda9e269abc805909c6b0344b085a47358a7a[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Tue Feb 7 14:38:43 2023 +0100
+
+    Update README.md
+    
+    Ajout des règles
+
+[33mcommit 26a58c608cd0bda782afa2447c08513b45ee7f45[m
+Author: ErwannE <124594762+ErwannE@users.noreply.github.com>
+Date:   Mon Feb 6 16:25:32 2023 +0100
+
+    Update pixel.h
+    
+    Added left product by scalar and =
+
+[33mcommit aeb09ee752f0bc49e3f3831fbcabdd9797d07c32[m
+Author: sinodine <84024353+sinodine@users.noreply.github.com>
+Date:   Mon Feb 6 16:09:32 2023 +0100
+
+    Add files via upload
+    
+    Ajout des fichiers main.cpp pixel.cpp pixel.h et Cmakelist.txt
+
+[33mcommit 969bfcc29c9b64b144b35ef9584815471acdf1b7[m
+Author: Philomène <119520205+PanthereDesNeiges@users.noreply.github.com>
+Date:   Mon Feb 6 15:39:37 2023 +0100
+
+    Initial commit
