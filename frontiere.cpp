@@ -369,21 +369,28 @@ void initialize_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1
 }
 
 
-void add_frontiere_cond(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1, int y1, int x2, int y2){
+void add_frontiere(Imagine::Image<pixel> I1,std::vector<pixel> &v, int x1, int y1, int x2, int y2){
     for (int i=0;i<=abs(x1-x2);i++){
-        if (I1(min(x1,x2)+i,y1).getV())
         v.push_back(I1(min(x1,x2)+i,y1));
     }
     for (int i=0;i<=abs(x1-x2);i++){
-        if(I1(min(x1,x2)+i,y2).getV())
         v.push_back(I1(min(x1,x2)+i,y2));
     }
     for (int i=1;i<abs(y1-y2);i++){
-        if(I1(x1,min(y1,y2)+i).getV())
         v.push_back(I1(x1,min(y1,y2)+i));
     }
     for (int i=1;i<abs(y1-y2);i++){
-        if(I1(x2,min(y1,y2)+i).getV())
         v.push_back(I1(x2,min(y1,y2)+i));
+    }
+}
+
+void frontiere::clear_frontiere_not_vis(Imagine::Image<pixel> I1){
+    for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
+        if(!I1((*it).getX(),(*it).getY()).getV()){
+            it=f.erase(it);
+        }
+        else{
+            ++it;
+        }
     }
 }

@@ -271,7 +271,7 @@ void PseudoMain(int argc,char* argv[]){
     f.initialize_frontiere(v);                          //Initialisation de f
     while(selectZone(x1,y1,x2,y2)){
         v.clear();                                      //Vide le vecteur
-        add_frontiere_cond(I1,v,x1,y1,x2,y2);         //Code précédent
+        add_frontiere(I1,v,x1,y1,x2,y2);         //Code précédent
         noRefreshBegin();
         for (int i=min(x1,x2)+1;i<max(x1,x2);i++){
             for (int j=min(y1,y2)+1;j<max(y1,y2);j++){
@@ -284,7 +284,7 @@ void PseudoMain(int argc,char* argv[]){
 
         f.add_frontiere_initialise(v,I1);                   //Adapte f au nouveau contour
     }
-
+    f.clear_frontiere_not_vis(I1);
     f.changeData(I1);
 
     //L'image et la frontière sont à ce moment initialisés
