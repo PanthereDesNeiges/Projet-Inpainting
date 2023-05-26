@@ -419,9 +419,9 @@ void frontiere::pop_frontiere(int Px, int Py, int tailleTampon){
     }
 }
 
-void frontiere::clear_sides(Imagine::Image<pixel> I){
+void frontiere::clear_sides(Imagine::Image<pixel> I){   // On enlève les bords de l'image
     for(std::list<pixel>::iterator it=f.begin();it!=f.end();){
-        if((*it).getX()==I.width() || (*it).getX()==0 ||(*it).getY()==I.height()||(*it).getY()==0){
+        if((*it).getX()==I.width()-1 || (*it).getX()==0 ||(*it).getY()==I.height()-1||(*it).getY()==0){
             it=f.erase(it);
         }
         else{
